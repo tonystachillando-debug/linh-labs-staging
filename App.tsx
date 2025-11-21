@@ -9,6 +9,16 @@ import { Footer } from './components/Footer';
 import { StickyChat } from './components/StickyChat';
 
 function App() {
+  const [syncedMessages, setSyncedMessages] = React.useState<{ id: string, text: string, sender: 'user' | 'bot' }[]>([]);
+
+  const handleStickyMessage = (userText: string, botText: string) => {
+    const timestamp = Date.now();
+    setSyncedMessages([
+      { id: timestamp.toString(), text: userText, sender: 'user' },
+      { id: (timestamp + 1).toString(), text: botText, sender: 'bot' }
+    ]);
+  };
+
   return (
     <div className="bg-slate-950 min-h-screen text-slate-50 selection:bg-cyan-500/30">
       <Navbar />
@@ -17,10 +27,10 @@ function App() {
         <Mission />
         <Services />
         <Partners />
-        <ChatSection />
+        <ChatSection newMessages={syncedMessages} />
       </main>
       <Footer />
-      <StickyChat />
+      <StickyChat onMessageSent={handleStickyMessage} />
     </div>
   );
 }

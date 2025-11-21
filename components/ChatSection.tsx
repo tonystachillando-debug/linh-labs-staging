@@ -9,13 +9,29 @@ interface Message {
   sender: 'user' | 'bot';
 }
 
-export const ChatSection: React.FC = () => {
+interface ChatSectionProps {
+  newMessages?: Message[];
+}
+
+export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
   const [messages, setMessages] = useState<Message[]>([
     { id: '1', text: "Ciao! 👋 Sono l'assistente virtuale di Linh Labs. Come posso aiutarti oggi?", sender: 'bot' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Sync messages from StickyChat
+  useEffect(() => {
+    if (newMessages && newMessages.length > 0) {
+      setMessages(prev => {
+        // Avoid duplicates by checking IDs
+        const existingIds = new Set(prev.map(m => m.id));
+        const uniqueNewMessages = newMessages.filter(m => !existingIds.has(m.id));
+        return [...prev, ...uniqueNewMessages];
+      });
+    }
+  }, [newMessages]);
 
   const scrollToBottom = () => {
     if (scrollRef.current) {
@@ -53,12 +69,12 @@ export const ChatSection: React.FC = () => {
     <section id="contact" className="py-32 relative overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-600/5 rounded-full blur-[100px] pointer-events-none" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:items-center">
-          
+
           {/* Text Side */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -70,7 +86,7 @@ export const ChatSection: React.FC = () => {
             <p className="text-slate-400 text-lg leading-relaxed mb-10 font-light">
               Scopri come possiamo trasformare il tuo business. Il nostro agente è istruito per rispondere alle tue domande sui nostri servizi in tempo reale.
             </p>
-            
+
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
                 <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
@@ -85,20 +101,20 @@ export const ChatSection: React.FC = () => {
           </motion.div>
 
           {/* Widget Side */}
-          <motion.div 
-             initial={{ opacity: 0, scale: 0.95 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             viewport={{ once: true }}
-             className="lg:w-7/12 w-full"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="lg:w-7/12 w-full"
           >
             <div className="glass-panel rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.3)] border border-white/10 flex flex-col h-[600px] relative">
-              
+
               {/* Widget Header */}
               <div className="bg-slate-900/80 backdrop-blur-md p-6 border-b border-white/5 flex items-center justify-between sticky top-0 z-10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center relative shadow-lg shadow-cyan-500/20">
-                     <BotIcon className="w-6 h-6 text-white" />
-                     <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-slate-900"></div>
+                    <BotIcon className="w-6 h-6 text-white" />
+                    <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-slate-900"></div>
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-lg">Linh Labs Assistant</h3>
@@ -111,7 +127,7 @@ export const ChatSection: React.FC = () => {
               </div>
 
               {/* Messages Area */}
-              <div 
+              <div
                 ref={scrollRef}
                 className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-950/30 scrollbar-thin"
               >
@@ -124,11 +140,10 @@ export const ChatSection: React.FC = () => {
                       className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-[85%] p-5 rounded-2xl text-base leading-relaxed shadow-md ${
-                          msg.sender === 'user'
+                        className={`max-w-[85%] p-5 rounded-2xl text-base leading-relaxed shadow-md ${msg.sender === 'user'
                             ? 'bg-cyan-600 text-white rounded-br-none'
                             : 'bg-slate-800/80 text-slate-200 rounded-bl-none border border-white/5'
-                        }`}
+                          }`}
                       >
                         {msg.text}
                       </div>
@@ -136,14 +151,14 @@ export const ChatSection: React.FC = () => {
                   ))}
                 </AnimatePresence>
                 {isLoading && (
-                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
-                     <div className="bg-slate-800/80 p-4 rounded-2xl rounded-bl-none border border-white/5 flex gap-2 items-center">
-                        <span className="text-xs text-slate-400 mr-2">Thinking</span>
-                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce"></span>
-                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce delay-75"></span>
-                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce delay-150"></span>
-                     </div>
-                   </motion.div>
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
+                    <div className="bg-slate-800/80 p-4 rounded-2xl rounded-bl-none border border-white/5 flex gap-2 items-center">
+                      <span className="text-xs text-slate-400 mr-2">Thinking</span>
+                      <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce"></span>
+                      <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce delay-75"></span>
+                      <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce delay-150"></span>
+                    </div>
+                  </motion.div>
                 )}
               </div>
 
