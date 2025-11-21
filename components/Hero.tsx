@@ -5,41 +5,51 @@ import { ChevronDown } from 'lucide-react';
 export const Hero: React.FC = () => {
   const ref = useRef(null);
   const { scrollY } = useScroll();
-  
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const yText = useTransform(scrollY, [0, 500], [0, 250]);
   const yBg = useTransform(scrollY, [0, 500], [0, 100]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <section ref={ref} id="home" className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+    <section ref={ref} id="home" className="relative h-[100dvh] min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-grid-white opacity-[0.15] pointer-events-none" />
-      
+
       {/* Gradient Orbs */}
-      <motion.div 
-        style={{ y: yBg }}
-        className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none" 
+      <motion.div
+        style={{ y: isMobile ? 0 : yBg }}
+        className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"
       />
-      <motion.div 
-        style={{ y: yBg }}
-        className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-cyan-500/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none" 
+      <motion.div
+        style={{ y: isMobile ? 0 : yBg }}
+        className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-cyan-500/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"
       />
 
       <div className="container mx-auto px-6 text-center z-10 relative">
-        <motion.div style={{ y: yText, opacity }}>
+        <motion.div style={{ y: isMobile ? 0 : yText, opacity }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6"
           >
-             <span className="px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase">
-                Next Gen AI Consulting
-             </span>
+            <span className="px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase">
+              Next Gen AI Consulting
+            </span>
           </motion.div>
 
           <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-tighter mb-10">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -47,7 +57,7 @@ export const Hero: React.FC = () => {
             >
               Trasforma
             </motion.span>
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
@@ -55,7 +65,7 @@ export const Hero: React.FC = () => {
             >
               l'Intelligenza Artificiale
             </motion.span>
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -64,8 +74,8 @@ export const Hero: React.FC = () => {
               in vantaggio competitivo reale.
             </motion.span>
           </h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
