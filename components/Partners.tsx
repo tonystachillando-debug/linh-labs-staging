@@ -54,7 +54,7 @@ export const Partners: React.FC = () => {
             className="flex items-center justify-center group cursor-pointer"
           >
             <img
-              src="/images/eliza-os-logo.svg"
+              src="/images/eliza-os-logo.png"
               alt="ELIZA OS"
               className="h-16 w-auto object-contain"
             />
