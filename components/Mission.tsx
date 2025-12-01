@@ -27,7 +27,7 @@ const Counter = ({ value, suffix = "" }: { value: number, suffix?: string }) => 
 const metrics = [
   {
     id: 1,
-    value: 99,
+    value: 90,
     suffix: "%",
     label: "Tempo ridotto nei processi",
     icon: <Timer className="w-6 h-6 text-cyan-400" />,
@@ -35,7 +35,7 @@ const metrics = [
   },
   {
     id: 2,
-    value: 90,
+    value: 85,
     suffix: "%",
     label: "Ottimizzazione dei costi operativi",
     icon: <TrendingDown className="w-6 h-6 text-blue-400" />,
@@ -43,7 +43,7 @@ const metrics = [
   },
   {
     id: 3,
-    value: 12,
+    value: 10,
     suffix: "x",
     label: "Incremento dell'efficienza interna",
     icon: <Zap className="w-6 h-6 text-purple-400" />,
