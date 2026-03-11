@@ -90,7 +90,7 @@ export const AgeOfAgents: React.FC = () => {
             viewport={{ once: true }}
           >
             {/* Stats */}
-            <div className="grid grid-cols-4 gap-3 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
@@ -100,7 +100,7 @@ export const AgeOfAgents: React.FC = () => {
                   transition={{ delay: i * 0.1 }}
                   className="text-center bg-slate-900/60 backdrop-blur-xl border border-white/5 rounded-xl p-3"
                 >
-                  <div className="font-display text-lg font-bold text-white">{stat.value}</div>
+                  <div className="font-display text-base sm:text-lg font-bold text-white truncate">{stat.value}</div>
                   <div className="text-slate-500 text-[10px] uppercase tracking-widest mt-0.5">{stat.label}</div>
                 </motion.div>
               ))}
