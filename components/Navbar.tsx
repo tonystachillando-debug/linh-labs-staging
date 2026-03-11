@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Chi Siamo', href: '#mission' },
   { name: 'Servizi', href: '#services' },
+  { name: 'Catalogo', href: '/catalogo', isRoute: true },
   { name: 'Contatti', href: '#contact' },
 ];
 
@@ -40,14 +42,25 @@ export const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors uppercase tracking-widest group overflow-hidden"
-            >
-              {link.name}
-              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
-            </a>
+            'isRoute' in link && link.isRoute ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors uppercase tracking-widest group overflow-hidden"
+              >
+                {link.name}
+                <span className="absolute left-0 bottom-0 w-full h-[1px] bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors uppercase tracking-widest group overflow-hidden"
+              >
+                {link.name}
+                <span className="absolute left-0 bottom-0 w-full h-[1px] bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
+              </a>
+            )
           ))}
           <a
             href="#contact"
@@ -77,14 +90,25 @@ export const Navbar: React.FC = () => {
           >
             <div className="flex flex-col p-8 gap-6 items-center">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xl font-display font-medium text-slate-200 hover:text-cyan-400 transition-colors"
-                >
-                  {link.name}
-                </a>
+                'isRoute' in link && link.isRoute ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-xl font-display font-medium text-slate-200 hover:text-cyan-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-xl font-display font-medium text-slate-200 hover:text-cyan-400 transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
               <a
                 href="#contact"
