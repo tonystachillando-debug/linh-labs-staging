@@ -8,7 +8,7 @@ const categories = [
     id: 1,
     name: 'AI & Machine Learning',
     icon: <Brain />,
-    count: 5952,
+    count: 'Migliaia di',
     tagline: 'Chatbot, RAG, classificazione intelligente',
     gradient: 'from-violet-500 to-purple-600',
     glow: 'bg-violet-500/20',
@@ -18,7 +18,7 @@ const categories = [
     id: 2,
     name: 'Marketing',
     icon: <Megaphone />,
-    count: 2705,
+    count: 'Migliaia di',
     tagline: 'Social media, SEO, email campaign',
     gradient: 'from-pink-500 to-rose-600',
     glow: 'bg-pink-500/20',
@@ -28,7 +28,7 @@ const categories = [
     id: 3,
     name: 'Sales',
     icon: <TrendingUp />,
-    count: 1209,
+    count: 'Centinaia di',
     tagline: 'Lead scoring, CRM sync, proposte',
     gradient: 'from-cyan-500 to-blue-600',
     glow: 'bg-cyan-500/20',
@@ -38,7 +38,7 @@ const categories = [
     id: 4,
     name: 'Document Ops',
     icon: <FileText />,
-    count: 988,
+    count: 'Centinaia di',
     tagline: 'Fatture, contratti, report PDF',
     gradient: 'from-amber-500 to-orange-600',
     glow: 'bg-amber-500/20',
@@ -48,7 +48,7 @@ const categories = [
     id: 5,
     name: 'Support',
     icon: <Headset />,
-    count: 703,
+    count: 'Centinaia di',
     tagline: 'Ticket routing, FAQ bot, sentiment',
     gradient: 'from-emerald-500 to-green-600',
     glow: 'bg-emerald-500/20',
@@ -58,7 +58,7 @@ const categories = [
     id: 6,
     name: 'Other',
     icon: <Layers />,
-    count: 1559,
+    count: 'Migliaia di',
     tagline: 'Backup, monitoring, webhook relay',
     gradient: 'from-slate-400 to-slate-600',
     glow: 'bg-slate-400/20',
@@ -100,7 +100,7 @@ export const AutomationCatalogue: React.FC = () => {
             </span>
           </h2>
           <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-            Oltre 8.700 workflow di automazione pronti da implementare. Scegli la categoria e trasforma il tuo business.
+            Migliaia di workflow di automazione pronti da implementare. Scegli la categoria e trasforma il tuo business.
           </p>
         </motion.div>
 
@@ -113,9 +113,9 @@ export const AutomationCatalogue: React.FC = () => {
           className="flex justify-center gap-8 md:gap-16 mb-16 mt-10"
         >
           {[
-            { value: '8,700+', label: 'Automazioni' },
-            { value: '400+', label: 'Integrazioni' },
-            { value: '85%', label: 'Tempo Risparmiato' },
+            { value: 'Migliaia', label: 'Automazioni' },
+            { value: 'Centinaia', label: 'Integrazioni' },
+            { value: 'Fino a 85%', label: 'Tempo Risparmiato' },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <div className="font-display text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
@@ -146,7 +146,7 @@ export const AutomationCatalogue: React.FC = () => {
                   <div className={`w-12 h-12 rounded-xl bg-slate-800 border border-white/5 flex items-center justify-center ${cat.iconColor} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
                     {React.cloneElement(cat.icon as React.ReactElement<any>, { className: "w-6 h-6" })}
                   </div>
-                  <span className="text-slate-600 text-xs font-mono">{cat.count.toLocaleString()} workflows</span>
+                  <span className="text-slate-600 text-xs font-mono">{cat.count} workflows</span>
                 </div>
 
                 <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">
