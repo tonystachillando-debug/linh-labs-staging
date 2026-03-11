@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   Brain, Megaphone, TrendingUp, FileText, HeadsetIcon as Headset, Layers,
   ArrowLeft, Clock, Plug, Star, Zap, Bot, Search, Sparkles,
@@ -117,7 +117,10 @@ const automations: Automation[] = [
 const filterCategories = ['Tutti', 'AI', 'Marketing', 'Sales', 'Document Ops', 'Support', 'Other'];
 
 export const CataloguePage: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('Tutti');
+  const [searchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get('category');
+  const initialFilter = categoryFromUrl && filterCategories.includes(categoryFromUrl) ? categoryFromUrl : 'Tutti';
+  const [activeFilter, setActiveFilter] = useState(initialFilter);
 
   useEffect(() => {
     window.scrollTo(0, 0);
