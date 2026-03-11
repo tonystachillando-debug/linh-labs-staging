@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Chi Siamo', href: '#mission' },
-  { name: 'Servizi', href: '#services' },
+  { name: 'Home', href: '/#home' },
+  { name: 'Chi Siamo', href: '/#mission' },
+  { name: 'Servizi', href: '/#services' },
   { name: 'Catalogo', href: '/catalogo', isRoute: true },
-  { name: 'Contatti', href: '#contact' },
 ];
 
 export const Navbar: React.FC = () => {
@@ -35,39 +34,28 @@ export const Navbar: React.FC = () => {
         }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <div className="scale-90 origin-left">
+        <Link to="/" className="scale-90 origin-left">
           <Logo />
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            'isRoute' in link && link.isRoute ? (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors uppercase tracking-widest group overflow-hidden"
-              >
-                {link.name}
-                <span className="absolute left-0 bottom-0 w-full h-[1px] bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
-              </Link>
-            ) : (
-              <a
-                key={link.name}
-                href={link.href}
-                className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors uppercase tracking-widest group overflow-hidden"
-              >
-                {link.name}
-                <span className="absolute left-0 bottom-0 w-full h-[1px] bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
-              </a>
-            )
+            <Link
+              key={link.name}
+              to={link.href}
+              className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors uppercase tracking-widest group overflow-hidden"
+            >
+              {link.name}
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="relative overflow-hidden bg-white text-slate-950 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-cyan-400 transition-colors duration-300"
           >
-            Contact Us
-          </a>
+            Contattaci
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -90,33 +78,22 @@ export const Navbar: React.FC = () => {
           >
             <div className="flex flex-col p-8 gap-6 items-center">
               {navLinks.map((link) => (
-                'isRoute' in link && link.isRoute ? (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-xl font-display font-medium text-slate-200 hover:text-cyan-400 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                ) : (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-xl font-display font-medium text-slate-200 hover:text-cyan-400 transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                )
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xl font-display font-medium text-slate-200 hover:text-cyan-400 transition-colors"
+                >
+                  {link.name}
+                </Link>
               ))}
-              <a
-                href="#contact"
+              <Link
+                to="/#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full text-center bg-white text-slate-950 px-6 py-4 rounded-xl font-bold uppercase tracking-wider mt-4"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

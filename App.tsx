@@ -1,5 +1,21 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+
+function ScrollToHash() {
+  const { pathname, hash } = useLocation();
+  React.useEffect(() => {
+    if (hash) {
+      // Small delay to let the page render before scrolling
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+  return null;
+}
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Mission } from './components/Mission';
@@ -43,10 +59,13 @@ function HomePage() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/catalogo" element={<CataloguePage />} />
-    </Routes>
+    <>
+      <ScrollToHash />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/catalogo" element={<CataloguePage />} />
+      </Routes>
+    </>
   );
 }
 
