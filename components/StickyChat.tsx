@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { sendMessageToAgent } from '../services/chatService';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useI18n } from '../i18n';
 
 interface StickyChatProps {
   onMessageSent?: (userText: string, botText: string) => void;
 }
 
 export const StickyChat: React.FC<StickyChatProps> = ({ onMessageSent }) => {
+  const { t } = useI18n();
   const [input, setInput] = useState('');
   const [response, setResponse] = useState<string | null>(null);
   const [isSending, setIsSending] = useState(false);
@@ -72,7 +74,7 @@ export const StickyChat: React.FC<StickyChatProps> = ({ onMessageSent }) => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Scrivi un messaggio..."
+            placeholder={t('sticky.placeholder')}
             className="bg-transparent border-none text-white px-6 py-2 w-full focus:outline-none placeholder:text-slate-500"
           />
           <button

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useI18n } from '../i18n';
 
 export const Footer: React.FC = () => {
+  const { t } = useI18n();
   return (
     <footer className="bg-slate-950 border-t border-white/5 pt-24 pb-32 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
@@ -16,25 +19,24 @@ export const Footer: React.FC = () => {
               <Logo />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed font-light">
-              Trasformiamo la complessità tecnologica in vantaggio competitivo.
-              Il tuo partner di fiducia per l'era dell'AI.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Col 2: Link Utili */}
           <div>
-            <h4 className="text-white font-bold mb-8 uppercase tracking-[0.2em] text-xs">Link Utili</h4>
+            <h4 className="text-white font-bold mb-8 uppercase tracking-[0.2em] text-xs">{t('footer.links')}</h4>
             <ul className="space-y-4">
               {[
-                { name: 'Home', href: '#home' },
-                { name: 'Chi Siamo', href: '#mission' },
-                { name: 'Servizi', href: '#services' },
-                { name: 'Contatti', href: '#contact' },
+                { name: t('nav.home'), href: '/#home' },
+                { name: t('nav.about'), href: '/#mission' },
+                { name: t('nav.services'), href: '/#services' },
+                { name: t('nav.contact'), href: '/#contact' },
               ].map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                  <Link to={link.href} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -42,7 +44,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Contatti */}
           <div>
-            <h4 className="text-white font-bold mb-8 uppercase tracking-[0.2em] text-xs">Contatti</h4>
+            <h4 className="text-white font-bold mb-8 uppercase tracking-[0.2em] text-xs">{t('footer.contacts')}</h4>
             <ul className="space-y-6">
               <li className="flex items-start gap-4 text-slate-400 group">
                 <div className="p-2 bg-white/5 rounded-lg group-hover:bg-cyan-500/10 transition-colors">
@@ -61,7 +63,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Location / Map */}
           <div>
-            <h4 className="text-white font-bold mb-8 uppercase tracking-[0.2em] text-xs">Location</h4>
+            <h4 className="text-white font-bold mb-8 uppercase tracking-[0.2em] text-xs">{t('footer.location')}</h4>
             <div className="rounded-2xl overflow-hidden border border-white/10 h-48 relative group shadow-lg">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89553.23978771758!2d9.09525316664465!3d45.46282466956998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilan%2C%20Metropolitan%20City%20of%20Milan%2C%20Italy!5e0!3m2!1sen!2sus!4v1715600000000!5m2!1sen!2sus"
@@ -84,11 +86,11 @@ export const Footer: React.FC = () => {
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-slate-600 text-xs">
-            &copy; {new Date().getFullYear()} Linh Labs. All rights reserved.
+            &copy; {new Date().getFullYear()} Linh Labs. {t('footer.rights')}
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-slate-600 hover:text-slate-400 text-xs transition-colors">Privacy Policy</a>
-            <a href="#" className="text-slate-600 hover:text-slate-400 text-xs transition-colors">Terms of Service</a>
+            <a href="#" className="text-slate-600 hover:text-slate-400 text-xs transition-colors">{t('footer.privacy')}</a>
+            <a href="#" className="text-slate-600 hover:text-slate-400 text-xs transition-colors">{t('footer.terms')}</a>
           </div>
         </div>
       </div>

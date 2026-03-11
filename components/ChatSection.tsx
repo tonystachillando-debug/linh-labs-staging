@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, ArrowRight, Sparkles, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendMessageToAgent } from '../services/chatService';
+import { useI18n } from '../i18n';
 
 interface Message {
   id: string;
@@ -14,8 +15,9 @@ interface ChatSectionProps {
 }
 
 export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
+  const { t } = useI18n();
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', text: "Ciao! 👋 Sono l'assistente virtuale di Linh Labs. Come posso aiutarti oggi?", sender: 'bot' }
+    { id: '1', text: t('chat.greeting'), sender: 'bot' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -81,10 +83,10 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
             className="lg:w-5/12"
           >
             <h2 className="font-display text-5xl md:text-7xl font-bold mb-8 text-white tracking-tight leading-[1.1]">
-              Fai una prima <span className="text-cyan-400">chiacchierata</span> col nostro agente.
+              {t('chat.title')}<span className="text-cyan-400">{t('chat.titleHighlight')}</span>{t('chat.titleEnd')}
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-10 font-light">
-              Scopri come possiamo trasformare il tuo business. Il nostro agente è istruito per rispondere alle tue domande sui nostri servizi in tempo reale.
+              {t('chat.subtitle')}
             </p>
 
             <div className="flex flex-col gap-4">
@@ -93,8 +95,8 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold">AI Powered</h4>
-                  <p className="text-slate-500 text-xs">Risposte istantanee basate su LLM avanzati</p>
+                  <h4 className="text-white font-bold">{t('chat.aiPowered')}</h4>
+                  <p className="text-slate-500 text-xs">{t('chat.aiDesc')}</p>
                 </div>
               </div>
             </div>
@@ -117,8 +119,8 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                     <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-slate-900"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-lg">Linh Labs Assistant</h3>
-                    <p className="text-xs text-cyan-400 font-medium uppercase tracking-wider">Online Now</p>
+                    <h3 className="font-bold text-white text-lg">{t('chat.assistantName')}</h3>
+                    <p className="text-xs text-cyan-400 font-medium uppercase tracking-wider">{t('chat.online')}</p>
                   </div>
                 </div>
                 <button className="text-slate-500 hover:text-white transition-colors">
@@ -153,7 +155,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                 {isLoading && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
                     <div className="bg-slate-800/80 p-4 rounded-2xl rounded-bl-none border border-white/5 flex gap-2 items-center">
-                      <span className="text-xs text-slate-400 mr-2">Thinking</span>
+                      <span className="text-xs text-slate-400 mr-2">{t('chat.thinking')}</span>
                       <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce"></span>
                       <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce delay-75"></span>
                       <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce delay-150"></span>
@@ -169,7 +171,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Scrivi un messaggio..."
+                    placeholder={t('chat.placeholder')}
                     className="flex-1 bg-slate-950/50 text-white px-6 py-4 rounded-2xl border border-white/10 focus:outline-none focus:border-cyan-500/50 focus:bg-slate-900 transition-all placeholder:text-slate-600"
                   />
                   <button

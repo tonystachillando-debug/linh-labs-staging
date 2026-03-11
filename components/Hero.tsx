@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 export const Hero: React.FC = () => {
   const ref = useRef(null);
   const { scrollY } = useScroll();
   const [isMobile, setIsMobile] = React.useState(false);
+  const { t } = useI18n();
 
   React.useEffect(() => {
     const checkMobile = () => {
@@ -44,7 +46,7 @@ export const Hero: React.FC = () => {
             className="mb-6"
           >
             <span className="px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase">
-              Next Gen AI Consulting
+              {t('hero.badge')}
             </span>
           </motion.div>
 
@@ -55,7 +57,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="block text-slate-100"
             >
-              Trasforma
+              {t('hero.title1')}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 40 }}
@@ -63,7 +65,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
               className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-500 animate-gradient pb-2"
             >
-              l'Intelligenza Artificiale
+              {t('hero.title2')}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 40 }}
@@ -71,7 +73,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="block text-slate-400 text-4xl md:text-6xl lg:text-7xl font-light mt-4"
             >
-              in vantaggio competitivo reale.
+              {t('hero.title3')}
             </motion.span>
           </h1>
 
@@ -81,7 +83,7 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 1 }}
             className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-16 font-light leading-relaxed"
           >
-            Non solo teoria. Costruiamo soluzioni AI che scalano il tuo business oggi.
+            {t('hero.subtitle')}
           </motion.p>
 
           <motion.div
@@ -94,7 +96,7 @@ export const Hero: React.FC = () => {
               href="#mission"
               className="flex flex-col items-center text-slate-500 hover:text-cyan-400 transition-colors cursor-pointer group"
             >
-              <span className="text-[10px] uppercase tracking-[0.3em] mb-2">Scroll</span>
+              <span className="text-[10px] uppercase tracking-[0.3em] mb-2">{t('hero.scroll')}</span>
               <div className="w-[1px] h-12 bg-gradient-to-b from-cyan-500/0 via-cyan-500 to-cyan-500/0 group-hover:h-20 transition-all duration-500"></div>
               <ChevronDown className="w-4 h-4 mt-2 animate-bounce opacity-50" />
             </a>

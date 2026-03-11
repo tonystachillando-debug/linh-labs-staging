@@ -1,17 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Bot, Target, Search, Sparkles, Settings2, TrendingUp } from 'lucide-react';
-
-const servicesList = [
-  { id: 1, title: "Chatbot avanzati", icon: <Bot />, description: "Interazioni naturali 24/7" },
-  { id: 2, title: "Modelli Personalizzati", icon: <Target />, description: "AI addestrata sui tuoi dati" },
-  { id: 3, title: "Sistemi RAG", icon: <Search />, description: "Ricerca semantica intelligente" },
-  { id: 4, title: "AI Generativa", icon: <Sparkles />, description: "Creazione contenuti automatizzata" },
-  { id: 5, title: "Automazioni", icon: <Settings2 />, description: "Workflow ottimizzati" },
-  { id: 6, title: "Strategie di crescita", icon: <TrendingUp />, description: "Scaling guidato dai dati" },
-];
+import { useI18n } from '../i18n';
 
 export const Services: React.FC = () => {
+  const { t } = useI18n();
+
+  const servicesList = [
+    { id: 1, title: t('services.s1.title'), icon: <Bot />, description: t('services.s1.desc') },
+    { id: 2, title: t('services.s2.title'), icon: <Target />, description: t('services.s2.desc') },
+    { id: 3, title: t('services.s3.title'), icon: <Search />, description: t('services.s3.desc') },
+    { id: 4, title: t('services.s4.title'), icon: <Sparkles />, description: t('services.s4.desc') },
+    { id: 5, title: t('services.s5.title'), icon: <Settings2 />, description: t('services.s5.desc') },
+    { id: 6, title: t('services.s6.title'), icon: <TrendingUp />, description: t('services.s6.desc') },
+  ];
+
   return (
     <section id="services" className="py-32 relative overflow-hidden bg-slate-950">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 -z-10" />
@@ -26,16 +29,16 @@ export const Services: React.FC = () => {
             viewport={{ once: true }}
             className="font-display text-3xl md:text-5xl lg:text-6xl leading-tight text-slate-300 font-light"
           >
-            Accompagniamo le aziende verso l'<span className="font-bold text-white inline-block relative">
-              eccellenza operativa
+            {t('services.title1')}<span className="font-bold text-white inline-block relative">
+              {t('services.titleHighlight1')}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-cyan-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" /></svg>
-            </span> e l'<span className="font-bold text-white inline-block relative">
-              innovazione avanzata
+            </span>{t('services.titleConnector')}<span className="font-bold text-white inline-block relative">
+              {t('services.titleHighlight2')}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-purple-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" /></svg>
-            </span>, applicando l'AI con una <span className="font-bold text-white inline-block relative">
-              visione strategica
+            </span>{t('services.titleConnector2')}<span className="font-bold text-white inline-block relative">
+              {t('services.titleHighlight3')}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" /></svg>
-            </span> e lungimirante.
+            </span>{t('services.titleEnd')}
           </motion.h2>
         </div>
 

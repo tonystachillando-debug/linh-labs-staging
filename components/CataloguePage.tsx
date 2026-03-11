@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { useI18n } from '../i18n';
 
 interface Automation {
   id: number;
@@ -117,6 +118,7 @@ const automations: Automation[] = [
 const filterCategories = ['Tutti', 'AI', 'Marketing', 'Sales', 'Document Ops', 'Support', 'Other'];
 
 export const CataloguePage: React.FC = () => {
+  const { t } = useI18n();
   const [searchParams] = useSearchParams();
   const categoryFromUrl = searchParams.get('category');
   const initialFilter = categoryFromUrl && filterCategories.includes(categoryFromUrl) ? categoryFromUrl : 'Tutti';
@@ -151,23 +153,23 @@ export const CataloguePage: React.FC = () => {
                 className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors text-sm mb-8 group"
               >
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                Torna alla Home
+                {t('catPage.back')}
               </Link>
 
               <div className="flex items-center gap-3 mb-4">
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.15em] uppercase">
-                  <Zap className="w-3 h-3" /> N8N Workflows
+                  <Zap className="w-3 h-3" /> {t('catPage.badge')}
                 </span>
               </div>
 
               <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                Catalogo{' '}
+                {t('catPage.title')}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500 animate-gradient">
-                  Automazioni
+                  {t('catPage.titleHighlight')}
                 </span>
               </h1>
               <p className="text-slate-400 text-lg md:text-xl max-w-3xl font-light leading-relaxed">
-                Esplora la nostra selezione curata delle automazioni più popolari ed efficaci. Ogni workflow è pronto per essere personalizzato e implementato nel tuo business.
+                {t('catPage.subtitle')}
               </p>
             </motion.div>
 
@@ -271,21 +273,21 @@ export const CataloguePage: React.FC = () => {
                                 <Clock className="w-3 h-3" />
                                 <span className="font-display text-sm font-bold">{automation.timeSaved}</span>
                               </div>
-                              <span className="text-slate-600 text-[10px] uppercase tracking-wider">Risparmiato</span>
+                              <span className="text-slate-600 text-[10px] uppercase tracking-wider">{t('catPage.timeSaved')}</span>
                             </div>
                             <div className="text-center">
                               <div className="flex items-center justify-center gap-1 text-purple-400 mb-1">
                                 <Plug className="w-3 h-3" />
                                 <span className="font-display text-sm font-bold">{automation.integrationCount}</span>
                               </div>
-                              <span className="text-slate-600 text-[10px] uppercase tracking-wider">Integrazioni</span>
+                              <span className="text-slate-600 text-[10px] uppercase tracking-wider">{t('catPage.integrations')}</span>
                             </div>
                             <div className="text-center">
                               <div className="flex items-center justify-center gap-1 text-amber-400 mb-1">
                                 <Star className="w-3 h-3" />
                                 <span className="font-display text-sm font-bold">{automation.popularity}%</span>
                               </div>
-                              <span className="text-slate-600 text-[10px] uppercase tracking-wider">Popolarità</span>
+                              <span className="text-slate-600 text-[10px] uppercase tracking-wider">{t('catPage.popularity')}</span>
                             </div>
                           </div>
                         </div>
@@ -308,10 +310,10 @@ export const CataloguePage: React.FC = () => {
                   <BadgeCheck className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
-                  Pronto a implementare?
+                  {t('catPage.ctaTitle')}
                 </h3>
                 <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
-                  Il nostro team può personalizzare e implementare qualsiasi automazione per il tuo business entro pochi giorni. Contattaci per una demo gratuita.
+                  {t('catPage.ctaSubtitle')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
@@ -319,14 +321,14 @@ export const CataloguePage: React.FC = () => {
                     className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
                   >
                     <Send className="w-4 h-4" />
-                    Contattaci per Implementare
+                    {t('catPage.ctaBtn')}
                   </Link>
                   <Link
                     to="/"
                     className="inline-flex items-center justify-center gap-2 bg-slate-800 border border-white/10 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-slate-700 hover:border-white/20 transition-all duration-300"
                   >
                     <ArrowLeft className="w-4 h-4" />
-                    Torna alla Home
+                    {t('catPage.ctaBack')}
                   </Link>
                 </div>
               </div>

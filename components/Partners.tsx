@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useI18n } from '../i18n';
 
 export const Partners: React.FC = () => {
+  const { t } = useI18n();
   return (
     <section className="py-24 border-y border-white/5 bg-black/20">
       <div className="container mx-auto px-6">
@@ -11,7 +13,7 @@ export const Partners: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-sm font-bold text-slate-500 uppercase tracking-[0.2em] mb-2">Trusted by Industry Leaders</h2>
+          <h2 className="font-display text-sm font-bold text-slate-500 uppercase tracking-[0.2em] mb-2">{t('partners.title')}</h2>
         </motion.div>
 
         <div className="flex flex-wrap justify-center items-center gap-16 md:gap-28 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView, useSpring } from 'framer-motion';
 import { Timer, TrendingDown, Zap } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 // Helper component for counting up numbers
 const Counter = ({ value, suffix = "" }: { value: number, suffix?: string }) => {
@@ -24,34 +25,30 @@ const Counter = ({ value, suffix = "" }: { value: number, suffix?: string }) => 
   return <span ref={ref}>{displayValue}{suffix}</span>;
 };
 
-const metrics = [
-  {
-    id: 1,
-    value: 90,
-    suffix: "%",
-    label: "Tempo ridotto nei processi",
-    icon: <Timer className="w-6 h-6 text-cyan-400" />,
-    color: "cyan"
-  },
-  {
-    id: 2,
-    value: 85,
-    suffix: "%",
-    label: "Ottimizzazione dei costi operativi",
-    icon: <TrendingDown className="w-6 h-6 text-blue-400" />,
-    color: "blue"
-  },
-  {
-    id: 3,
-    value: 10,
-    suffix: "x",
-    label: "Incremento dell'efficienza interna",
-    icon: <Zap className="w-6 h-6 text-purple-400" />,
-    color: "purple"
-  }
-];
-
 export const Mission: React.FC = () => {
+  const { t } = useI18n();
+
+  const metrics = [
+    {
+      id: 1, value: 90, suffix: "%",
+      label: t('mission.metric1'),
+      icon: <Timer className="w-6 h-6 text-cyan-400" />,
+      color: "cyan"
+    },
+    {
+      id: 2, value: 85, suffix: "%",
+      label: t('mission.metric2'),
+      icon: <TrendingDown className="w-6 h-6 text-blue-400" />,
+      color: "blue"
+    },
+    {
+      id: 3, value: 10, suffix: "x",
+      label: t('mission.metric3'),
+      icon: <Zap className="w-6 h-6 text-purple-400" />,
+      color: "purple"
+    }
+  ];
+
   return (
     <section id="mission" className="py-32 bg-slate-950 relative border-t border-white/5">
       <div className="container mx-auto px-6">
@@ -67,20 +64,19 @@ export const Mission: React.FC = () => {
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-[1px] w-12 bg-cyan-500"></div>
-                <h2 className="text-cyan-400 font-bold tracking-[0.2em] uppercase text-sm">La nostra mission</h2>
+                <h2 className="text-cyan-400 font-bold tracking-[0.2em] uppercase text-sm">{t('mission.label')}</h2>
               </div>
 
               <h3 className="font-display text-4xl md:text-6xl font-bold mb-8 leading-[1.1] text-white">
-                Siamo il partner strategico per aziende che vogliono <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">superare i propri limiti.</span>
+                {t('mission.title')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">{t('mission.titleHighlight')}</span>
               </h3>
 
               <div className="text-slate-300 text-lg space-y-6 font-light leading-relaxed">
                 <p>
-                  Con un approccio pragmatico uniamo ricerca e applicazione concreta dell'AI.
+                  {t('mission.text1')}
                 </p>
                 <p className="pl-6 border-l-2 border-cyan-500/50 text-white font-normal">
-                  Collaboriamo fianco a fianco con te per far sì che la tecnologia non resti teoria,
-                  ma produca risultati tangibili.
+                  {t('mission.text2')}
                 </p>
               </div>
             </motion.div>

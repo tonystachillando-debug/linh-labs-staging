@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-
-const navLinks = [
-  { name: 'Home', href: '/#home' },
-  { name: 'Chi Siamo', href: '/#mission' },
-  { name: 'Servizi', href: '/#services' },
-  { name: 'Catalogo', href: '/catalogo', isRoute: true },
-];
+import { useI18n } from '../i18n';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { lang, setLang, t } = useI18n();
+
+  const navLinks = [
+    { name: t('nav.home'), href: '/#home' },
+    { name: t('nav.about'), href: '/#mission' },
+    { name: t('nav.services'), href: '/#services' },
+    { name: t('nav.catalogue'), href: '/catalogo' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,10 @@ export const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleLang = () => {
+    setLang(lang === 'it' ? 'en' : 'it');
+  };
 
   return (
     <motion.nav
@@ -50,11 +56,22 @@ export const Navbar: React.FC = () => {
               <span className="absolute left-0 bottom-0 w-full h-[1px] bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
             </Link>
           ))}
+
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
+            title={lang === 'it' ? 'Switch to English' : 'Passa a Italiano'}
+          >
+            <Globe className="w-4 h-4" />
+            {lang === 'it' ? 'EN' : 'IT'}
+          </button>
+
           <Link
             to="/#contact"
             className="relative overflow-hidden bg-white text-slate-950 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-cyan-400 transition-colors duration-300"
           >
-            Contattaci
+            {t('nav.contact')}
           </Link>
         </div>
 
@@ -87,12 +104,22 @@ export const Navbar: React.FC = () => {
                   {link.name}
                 </Link>
               ))}
+
+              {/* Mobile Language Toggle */}
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
+              >
+                <Globe className="w-4 h-4" />
+                {lang === 'it' ? 'English' : 'Italiano'}
+              </button>
+
               <Link
                 to="/#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full text-center bg-white text-slate-950 px-6 py-4 rounded-xl font-bold uppercase tracking-wider mt-4"
               >
-                Contact Us
+                {t('nav.contact')}
               </Link>
             </div>
           </motion.div>
