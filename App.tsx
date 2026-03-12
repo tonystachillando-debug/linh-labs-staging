@@ -27,6 +27,7 @@ import { ChatSection } from './components/ChatSection';
 import { Footer } from './components/Footer';
 import { StickyChat } from './components/StickyChat';
 import { CataloguePage } from './components/CataloguePage';
+import { LeadQuiz } from './components/LeadQuiz';
 
 function HomePage() {
   const [syncedMessages, setSyncedMessages] = React.useState<{ id: string, text: string, sender: 'user' | 'bot' }[]>([]);
@@ -49,6 +50,7 @@ function HomePage() {
         <AutomationCatalogue />
         <AgeOfAgents />
         <Partners />
+        <LeadQuiz />
         <ChatSection newMessages={syncedMessages} />
       </main>
       <Footer />
