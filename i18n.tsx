@@ -99,6 +99,26 @@ const translations: Record<Lang, Record<string, string>> = {
     'aoa.feature4.desc': 'Competizione globale in tempo reale',
     'aoa.cta': 'Gioca ora',
 
+    // Portfolio Section
+    'portfolio.badge': 'Portfolio',
+    'portfolio.title': 'I Nostri ',
+    'portfolio.titleHighlight': 'Progetti',
+
+    // Pumbo
+    'pumbo.badge': 'Progetto Realizzato',
+    'pumbo.title': '',
+    'pumbo.titleHighlight': 'Pumbo',
+    'pumbo.subtitle': 'Il tuo Personal Stylist AI — scopri outfit perfetti, prova virtualmente i capi e trova ispirazione quotidiana con la potenza dell\'intelligenza artificiale.',
+    'pumbo.feature1.label': 'Style Agent AI',
+    'pumbo.feature1.desc': 'Un agente AI dedicato che impara il tuo stile e suggerisce outfit personalizzati',
+    'pumbo.feature2.label': 'Virtual Try-On',
+    'pumbo.feature2.desc': 'Visualizza come ti stanno i capi prima di acquistarli',
+    'pumbo.feature3.label': 'Ispirazione Quotidiana',
+    'pumbo.feature3.desc': 'Feed personalizzato di outfit e tendenze basato sui tuoi gusti',
+    'pumbo.feature4.label': 'Fashion Tech',
+    'pumbo.feature4.desc': 'Tecnologia all\'avanguardia applicata al mondo della moda',
+    'pumbo.cta': 'Scopri di più',
+
     // Partners
     'partners.title': 'Trusted by Industry Leaders',
 
@@ -290,6 +310,26 @@ const translations: Record<Lang, Record<string, string>> = {
     'aoa.feature4.label': 'Multiplayer',
     'aoa.feature4.desc': 'Global real-time competition',
     'aoa.cta': 'Play Now',
+
+    // Portfolio Section
+    'portfolio.badge': 'Portfolio',
+    'portfolio.title': 'Our ',
+    'portfolio.titleHighlight': 'Projects',
+
+    // Pumbo
+    'pumbo.badge': 'Completed Project',
+    'pumbo.title': '',
+    'pumbo.titleHighlight': 'Pumbo',
+    'pumbo.subtitle': 'Your AI Personal Stylist — discover perfect outfits, try clothes virtually and find daily inspiration powered by artificial intelligence.',
+    'pumbo.feature1.label': 'AI Style Agent',
+    'pumbo.feature1.desc': 'A dedicated AI agent that learns your style and suggests personalized outfits',
+    'pumbo.feature2.label': 'Virtual Try-On',
+    'pumbo.feature2.desc': 'Visualize how clothes look on you before buying',
+    'pumbo.feature3.label': 'Daily Inspiration',
+    'pumbo.feature3.desc': 'Personalized outfit and trend feed based on your taste',
+    'pumbo.feature4.label': 'Fashion Tech',
+    'pumbo.feature4.desc': 'Cutting-edge technology applied to the fashion world',
+    'pumbo.cta': 'Learn More',
 
     // Partners
     'partners.title': 'Trusted by Industry Leaders',

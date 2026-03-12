@@ -21,7 +21,7 @@ import { Hero } from './components/Hero';
 import { Mission } from './components/Mission';
 import { Services } from './components/Services';
 import { AutomationCatalogue } from './components/AutomationCatalogue';
-import { AgeOfAgents } from './components/AgeOfAgents';
+import { PortfolioSlider } from './components/PortfolioSlider';
 import { Partners } from './components/Partners';
 import { ChatSection } from './components/ChatSection';
 import { Footer } from './components/Footer';
@@ -48,7 +48,7 @@ function HomePage() {
         <Mission />
         <Services />
         <AutomationCatalogue />
-        <AgeOfAgents />
+        <PortfolioSlider />
         <Partners />
         <LeadQuiz />
         <ChatSection newMessages={syncedMessages} />
