@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ArrowRight, ChevronDown, Check, Zap, Send, RotateCcw, Trophy, Lightbulb, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, ChevronDown, Check, Zap, Send, RotateCcw, Trophy, Lightbulb, CheckCircle2, Search } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 type Phase = 'start' | 'quiz' | 'services' | 'result';
@@ -20,6 +20,7 @@ export const LeadQuiz: React.FC = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [serviceSearch, setServiceSearch] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', company: '', phone: '' });
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
 
@@ -277,29 +278,48 @@ export const LeadQuiz: React.FC = () => {
                         animate={{ opacity: 1, y: 0, scaleY: 1 }}
                         exit={{ opacity: 0, y: -8, scaleY: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-white/10 rounded-xl overflow-hidden shadow-2xl shadow-black/40 origin-top"
+                        className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-white/10 rounded-xl shadow-2xl shadow-black/40 origin-top flex flex-col"
                       >
-                        {serviceOptions.map((svc) => (
-                          <button
-                            key={svc.key}
-                            type="button"
-                            onClick={() => toggleService(svc.key)}
-                            className="w-full flex items-center gap-3 px-5 py-3.5 hover:bg-slate-700/50 transition-colors text-left"
-                          >
-                            <span className={`flex-shrink-0 w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
-                              selectedServices.includes(svc.key)
-                                ? 'bg-purple-500 border-purple-500'
-                                : 'border-white/20 bg-transparent'
-                            }`}>
-                              {selectedServices.includes(svc.key) && <Check className="w-3 h-3 text-white" />}
-                            </span>
-                            <span className={`font-medium transition-colors ${
-                              selectedServices.includes(svc.key) ? 'text-white' : 'text-slate-400'
-                            }`}>
-                              {svc.label}
-                            </span>
-                          </button>
-                        ))}
+                        {/* Search bar */}
+                        <div className="sticky top-0 p-3 border-b border-white/5 bg-slate-800 z-10">
+                          <div className="relative">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                            <input
+                              type="text"
+                              value={serviceSearch}
+                              onChange={(e) => setServiceSearch(e.target.value)}
+                              placeholder="Cerca..."
+                              className="w-full bg-slate-700/50 border border-white/10 rounded-lg pl-9 pr-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500/40 transition-colors"
+                              autoFocus
+                            />
+                          </div>
+                        </div>
+                        {/* Scrollable list */}
+                        <div className="max-h-52 overflow-y-auto overscroll-contain">
+                          {serviceOptions
+                            .filter((svc) => svc.label.toLowerCase().includes(serviceSearch.toLowerCase()))
+                            .map((svc) => (
+                            <button
+                              key={svc.key}
+                              type="button"
+                              onClick={() => toggleService(svc.key)}
+                              className="w-full flex items-center gap-3 px-5 py-3.5 hover:bg-slate-700/50 transition-colors text-left"
+                            >
+                              <span className={`flex-shrink-0 w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
+                                selectedServices.includes(svc.key)
+                                  ? 'bg-purple-500 border-purple-500'
+                                  : 'border-white/20 bg-transparent'
+                              }`}>
+                                {selectedServices.includes(svc.key) && <Check className="w-3 h-3 text-white" />}
+                              </span>
+                              <span className={`font-medium transition-colors ${
+                                selectedServices.includes(svc.key) ? 'text-white' : 'text-slate-400'
+                              }`}>
+                                {svc.label}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
