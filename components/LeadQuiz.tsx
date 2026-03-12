@@ -95,7 +95,7 @@ export const LeadQuiz: React.FC = () => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('submitting');
 
@@ -103,15 +103,32 @@ export const LeadQuiz: React.FC = () => {
       ...formData,
       score: totalScore,
       profile: getResult().title,
-      services: selectedServices,
+      services: selectedServices.map((key) => {
+        const svc = serviceOptions.find((s) => s.key === key);
+        return svc?.label || key;
+      }),
       answers,
     };
-    console.log('Lead Quiz Submission:', payload);
 
-    // Simulate submission
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setFormState('success');
+      } else {
+        console.error('Lead submission failed:', await res.text());
+        // Still show success to user
+        setFormState('success');
+      }
+    } catch (err) {
+      console.error('Lead submission error:', err);
+      // Still show success to user even if API is unreachable
       setFormState('success');
-    }, 1200);
+    }
   };
 
   const restart = () => {
@@ -133,7 +150,7 @@ export const LeadQuiz: React.FC = () => {
   };
 
   return (
-    <section id="ai-assessment" className="py-32 relative overflow-hidden">
+    <section id="ai-assessment" className="py-32 relative overflow-visible">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/5 rounded-full blur-[160px] pointer-events-none" />
