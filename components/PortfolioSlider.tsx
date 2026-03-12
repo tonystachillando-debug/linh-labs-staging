@@ -8,7 +8,7 @@ interface ProjectSlide {
   image: string;
   url: string;
   badgeKey: string;
-  titleKey: string;
+  titleKey?: string;
   titleHighlightKey: string;
   subtitleKey: string;
   ctaKey: string;
@@ -108,7 +108,6 @@ export const PortfolioSlider: React.FC = () => {
       image: '/pumbo.png',
       url: 'https://www.pumbo.style/',
       badgeKey: 'pumbo.badge',
-      titleKey: 'pumbo.title',
       titleHighlightKey: 'pumbo.titleHighlight',
       subtitleKey: 'pumbo.subtitle',
       ctaKey: 'pumbo.cta',
@@ -219,7 +218,7 @@ export const PortfolioSlider: React.FC = () => {
               <div className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-r ${theme.ctaGradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
                 <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                  <img src={project.image} alt={t(project.titleKey) + t(project.titleHighlightKey)} className="w-full h-auto" />
+                  <img src={project.image} alt={t(project.titleHighlightKey)} className="w-full h-auto" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
                   {project.statusLabel && (
                     <div className={`absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 rounded-full ${theme.accentBg} backdrop-blur-md border ${theme.accentBorder}`}>
@@ -242,7 +241,7 @@ export const PortfolioSlider: React.FC = () => {
 
                 {/* Title */}
                 <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-                  {t(project.titleKey)}
+                  {project.titleKey && t(project.titleKey) !== project.titleKey && t(project.titleKey)}
                   <span className={`text-transparent bg-clip-text bg-gradient-to-r ${theme.ctaGradient}`}>{t(project.titleHighlightKey)}</span>
                 </h3>
 
