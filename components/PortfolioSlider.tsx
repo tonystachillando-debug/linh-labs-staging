@@ -231,14 +231,6 @@ export const PortfolioSlider: React.FC = () => {
 
               {/* Right — Info */}
               <div>
-                {/* Project badge */}
-                <div className="mb-4">
-                  <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border ${theme.badgeBorder} ${theme.badgeBg} ${theme.badgeText} text-xs font-bold tracking-[0.15em] uppercase`}>
-                    {project.badgeIcon}
-                    {t(project.badgeKey)}
-                  </span>
-                </div>
-
                 {/* Title */}
                 <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
                   {project.titleKey && t(project.titleKey) !== project.titleKey && t(project.titleKey)}

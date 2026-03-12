@@ -422,8 +422,7 @@ export const LeadQuiz: React.FC = () => {
                         {t('lead.result.badge')}
                       </span>
 
-                      <div className="flex items-center gap-4 mb-4">
-                        <span className="text-4xl">{getResult().icon}</span>
+                      <div className="mb-4">
                         <h3 className="font-display text-2xl md:text-3xl font-bold text-white">
                           {getResult().title}
                         </h3>
@@ -518,7 +517,6 @@ export const LeadQuiz: React.FC = () => {
                             </>
                           ) : (
                             <>
-                              <Send className="w-4 h-4" />
                               {t('lead.form.submit')}
                             </>
                           )}
