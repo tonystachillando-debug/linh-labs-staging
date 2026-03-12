@@ -244,7 +244,7 @@ export const LeadQuiz: React.FC = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 md:p-10 overflow-hidden">
+              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 md:p-10">
                 <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="text-center mb-8 relative z-10">
@@ -295,7 +295,7 @@ export const LeadQuiz: React.FC = () => {
                           </div>
                         </div>
                         {/* Scrollable list */}
-                        <div className="max-h-52 overflow-y-auto overscroll-contain">
+                        <div className="max-h-80 overflow-y-auto overscroll-contain">
                           {serviceOptions
                             .filter((svc) => svc.label.toLowerCase().includes(serviceSearch.toLowerCase()))
                             .map((svc) => (
