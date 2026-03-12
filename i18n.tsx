@@ -101,8 +101,8 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Portfolio Section
     'portfolio.badge': 'Portfolio',
-    'portfolio.title': 'I Nostri ',
-    'portfolio.titleHighlight': 'Progetti',
+    'portfolio.title': 'I progetti da noi ',
+    'portfolio.titleHighlight': 'realizzati',
 
     // Pumbo
     'pumbo.badge': 'Progetto Realizzato',
@@ -120,7 +120,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'pumbo.cta': 'Scopri di più',
 
     // Partners
-    'partners.title': 'Trusted by Industry Leaders',
+    'partners.title': 'Trusted by',
 
     // Chat Section
     'chat.title': 'Fai una prima ',
@@ -332,7 +332,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'pumbo.cta': 'Learn More',
 
     // Partners
-    'partners.title': 'Trusted by Industry Leaders',
+    'partners.title': 'Trusted by',
 
     // Chat Section
     'chat.title': 'Have a first ',
@@ -437,7 +437,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
 const I18nContext = createContext<I18nContextType>({
   lang: 'it',
-  setLang: () => {},
+  setLang: () => { },
   t: (key: string) => key,
 });
 
