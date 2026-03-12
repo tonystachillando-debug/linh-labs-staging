@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ArrowRight, ChevronDown, Check, Zap, Send, RotateCcw, Trophy, Lightbulb, CheckCircle2, Search } from 'lucide-react';
+import { ArrowRight, ChevronDown, Check, Send, RotateCcw, Search } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 type Phase = 'start' | 'quiz' | 'services' | 'result';
@@ -150,7 +150,7 @@ export const LeadQuiz: React.FC = () => {
   };
 
   return (
-    <section id="ai-assessment" className="py-32 relative overflow-visible">
+    <section id="ai-assessment" className="pt-32 pb-48 relative overflow-visible">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/5 rounded-full blur-[160px] pointer-events-none" />
@@ -168,8 +168,7 @@ export const LeadQuiz: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-bold tracking-[0.2em] uppercase mb-8">
-                <Sparkles className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-bold tracking-[0.2em] uppercase mb-8">
                 {t('lead.badge')}
               </span>
 
@@ -188,7 +187,6 @@ export const LeadQuiz: React.FC = () => {
                 onClick={() => setPhase('quiz')}
                 className="group inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-cyan-500 text-white px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-105"
               >
-                <Zap className="w-5 h-5" />
                 {t('lead.cta')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -265,12 +263,10 @@ export const LeadQuiz: React.FC = () => {
                 <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="text-center mb-8 relative z-10">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-white" />
-                  </div>
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2">
                     {t('lead.services.label')}
                   </h3>
+                  <p className="text-slate-500 text-sm">Seleziona i servizi che ti interessano</p>
                 </div>
 
                 {/* Custom dropdown */}
@@ -422,8 +418,7 @@ export const LeadQuiz: React.FC = () => {
                     <div className="absolute -right-12 -top-12 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
                     <div className="relative z-10">
-                      <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-bold tracking-[0.15em] uppercase mb-6">
-                        <Trophy className="w-3 h-3" />
+                      <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-bold tracking-[0.15em] uppercase mb-6">
                         {t('lead.result.badge')}
                       </span>
 
@@ -439,8 +434,7 @@ export const LeadQuiz: React.FC = () => {
                       </p>
 
                       <div className="bg-slate-800/60 border border-white/5 rounded-xl p-5">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Lightbulb className="w-4 h-4 text-amber-400" />
+                        <div className="mb-2">
                           <span className="text-amber-400 text-xs font-bold uppercase tracking-wider">{t('lead.quickwin')}</span>
                         </div>
                         <p className="text-slate-300 text-sm leading-relaxed">
@@ -455,8 +449,7 @@ export const LeadQuiz: React.FC = () => {
                     <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
                     <div className="relative z-10">
-                      <h4 className="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
-                        <Send className="w-5 h-5 text-cyan-400" />
+                      <h4 className="font-display text-xl font-bold text-white mb-6">
                         {t('lead.form.title')}
                       </h4>
 
