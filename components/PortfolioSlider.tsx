@@ -173,8 +173,7 @@ export const PortfolioSlider: React.FC = () => {
   return (
     <section
       id="portfolio"
-      className="relative w-full overflow-hidden"
-      style={{ minHeight: '100vh' }}
+      className="relative w-full overflow-hidden min-h-0 lg:min-h-screen"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -184,7 +183,7 @@ export const PortfolioSlider: React.FC = () => {
       <div className={`absolute bottom-0 right-0 w-[400px] h-[400px] ${theme.glowColor} rounded-full blur-[100px] pointer-events-none transition-all duration-700`} />
 
       {/* Section header */}
-      <div className="container mx-auto px-6 pt-24 pb-8">
+      <div className="container mx-auto px-6 pt-16 lg:pt-24 pb-6 lg:pb-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-4">
           <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border ${theme.badgeBorder} ${theme.badgeBg} ${theme.badgeText} text-xs font-bold tracking-[0.2em] uppercase`}>
             {t('portfolio.badge')}
@@ -199,7 +198,7 @@ export const PortfolioSlider: React.FC = () => {
       </div>
 
       {/* Slide content */}
-      <div className="container mx-auto px-6 pb-24 relative">
+      <div className="container mx-auto px-6 pb-16 lg:pb-24 relative">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={project.id}
@@ -213,7 +212,7 @@ export const PortfolioSlider: React.FC = () => {
               opacity: { duration: 0.3 },
             }}
           >
-            <div className="grid lg:grid-cols-2 gap-10 items-center mb-12">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center mb-8 lg:mb-12">
               {/* Left — Image */}
               <div className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-r ${theme.ctaGradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
@@ -238,20 +237,20 @@ export const PortfolioSlider: React.FC = () => {
                 </h3>
 
                 {/* Subtitle */}
-                <p className="text-slate-400 text-base md:text-lg max-w-xl font-light leading-relaxed mb-6">{t(project.subtitleKey)}</p>
+                <p className="text-slate-400 text-sm md:text-base lg:text-lg max-w-xl font-light leading-relaxed mb-4 lg:mb-6">{t(project.subtitleKey)}</p>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <div className="grid grid-cols-4 gap-2 lg:gap-3 mb-4 lg:mb-6">
                   {project.stats.map((stat, i) => (
-                    <div key={i} className="text-center bg-slate-900/60 backdrop-blur-xl border border-white/5 rounded-xl p-3">
-                      <div className="font-display text-base sm:text-lg font-bold text-white truncate">{stat.value}</div>
-                      <div className="text-slate-500 text-[10px] uppercase tracking-widest mt-0.5">{stat.label}</div>
+                    <div key={i} className="text-center bg-slate-900/60 backdrop-blur-xl border border-white/5 rounded-xl p-2 lg:p-3">
+                      <div className="font-display text-xs sm:text-base lg:text-lg font-bold text-white truncate">{stat.value}</div>
+                      <div className="text-slate-500 text-[9px] lg:text-[10px] uppercase tracking-widest mt-0.5">{stat.label}</div>
                     </div>
                   ))}
                 </div>
 
-                {/* Features */}
-                <div className="space-y-3 mb-6">
+                {/* Features — hidden on mobile for a cleaner look */}
+                <div className="hidden lg:block space-y-3 mb-6">
                   {project.features.map((feature, i) => (
                     <div key={i} className={`group/card flex items-start gap-4 p-3 bg-slate-900/50 backdrop-blur-xl border border-white/5 rounded-xl hover:border-${theme.accent}-500/20 transition-all duration-300`}>
                       <div className={`w-9 h-9 rounded-lg bg-slate-800 border border-white/5 flex items-center justify-center ${theme.accentText} flex-shrink-0 group-hover/card:scale-110 transition-transform`}>
@@ -278,8 +277,8 @@ export const PortfolioSlider: React.FC = () => {
               </div>
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap justify-center gap-3">
+            {/* Tags — hidden on mobile */}
+            <div className="hidden lg:flex flex-wrap justify-center gap-3">
               {project.tags.map((tag) => (
                 <span key={tag} className={`px-4 py-1.5 ${theme.tagBg} border ${theme.tagBorder} rounded-full ${theme.tagText} text-xs font-medium`}>{tag}</span>
               ))}
@@ -290,21 +289,21 @@ export const PortfolioSlider: React.FC = () => {
         {/* Navigation arrows */}
         <button
           onClick={() => paginate(-1)}
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-900/70 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-slate-800/80 hover:border-white/20 transition-all duration-300 z-10"
+          className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-12 lg:h-12 rounded-full bg-slate-900/70 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-slate-800/80 hover:border-white/20 transition-all duration-300 z-10"
           aria-label="Previous project"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4 lg:w-5 lg:h-5" />
         </button>
         <button
           onClick={() => paginate(1)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-900/70 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-slate-800/80 hover:border-white/20 transition-all duration-300 z-10"
+          className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-12 lg:h-12 rounded-full bg-slate-900/70 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-slate-800/80 hover:border-white/20 transition-all duration-300 z-10"
           aria-label="Next project"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5" />
         </button>
 
         {/* Dot navigation */}
-        <div className="flex justify-center gap-3 mt-10">
+        <div className="flex justify-center gap-3 mt-6 lg:mt-10">
           {projects.map((p, i) => (
             <button
               key={p.id}
