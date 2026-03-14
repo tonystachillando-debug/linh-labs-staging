@@ -119,6 +119,21 @@ const translations: Record<Lang, Record<string, string>> = {
     'pumbo.feature4.desc': 'Tecnologia all\'avanguardia applicata al mondo della moda',
     'pumbo.cta': 'Scopri di più',
 
+    // Ragalo
+    'ragalo.badge': 'Progetto Realizzato',
+    'ragalo.title': '',
+    'ragalo.titleHighlight': 'Ragalo',
+    'ragalo.subtitle': 'Un\'app RAG-powered che trasforma i tuoi documenti in conversazioni intelligenti — carica, chiedi e ottieni risposte precise basate sui tuoi dati.',
+    'ragalo.feature1.label': 'RAG Engine',
+    'ragalo.feature1.desc': 'Retrieval-Augmented Generation per risposte accurate dai tuoi documenti',
+    'ragalo.feature2.label': 'Upload & Chat',
+    'ragalo.feature2.desc': 'Carica qualsiasi documento e inizia a conversare istantaneamente',
+    'ragalo.feature3.label': 'Citazioni Precise',
+    'ragalo.feature3.desc': 'Ogni risposta con riferimenti diretti alle fonti originali',
+    'ragalo.feature4.label': 'Multi-formato',
+    'ragalo.feature4.desc': 'Supporta PDF, DOCX, TXT e molti altri formati',
+    'ragalo.cta': 'Prova ora',
+
     // Partners
     'partners.title': 'Trusted by',
 
@@ -330,6 +345,21 @@ const translations: Record<Lang, Record<string, string>> = {
     'pumbo.feature4.label': 'Fashion Tech',
     'pumbo.feature4.desc': 'Cutting-edge technology applied to the fashion world',
     'pumbo.cta': 'Learn More',
+
+    // Ragalo
+    'ragalo.badge': 'Completed Project',
+    'ragalo.title': '',
+    'ragalo.titleHighlight': 'Ragalo',
+    'ragalo.subtitle': 'A RAG-powered app that turns your documents into intelligent conversations — upload, ask and get precise answers based on your data.',
+    'ragalo.feature1.label': 'RAG Engine',
+    'ragalo.feature1.desc': 'Retrieval-Augmented Generation for accurate answers from your documents',
+    'ragalo.feature2.label': 'Upload & Chat',
+    'ragalo.feature2.desc': 'Upload any document and start conversing instantly',
+    'ragalo.feature3.label': 'Precise Citations',
+    'ragalo.feature3.desc': 'Every answer with direct references to original sources',
+    'ragalo.feature4.label': 'Multi-format',
+    'ragalo.feature4.desc': 'Supports PDF, DOCX, TXT and many other formats',
+    'ragalo.cta': 'Try it now',
 
     // Partners
     'partners.title': 'Trusted by',

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ChevronLeft, ChevronRight, Gamepad2, Swords, Bot, Link2, Globe, Sparkles, Shirt, Eye, Palette } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, Gamepad2, Swords, Bot, Link2, Globe, Sparkles, Shirt, Eye, Palette, MessageSquareText, FileSearch, Upload, Quote } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 interface ProjectSlide {
@@ -144,6 +144,47 @@ export const PortfolioSlider: React.FC = () => {
       tags: ['AI Stylist', 'Fashion Tech', 'Virtual Try-On', 'Style Agent', 'Outfit Generator', 'AI-Powered'],
       statusLabel: 'Live',
     },
+    {
+      id: 'ragalo',
+      image: '/ragolo.png',
+      url: 'https://ragchat-production-8651.up.railway.app/',
+      badgeKey: 'ragalo.badge',
+      titleHighlightKey: 'ragalo.titleHighlight',
+      subtitleKey: 'ragalo.subtitle',
+      ctaKey: 'ragalo.cta',
+      colorTheme: {
+        gradient: 'from-amber-950/30 via-slate-950 to-slate-950',
+        accent: 'amber',
+        accentBg: 'bg-amber-500/10',
+        accentBorder: 'border-amber-500/30',
+        accentText: 'text-amber-300',
+        glowColor: 'bg-amber-500/5',
+        badgeBg: 'bg-amber-500/10',
+        badgeBorder: 'border-amber-500/30',
+        badgeText: 'text-amber-300',
+        tagBg: 'bg-slate-900/60',
+        tagBorder: 'border-white/5',
+        tagText: 'text-slate-500',
+        ctaGradient: 'from-amber-500 to-orange-600',
+        ctaShadow: 'hover:shadow-amber-500/25',
+        radialFrom: 'from-amber-950/30',
+      },
+      badgeIcon: <MessageSquareText className="w-3.5 h-3.5" />,
+      features: [
+        { icon: <FileSearch />, labelKey: 'ragalo.feature1.label', descKey: 'ragalo.feature1.desc' },
+        { icon: <Upload />, labelKey: 'ragalo.feature2.label', descKey: 'ragalo.feature2.desc' },
+        { icon: <Quote />, labelKey: 'ragalo.feature3.label', descKey: 'ragalo.feature3.desc' },
+        { icon: <MessageSquareText />, labelKey: 'ragalo.feature4.label', descKey: 'ragalo.feature4.desc' },
+      ],
+      stats: [
+        { value: 'RAG', label: 'Technology' },
+        { value: 'AI Chat', label: 'Interface' },
+        { value: 'Docs', label: 'Knowledge' },
+        { value: 'Live', label: 'Status' },
+      ],
+      tags: ['RAG', 'AI Chat', 'Document Intelligence', 'LLM-Powered', 'Knowledge Base', 'Conversational AI'],
+      statusLabel: 'Live',
+    },
   ];
 
   const paginate = useCallback((newDirection: number) => {
@@ -221,7 +262,7 @@ export const PortfolioSlider: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
                   {project.statusLabel && (
                     <div className={`absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 rounded-full ${theme.accentBg} backdrop-blur-md border ${theme.accentBorder}`}>
-                      <div className={`w-2 h-2 rounded-full animate-pulse`} style={{ backgroundColor: theme.accent === 'emerald' ? '#34d399' : '#a78bfa' }} />
+                      <div className={`w-2 h-2 rounded-full animate-pulse`} style={{ backgroundColor: theme.accent === 'emerald' ? '#34d399' : theme.accent === 'amber' ? '#fbbf24' : '#a78bfa' }} />
                       <span className={`${theme.accentText} text-xs font-bold uppercase tracking-wider`}>{project.statusLabel}</span>
                     </div>
                   )}
