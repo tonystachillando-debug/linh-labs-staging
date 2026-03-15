@@ -97,7 +97,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'aoa.feature3.desc': 'Costruito su MegaETH per trasparenza totale',
     'aoa.feature4.label': 'Multiplayer',
     'aoa.feature4.desc': 'Competizione globale in tempo reale',
-    'aoa.cta': 'Gioca ora',
+    'aoa.cta': 'Scopri di più',
 
     // Portfolio Section
     'portfolio.badge': 'Portfolio',
@@ -324,7 +324,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'aoa.feature3.desc': 'Built on MegaETH for total transparency',
     'aoa.feature4.label': 'Multiplayer',
     'aoa.feature4.desc': 'Global real-time competition',
-    'aoa.cta': 'Play Now',
+    'aoa.cta': 'Learn More',
 
     // Portfolio Section
     'portfolio.badge': 'Portfolio',

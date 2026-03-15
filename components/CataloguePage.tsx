@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
   Brain, Megaphone, TrendingUp, FileText, HeadsetIcon as Headset, Layers,
-  ArrowLeft, Clock, Plug, Star, Zap, Bot, Search, Sparkles,
+  ArrowLeft, Plug, Star, Zap, Bot, Search, Sparkles,
   Mail, Share2, BarChart3, Target, Users, FileCheck, FileSearch,
   MessageSquare, ThumbsUp, Database, Activity, Webhook,
   Send, PenTool, Filter, BadgeCheck
@@ -267,14 +267,7 @@ export const CataloguePage: React.FC = () => {
                           </div>
 
                           {/* Stats */}
-                          <div className="grid grid-cols-3 gap-3 pt-5 border-t border-white/5">
-                            <div className="text-center">
-                              <div className="flex items-center justify-center gap-1 text-cyan-400 mb-1">
-                                <Clock className="w-3 h-3" />
-                                <span className="font-display text-sm font-bold">{automation.timeSaved}</span>
-                              </div>
-                              <span className="text-slate-600 text-[10px] uppercase tracking-wider">{t('catPage.timeSaved')}</span>
-                            </div>
+                          <div className="grid grid-cols-2 gap-3 pt-5 border-t border-white/5">
                             <div className="text-center">
                               <div className="flex items-center justify-center gap-1 text-purple-400 mb-1">
                                 <Plug className="w-3 h-3" />
