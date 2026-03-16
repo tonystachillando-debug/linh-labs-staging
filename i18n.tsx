@@ -134,6 +134,21 @@ const translations: Record<Lang, Record<string, string>> = {
     'ragalo.feature4.desc': 'Supporta PDF, DOCX, TXT e molti altri formati',
     'ragalo.cta': 'Prova ora',
 
+    // Sfatify
+    'sfatify.badge': 'Progetto Realizzato',
+    'sfatify.title': '',
+    'sfatify.titleHighlight': 'Sfatify',
+    'sfatify.subtitle': 'L\'assistente AI per i tuoi fogli di calcolo — invia istruzioni testuali, carica immagini o combina entrambi e lascia che l\'AI aggiorni i tuoi Google Sheets automaticamente.',
+    'sfatify.feature1.label': 'Istruzioni Testuali',
+    'sfatify.feature1.desc': 'Descrivi cosa vuoi fare e l\'AI aggiorna il foglio di calcolo per te',
+    'sfatify.feature2.label': 'Upload Immagini',
+    'sfatify.feature2.desc': 'Carica immagini con dati e l\'AI li estrae automaticamente',
+    'sfatify.feature3.label': 'Google Sheets',
+    'sfatify.feature3.desc': 'Integrazione nativa con Google Sheets per aggiornamenti istantanei',
+    'sfatify.feature4.label': 'AI-Powered',
+    'sfatify.feature4.desc': 'Intelligenza artificiale avanzata per comprendere e eseguire le tue richieste',
+    'sfatify.cta': 'Prova ora',
+
     // Partners
     'partners.title': 'Trusted by',
 
@@ -360,6 +375,21 @@ const translations: Record<Lang, Record<string, string>> = {
     'ragalo.feature4.label': 'Multi-format',
     'ragalo.feature4.desc': 'Supports PDF, DOCX, TXT and many other formats',
     'ragalo.cta': 'Try it now',
+
+    // Sfatify
+    'sfatify.badge': 'Completed Project',
+    'sfatify.title': '',
+    'sfatify.titleHighlight': 'Sfatify',
+    'sfatify.subtitle': 'Your AI spreadsheet assistant — send text instructions, upload images, or combine both and let AI update your Google Sheets automatically.',
+    'sfatify.feature1.label': 'Text Instructions',
+    'sfatify.feature1.desc': 'Describe what you want and AI updates the spreadsheet for you',
+    'sfatify.feature2.label': 'Image Upload',
+    'sfatify.feature2.desc': 'Upload images with data and AI extracts it automatically',
+    'sfatify.feature3.label': 'Google Sheets',
+    'sfatify.feature3.desc': 'Native integration with Google Sheets for instant updates',
+    'sfatify.feature4.label': 'AI-Powered',
+    'sfatify.feature4.desc': 'Advanced artificial intelligence to understand and execute your requests',
+    'sfatify.cta': 'Try it now',
 
     // Partners
     'partners.title': 'Trusted by',
