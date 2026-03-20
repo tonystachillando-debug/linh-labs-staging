@@ -50,7 +50,7 @@ export const Hero: React.FC = () => {
             </span>
           </motion.div>
 
-          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-tighter mb-10">
+          <h1 className="font-display text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tighter mb-10">
             <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="block text-slate-400 text-4xl md:text-6xl lg:text-7xl font-light mt-4"
+              className="block text-slate-400 text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-light mt-4"
             >
               {t('hero.title3')}
             </motion.span>
@@ -81,10 +81,40 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
-            className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-16 font-light leading-relaxed"
+            className="text-slate-400 text-base md:text-base lg:text-lg max-w-3xl mx-auto mb-8 font-light leading-relaxed"
           >
             {t('hero.subtitle')}
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85, duration: 0.7 }}
+            className="mb-16 flex flex-wrap items-center justify-center gap-4"
+          >
+            <a
+              href="/#ai-assessment"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm uppercase tracking-widest shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 active:scale-95 transition-all duration-300"
+            >
+              Scopri il tuo potenziale AI
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            </a>
+            <a
+              href="https://ragchat-production-8651.up.railway.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest text-white hover:scale-105 active:scale-95 transition-all duration-300"
+              style={{
+                background: 'linear-gradient(135deg, #10b981, #06b6d4)',
+                boxShadow: '0 0 24px rgba(16,185,129,0.45), 0 4px 16px rgba(16,185,129,0.3)',
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 40px rgba(16,185,129,0.65), 0 4px 24px rgba(16,185,129,0.45)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 24px rgba(16,185,129,0.45), 0 4px 16px rgba(16,185,129,0.3)'; }}
+            >
+              Prova Ragalo
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
+            </a>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}

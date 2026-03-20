@@ -35,7 +35,7 @@ export const Services: React.FC = () => {
             </span>{t('services.titleConnector')}<span className="font-bold text-white inline-block relative">
               {t('services.titleHighlight2')}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-purple-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" /></svg>
-            </span>{t('services.titleConnector2')}<span className="font-bold text-white inline-block relative">
+            </span>{`, applicando `}<span className="font-bold text-cyan-400 inline-block">{`l'AI`}</span>{` con una `}<span className="font-bold text-white inline-block relative">
               {t('services.titleHighlight3')}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" /></svg>
             </span>{t('services.titleEnd')}

@@ -41,18 +41,7 @@ export const AutomationCatalogue: React.FC = () => {
           </p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex justify-center gap-8 md:gap-16 mb-16 mt-10">
-          {[
-            { value: t('catalogue.stat1.value'), label: t('catalogue.stat1.label') },
-            { value: t('catalogue.stat2.value'), label: t('catalogue.stat2.label') },
-            { value: t('catalogue.stat3.value'), label: t('catalogue.stat3.label') },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="font-display text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-              <div className="text-slate-500 text-xs uppercase tracking-widest mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {categories.map((cat, index) => (

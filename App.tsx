@@ -49,9 +49,9 @@ function HomePage() {
         <Services />
         <AutomationCatalogue />
         <PortfolioSlider />
+        <ChatSection newMessages={syncedMessages} />
         <Partners />
         <LeadQuiz />
-        <ChatSection newMessages={syncedMessages} />
       </main>
       <Footer />
       <StickyChat onMessageSent={handleStickyMessage} />

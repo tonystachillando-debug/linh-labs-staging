@@ -6,7 +6,7 @@ import {
   ArrowLeft, Plug, Star, Zap, Bot, Search, Sparkles,
   Mail, Share2, BarChart3, Target, Users, FileCheck, FileSearch,
   MessageSquare, ThumbsUp, Database, Activity, Webhook,
-  Send, PenTool, Filter, BadgeCheck
+  PenTool, Filter
 } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -296,29 +296,36 @@ export const CataloguePage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-20 text-center"
+              className="mt-20 relative overflow-hidden rounded-3xl"
+              style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(2,6,23,1) 50%, rgba(139,92,246,0.08) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}
             >
-              <div className="max-w-2xl mx-auto glass-panel rounded-2xl p-10 border border-white/5">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center mx-auto mb-6">
-                  <BadgeCheck className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+              {/* Glows */}
+              <div className="absolute top-0 left-1/4 w-[400px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
+              <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+
+              <div className="relative z-10 px-10 py-16 text-center">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase mb-8">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                  Valutazione Gratuita
+                </span>
+                <h3 className="font-display text-4xl md:text-5xl font-bold text-white mb-5 tracking-tight">
                   {t('catPage.ctaTitle')}
                 </h3>
-                <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
+                <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto font-light">
                   {t('catPage.ctaSubtitle')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
-                    to="/#contact"
-                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+                    to="/#ai-assessment"
+                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-lg hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-300"
                   >
-                    <Send className="w-4 h-4" />
                     {t('catPage.ctaBtn')}
+                    <ArrowLeft className="w-4 h-4 rotate-180" />
                   </Link>
                   <Link
                     to="/"
-                    className="inline-flex items-center justify-center gap-2 bg-slate-800 border border-white/10 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-slate-700 hover:border-white/20 transition-all duration-300"
+                    className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     {t('catPage.ctaBack')}
@@ -326,6 +333,7 @@ export const CataloguePage: React.FC = () => {
                 </div>
               </div>
             </motion.div>
+
           </div>
         </section>
       </main>

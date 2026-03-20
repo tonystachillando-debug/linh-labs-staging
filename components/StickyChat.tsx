@@ -3,6 +3,7 @@ import { Send } from 'lucide-react';
 import { sendMessageToAgent } from '../services/chatService';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '../i18n';
+import { MarkdownMessage } from './MarkdownMessage';
 
 interface StickyChatProps {
   onMessageSent?: (userText: string, botText: string) => void;
@@ -53,7 +54,9 @@ export const StickyChat: React.FC<StickyChatProps> = ({ onMessageSent }) => {
               className="absolute bottom-full left-0 mb-4 w-full bg-slate-900/95 border border-cyan-500/30 p-4 rounded-xl shadow-2xl backdrop-blur-xl"
             >
               <div className="flex justify-between items-start">
-                <p className="text-slate-200 text-sm">{response}</p>
+                <div className="text-slate-200 text-sm">
+                  {response && <MarkdownMessage text={response} />}
+                </div>
                 <div className="flex items-center gap-3 ml-4 shrink-0">
                   <a href="#contact" className="text-cyan-400 hover:text-cyan-300 text-xs font-medium whitespace-nowrap">
                     Vai alla chat

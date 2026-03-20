@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronDown, Check, Send, RotateCcw, Search } from 'lucide-react';
 import { useI18n } from '../i18n';
 
-type Phase = 'start' | 'quiz' | 'services' | 'result';
+type Phase = 'start' | 'quiz' | 'result';
 
 interface Answer {
   question: string;
@@ -11,18 +11,65 @@ interface Answer {
   score: number;
 }
 
+const STORAGE_KEY = 'lihnlabs_quiz_progress';
+
+interface SavedProgress {
+  phase: Phase;
+  currentQ: number;
+  answers: Answer[];
+  totalScore: number;
+  serviceNote: string;
+}
+
 export const LeadQuiz: React.FC = () => {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   const [phase, setPhase] = useState<Phase>('start');
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [totalScore, setTotalScore] = useState(0);
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [serviceSearch, setServiceSearch] = useState('');
+  const [serviceNote, setServiceNote] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', company: '', phone: '' });
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [savedProgress, setSavedProgress] = useState<SavedProgress | null>(null);
+
+  // Load saved progress on mount
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const saved: SavedProgress = JSON.parse(raw);
+        // Only show resume banner if there's meaningful progress
+        if (saved.phase !== 'start' && (saved.currentQ > 0 || saved.answers.length > 0)) {
+          setSavedProgress(saved);
+        }
+      }
+    } catch {}
+  }, []);
+
+  // Auto-save progress whenever quiz state changes
+  useEffect(() => {
+    if (phase === 'start') return; // don't save the start screen
+    try {
+      const progress: SavedProgress = { phase, currentQ, answers, totalScore, serviceNote };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    } catch {}
+  }, [phase, currentQ, answers, totalScore, serviceNote]);
+
+  const resumeProgress = () => {
+    if (!savedProgress) return;
+    setPhase(savedProgress.phase);
+    setCurrentQ(savedProgress.currentQ);
+    setAnswers(savedProgress.answers);
+    setTotalScore(savedProgress.totalScore);
+    setServiceNote(savedProgress.serviceNote ?? '');
+    setSavedProgress(null);
+  };
+
+  const clearSaved = () => {
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    setSavedProgress(null);
+  };
 
   const questions = [
     {
@@ -59,14 +106,7 @@ export const LeadQuiz: React.FC = () => {
     },
   ];
 
-  const serviceOptions = [
-    { key: 'chatbot', label: t('lead.svc.chatbot') },
-    { key: 'models', label: t('lead.svc.models') },
-    { key: 'rag', label: t('lead.svc.rag') },
-    { key: 'genai', label: t('lead.svc.genai') },
-    { key: 'automation', label: t('lead.svc.automation') },
-    { key: 'growth', label: t('lead.svc.growth') },
-  ];
+
 
   const getResult = useCallback(() => {
     if (totalScore <= 5) return { title: t('lead.result1.title'), desc: t('lead.result1.desc'), win: t('lead.result1.win'), gradient: 'from-amber-500 to-orange-600', icon: '🌱' };
@@ -85,28 +125,23 @@ export const LeadQuiz: React.FC = () => {
     if (currentQ < questions.length - 1) {
       setCurrentQ(currentQ + 1);
     } else {
-      setPhase('services');
+      setPhase('result');
     }
   };
 
-  const toggleService = (key: string) => {
-    setSelectedServices((prev) =>
-      prev.includes(key) ? prev.filter((s) => s !== key) : [...prev, key]
-    );
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('submitting');
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
 
     const payload = {
       ...formData,
       score: totalScore,
+      lang,
       profile: getResult().title,
-      services: selectedServices.map((key) => {
-        const svc = serviceOptions.find((s) => s.key === key);
-        return svc?.label || key;
-      }),
+      serviceNote,
       answers,
     };
 
@@ -136,9 +171,11 @@ export const LeadQuiz: React.FC = () => {
     setCurrentQ(0);
     setAnswers([]);
     setTotalScore(0);
-    setSelectedServices([]);
+    setServiceNote('');
     setFormData({ name: '', email: '', company: '', phone: '' });
     setFormState('idle');
+    setSavedProgress(null);
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
   };
 
   const progress = ((currentQ + 1) / questions.length) * 100;
@@ -177,14 +214,51 @@ export const LeadQuiz: React.FC = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 animate-gradient">
                   {t('lead.titleHighlight')}
                 </span>
+                {t('lead.titleEnd')}
               </h2>
 
               <p className="text-slate-400 text-lg md:text-xl max-w-xl mx-auto font-light leading-relaxed mb-12">
                 {t('lead.subtitle')}
               </p>
 
+              {/* Resume banner */}
+              <AnimatePresence>
+                {savedProgress && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 12, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                    transition={{ duration: 0.35 }}
+                    className="inline-flex flex-col sm:flex-row items-center gap-3 bg-slate-900/80 backdrop-blur-xl border border-purple-500/25 rounded-2xl px-6 py-4 mb-8 shadow-xl shadow-purple-900/10"
+                  >
+                    <span className="text-slate-300 text-sm">
+                      ✦ Hai un quiz in corso —{' '}
+                      <strong className="text-purple-300">
+                        {savedProgress.phase === 'result'
+                          ? 'sei arrivato al form'
+                          : `domanda ${savedProgress.currentQ + 1} di ${questions.length}`}
+                      </strong>
+                    </span>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={resumeProgress}
+                        className="text-xs font-bold uppercase tracking-wider text-white bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-full transition-colors"
+                      >
+                        Riprendi
+                      </button>
+                      <button
+                        onClick={clearSaved}
+                        className="text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors"
+                      >
+                        Ricomincia
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <button
-                onClick={() => setPhase('quiz')}
+                onClick={() => { clearSaved(); setPhase('quiz'); }}
                 className="group inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-cyan-500 text-white px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-105"
               >
                 {t('lead.cta')}
@@ -250,126 +324,7 @@ export const LeadQuiz: React.FC = () => {
             </motion.div>
           )}
 
-          {/* ======= SERVICE SELECTION ======= */}
-          {phase === 'services' && (
-            <motion.div
-              key="services"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 md:p-10">
-                <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="text-center mb-8 relative z-10">
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2">
-                    {t('lead.services.label')}
-                  </h3>
-                  <p className="text-slate-500 text-sm">Seleziona i servizi che ti interessano</p>
-                </div>
-
-                {/* Custom dropdown */}
-                <div className="relative z-20 max-w-md mx-auto mb-8">
-                  <button
-                    type="button"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="w-full flex items-center justify-between bg-slate-800/80 border border-white/10 rounded-xl px-5 py-4 text-left hover:border-purple-500/30 transition-colors"
-                  >
-                    <span className={selectedServices.length > 0 ? 'text-white' : 'text-slate-500'}>
-                      {selectedServices.length > 0
-                        ? `${selectedServices.length} ${selectedServices.length === 1 ? 'servizio selezionato' : 'servizi selezionati'}`
-                        : t('lead.services.placeholder')}
-                    </span>
-                    <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {dropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -8, scaleY: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scaleY: 1 }}
-                        exit={{ opacity: 0, y: -8, scaleY: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-white/10 rounded-xl shadow-2xl shadow-black/40 origin-top flex flex-col"
-                      >
-                        {/* Search bar */}
-                        <div className="sticky top-0 p-3 border-b border-white/5 bg-slate-800 z-10">
-                          <div className="relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                            <input
-                              type="text"
-                              value={serviceSearch}
-                              onChange={(e) => setServiceSearch(e.target.value)}
-                              placeholder="Cerca..."
-                              className="w-full bg-slate-700/50 border border-white/10 rounded-lg pl-9 pr-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500/40 transition-colors"
-                              autoFocus
-                            />
-                          </div>
-                        </div>
-                        {/* Scrollable list */}
-                        <div className="max-h-80 overflow-y-auto overscroll-contain">
-                          {serviceOptions
-                            .filter((svc) => svc.label.toLowerCase().includes(serviceSearch.toLowerCase()))
-                            .map((svc) => (
-                            <button
-                              key={svc.key}
-                              type="button"
-                              onClick={() => toggleService(svc.key)}
-                              className="w-full flex items-center gap-3 px-5 py-3.5 hover:bg-slate-700/50 transition-colors text-left"
-                            >
-                              <span className={`flex-shrink-0 w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
-                                selectedServices.includes(svc.key)
-                                  ? 'bg-purple-500 border-purple-500'
-                                  : 'border-white/20 bg-transparent'
-                              }`}>
-                                {selectedServices.includes(svc.key) && <Check className="w-3 h-3 text-white" />}
-                              </span>
-                              <span className={`font-medium transition-colors ${
-                                selectedServices.includes(svc.key) ? 'text-white' : 'text-slate-400'
-                              }`}>
-                                {svc.label}
-                              </span>
-                            </button>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Selected chips */}
-                {selectedServices.length > 0 && (
-                  <div className="flex flex-wrap gap-2 justify-center mb-8 relative z-10">
-                    {selectedServices.map((key) => {
-                      const svc = serviceOptions.find((s) => s.key === key);
-                      return (
-                        <motion.span
-                          key={key}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold"
-                        >
-                          {svc?.label}
-                          <button onClick={() => toggleService(key)} className="hover:text-white transition-colors">×</button>
-                        </motion.span>
-                      );
-                    })}
-                  </div>
-                )}
-
-                <div className="text-center relative z-10">
-                  <button
-                    onClick={() => setPhase('result')}
-                    className="group inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-cyan-500 text-white px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-105"
-                  >
-                    {t('lead.services.continue')}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          )}
 
           {/* ======= RESULT + FORM ======= */}
           {phase === 'result' && (
@@ -444,7 +399,7 @@ export const LeadQuiz: React.FC = () => {
                   </div>
 
                   {/* Contact Form Card */}
-                  <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 md:p-10 overflow-hidden">
+                  <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 md:p-10">
                     <div className="absolute -left-12 -bottom-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
                     <div className="relative z-10">
@@ -503,6 +458,20 @@ export const LeadQuiz: React.FC = () => {
                               className="w-full bg-slate-800/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 transition-all"
                             />
                           </div>
+                        </div>
+
+                        {/* Open text field for automation notes */}
+                        <div>
+                          <label className="block text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2">
+                            Cosa vuoi automatizzare? <span className="normal-case text-slate-600">(Opzionale)</span>
+                          </label>
+                          <textarea
+                            value={serviceNote}
+                            onChange={(e) => setServiceNote(e.target.value)}
+                            rows={3}
+                            placeholder="Es. vorrei automatizzare la gestione dei lead, le email di follow-up..."
+                            className="w-full bg-slate-800/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 transition-all resize-none text-sm leading-relaxed"
+                          />
                         </div>
 
                         <button

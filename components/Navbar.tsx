@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
           </button>
 
           <Link
-            to="/#contact"
+            to="/#ai-assessment"
             className="relative overflow-hidden bg-white text-slate-950 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-cyan-400 transition-colors duration-300"
           >
             {t('nav.contact')}
@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
               </button>
 
               <Link
-                to="/#contact"
+                to="/#ai-assessment"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full text-center bg-white text-slate-950 px-6 py-4 rounded-xl font-bold uppercase tracking-wider mt-4"
               >

@@ -30,22 +30,32 @@ export const Mission: React.FC = () => {
 
   const metrics = [
     {
-      id: 1, value: 90, suffix: "%",
+      id: 1,
+      value: 40, suffix: "%",
       label: t('mission.metric1'),
+      desc: t('mission.metric1desc'),
       icon: <Timer className="w-6 h-6 text-cyan-400" />,
-      color: "cyan"
+      color: "cyan",
+      isRange: false,
     },
     {
-      id: 2, value: 85, suffix: "%",
+      id: 2,
+      value: 35, suffix: "%",
+      rangeDisplay: "14–35%",
       label: t('mission.metric2'),
+      desc: t('mission.metric2desc'),
       icon: <TrendingDown className="w-6 h-6 text-blue-400" />,
-      color: "blue"
+      color: "blue",
+      isRange: true,
     },
     {
-      id: 3, value: 10, suffix: "x",
+      id: 3,
+      value: 25, suffix: "%",
       label: t('mission.metric3'),
+      desc: t('mission.metric3desc'),
       icon: <Zap className="w-6 h-6 text-purple-400" />,
-      color: "purple"
+      color: "purple",
+      isRange: false,
     }
   ];
 
@@ -83,7 +93,8 @@ export const Mission: React.FC = () => {
           </div>
 
           {/* Metrics Cards */}
-          <div className="lg:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+          <div className="lg:w-7/12 flex flex-col gap-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {metrics.map((metric, index) => (
               <motion.div
                 key={metric.id}
@@ -91,25 +102,43 @@ export const Mission: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15, duration: 0.5 }}
-                className={`glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all duration-500 group border-t border-white/10 relative overflow-hidden ${index === 2 ? 'md:col-span-2 md:w-1/2 md:mx-auto' : ''}`}
+                className={`glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all duration-500 group border-t border-white/10 relative overflow-hidden ${index === 2 ? 'md:col-span-2' : ''}`}
               >
                 <div className={`absolute top-0 right-0 p-32 bg-${metric.color}-500/5 rounded-full blur-3xl group-hover:bg-${metric.color}-500/10 transition-colors duration-500`} />
 
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-6">
                     <span className="p-3 bg-slate-900/50 rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
                       {metric.icon}
                     </span>
                   </div>
-                  <div className="font-display text-6xl md:text-7xl font-bold text-white mb-4 tracking-tighter">
-                    <Counter value={metric.value} suffix={metric.suffix} />
+                  <div className="font-display text-6xl md:text-7xl font-bold text-white mb-2 tracking-tighter">
+                    {metric.isRange
+                      ? metric.rangeDisplay
+                      : <Counter value={metric.value} suffix={metric.suffix} />
+                    }
                   </div>
-                  <div className="text-slate-400 text-sm font-medium uppercase tracking-widest">
+                  <div className="text-slate-300 text-sm font-semibold uppercase tracking-widest mb-3">
                     {metric.label}
                   </div>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    {metric.desc}
+                  </p>
                 </div>
               </motion.div>
             ))}
+            </div>
+
+            {/* Sources note */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-slate-600 text-xs leading-relaxed border-l-2 border-white/10 pl-4"
+            >
+              I dati riportati rappresentano medie di mercato e benchmark di settore derivanti da studi condotti da McKinsey Global Institute, Goldman Sachs e MIT Sloan. L'integrazione di sistemi AI mira a intercettare queste inefficienze per trasformarle in vantaggi competitivi misurabili.
+            </motion.p>
           </div>
         </div>
       </div>
