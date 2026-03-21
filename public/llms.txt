@@ -1,0 +1,51 @@
+# Linh Labs
+
+> Linh Labs è una società di consulenza AI con sede a Milano, Italia. Aiutiamo aziende italiane e internazionali a trasformare processi aziendali in vantaggi competitivi concreti attraverso intelligenza artificiale e automazione.
+
+## Chi Siamo
+
+Linh Labs è un partner tecnologico specializzato nell'implementazione pratica di soluzioni AI. Non ci limitiamo alla consulenza teorica: costruiamo sistemi che funzionano direttamente nei flussi di lavoro dei nostri clienti.
+
+## Servizi Principali
+
+- **Chatbot Avanzati**: Interazioni naturali 24/7 con memoria conversazionale tra sessioni
+- **Sistemi RAG (Retrieval-Augmented Generation)**: Document Q&A, ricerca semantica intelligente sui documenti aziendali
+- **Automazioni n8n**: Pipeline di workflow automatizzati, integrazione tra sistemi eterogenei
+- **Modelli Personalizzati**: AI addestrata sui dati specifici del cliente
+- **AI Generativa**: Creazione contenuti automatizzata, content pipeline
+- **Strategie di Crescita AI**: Scaling data-driven, lead scoring, CRM automation
+
+## Catalogo Automazioni
+
+Offriamo 18+ workflow di automazione pronti all'uso nelle categorie:
+- AI & Machine Learning (chatbot con memoria, Document Q&A, email classifier)
+- Marketing (social media auto-poster, SEO content pipeline, email campaign automator)
+- Sales (lead scoring automator, CRM sync pipeline, proposal generator)
+- Document Ops (invoice processor, contract analyzer, PDF report generator)
+- Support (ticket auto-router, FAQ bot, customer sentiment tracker)
+
+Catalogo completo: https://linhlabs.com/catalogo
+
+## Progetti Realizzati
+
+- **Ragalo**: App RAG-powered che trasforma documenti in conversazioni intelligenti — https://ragchat-production-8651.up.railway.app/
+- **Pumbo**: Personal Stylist AI con virtual try-on
+- **Sfatify**: AI assistant per Google Sheets — istruzioni testuali e upload immagini
+- **Age of Agents**: Gioco RTS agentico su blockchain MegaETH
+
+## Dati di Performance
+
+- Riduzione del 40% delle ore dedicate a task ripetitivi (fonte: McKinsey Global Institute)
+- Incremento della produttività individuale del 14–35% con AI (Goldman Sachs)
+- Riduzione potenziale dei costi operativi del 25% (MIT Sloan)
+
+## Contatti
+
+- **Sito web**: https://linhlabs.com
+- **Email**: info@linhlabs.com
+- **Telefono**: +39 335 5200646
+- **Indirizzo**: Via Arcivescovo Calabiana, Milano, Italia
+
+## Informazioni Legali
+
+© 2026 Linh Labs. Tutti i diritti riservati.

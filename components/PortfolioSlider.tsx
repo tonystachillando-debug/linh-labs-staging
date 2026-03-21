@@ -277,6 +277,8 @@ export const PortfolioSlider: React.FC = () => {
                     <img
                       src={project.image}
                       alt={t(project.titleHighlightKey)}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                     {/* Gradient overlay bottom */}

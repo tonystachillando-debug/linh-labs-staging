@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Logo } from './Logo';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,18 @@ import { useI18n } from '../i18n';
 
 export const Footer: React.FC = () => {
   const { t } = useI18n();
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [mapVisible, setMapVisible] = useState(false);
+
+  // Lazy load the map iframe only when footer is near viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setMapVisible(true); },
+      { rootMargin: '200px' }
+    );
+    if (mapRef.current) observer.observe(mapRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const navLinks = [
     { name: t('nav.home'), href: '/#home' },
@@ -92,21 +104,29 @@ export const Footer: React.FC = () => {
           {/* Col 4: Map */}
           <div>
             <h4 className="text-white font-bold mb-6 uppercase tracking-[0.2em] text-xs">{t('footer.location')}</h4>
-            <div className="rounded-2xl overflow-hidden border border-white/10 h-44 relative group shadow-xl shadow-black/40">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89553.23978771758!2d9.09525316664465!3d45.46282466956998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilan%2C%20Metropolitan%20City%20of%20Milan%2C%20Italy!5e0!3m2!1sen!2sus!4v1715600000000!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-              />
+            <div ref={mapRef} className="rounded-2xl overflow-hidden border border-white/10 h-44 relative group shadow-xl shadow-black/40">
+              {mapVisible ? (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89553.23978771758!2d9.09525316664465!3d45.46282466956998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilan%2C%20Metropolitan%20City%20of%20Milan%2C%20Italy!5e0!3m2!1sen!2sus!4v1715600000000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Linh Labs office location in Milan"
+                  className="grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                />
+              ) : (
+                <div className="w-full h-full bg-slate-900/60 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-slate-700" />
+                </div>
+              )}
                {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-700" />
             </div>
           </div>
+
 
         </div>
       </div>

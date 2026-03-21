@@ -1,6 +1,24 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+// Helper: updates <title>, meta description and canonical for each route
+function PageSEO({ title, description, canonical }: { title: string; description: string; canonical: string }) {
+  React.useEffect(() => {
+    document.title = title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', description);
+    const metaOgTitle = document.querySelector('meta[property="og:title"]');
+    if (metaOgTitle) metaOgTitle.setAttribute('content', title);
+    const metaOgDesc = document.querySelector('meta[property="og:description"]');
+    if (metaOgDesc) metaOgDesc.setAttribute('content', description);
+    const metaOgUrl = document.querySelector('meta[property="og:url"]');
+    if (metaOgUrl) metaOgUrl.setAttribute('content', canonical);
+    const canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) canonicalEl.setAttribute('href', canonical);
+  }, [title, description, canonical]);
+  return null;
+}
+
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
   React.useEffect(() => {
@@ -42,6 +60,11 @@ function HomePage() {
 
   return (
     <div className="bg-slate-950 min-h-screen text-slate-50 selection:bg-cyan-500/30 overflow-x-hidden">
+      <PageSEO
+        title="Linh Labs | Consulenza AI per il Business — Milano"
+        description="Linh Labs trasforma l'intelligenza artificiale in vantaggio competitivo reale. Chatbot avanzati, sistemi RAG, automazioni n8n e consulenza AI per aziende a Milano e in tutta Italia."
+        canonical="https://linhlabs.com/"
+      />
       <Navbar />
       <main>
         <Hero />
@@ -65,7 +88,16 @@ function App() {
       <ScrollToHash />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/catalogo" element={<CataloguePage />} />
+        <Route path="/catalogo" element={
+          <>
+            <PageSEO
+              title="Catalogo Automazioni AI | 18+ Workflow Pronti — Linh Labs"
+              description="Esplora 18+ automazioni AI pronte all'uso: chatbot, pipeline RAG, automazioni marketing, document ops e molto altro. Personalizza e implementa nel tuo business."
+              canonical="https://linhlabs.com/catalogo"
+            />
+            <CataloguePage />
+          </>
+        } />
       </Routes>
     </>
   );
