@@ -206,7 +206,7 @@ export const PortfolioSlider: React.FC = () => {
                   <button
                     key={p.id}
                     onClick={() => goTo(i)}
-                    className="hide-scrollbar group flex-none w-[85vw] sm:w-[320px] lg:w-full text-left px-4 py-4 rounded-2xl transition-all duration-300 relative overflow-hidden snap-center"
+                    className="hide-scrollbar group flex-none w-[85vw] sm:w-[320px] lg:w-full text-left px-4 py-4 rounded-2xl transition-all duration-300 relative overflow-hidden snap-center snap-always"
                     style={{
                       background: isActive ? 'rgba(255,255,255,0.04)' : 'transparent',
                       border: isActive ? `1px solid ${p.accentColor}22` : '1px solid transparent',
@@ -289,10 +289,23 @@ export const PortfolioSlider: React.FC = () => {
               })}
             </div>
 
-            {/* Counter */}
+            {/* Desktop Counter */}
             <div className="hidden lg:flex mt-8 pl-4 items-baseline gap-2">
               <span className="font-display text-4xl font-bold text-white">{project.number}</span>
               <span className="text-slate-600 text-sm font-display">/ {String(projects.length).padStart(2, '0')}</span>
+            </div>
+
+            {/* Mobile Pagination */}
+            <div className="lg:hidden flex items-center justify-center mt-2 mb-6">
+              <div 
+                className="flex items-center gap-2 px-4 py-1.5 rounded-full backdrop-blur-sm"
+                style={{ background: `${project.accentColor}15`, border: `1px solid ${project.accentColor}30` }}
+              >
+                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: project.accentColor }} />
+                <span className="font-display text-xs font-bold tracking-widest text-slate-200">
+                  {String(currentSlide + 1).padStart(2, '0')} <span className="opacity-50 font-normal mx-0.5">/</span> {String(projects.length).padStart(2, '0')}
+                </span>
+              </div>
             </div>
           </div>
 
