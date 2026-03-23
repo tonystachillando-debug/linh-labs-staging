@@ -81,7 +81,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
-            className="text-slate-400 text-base md:text-base lg:text-lg max-w-3xl mx-auto mb-8 font-light leading-relaxed"
+            className="hidden md:block text-slate-400 text-base lg:text-lg max-w-3xl mx-auto mb-8 font-light leading-relaxed"
           >
             {t('hero.subtitle')}
           </motion.p>
