@@ -135,6 +135,29 @@ export const PortfolioSlider: React.FC = () => {
     setCurrentSlide(index);
   }, [currentSlide]);
 
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 1024) return;
+    const container = e.currentTarget;
+    const scrollLeft = container.scrollLeft;
+    const center = scrollLeft + container.clientWidth / 2;
+    let minDiff = Infinity;
+    let newIndex = currentSlide;
+    const children = Array.from(container.children).filter(c => c.tagName === 'BUTTON');
+    children.forEach((child, i) => {
+      const el = child as HTMLElement;
+      // We calculate the center of the child relative to the scroll view
+      const childCenter = el.offsetLeft + el.clientWidth / 2;
+      const diff = Math.abs(childCenter - center);
+      if (diff < minDiff) {
+        minDiff = diff;
+        newIndex = i;
+      }
+    });
+    if (newIndex !== currentSlide) {
+      setCurrentSlide(newIndex);
+    }
+  }, [currentSlide]);
+
   const project = projects[currentSlide];
 
   return (
@@ -171,7 +194,11 @@ export const PortfolioSlider: React.FC = () => {
             </motion.div>
 
             {/* Project list / navigation */}
-            <div className="flex flex-row lg:flex-col gap-3 lg:gap-1 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div 
+              onScroll={handleScroll}
+              className="flex flex-row lg:flex-col gap-3 lg:gap-1 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0" 
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
               {projects.map((p, i) => {
                 const isActive = i === currentSlide;
@@ -290,11 +317,11 @@ export const PortfolioSlider: React.FC = () => {
                       alt={t(project.titleHighlightKey)}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                     {/* Gradient overlay bottom */}
                     <div className="absolute inset-0" style={{
-                      background: 'linear-gradient(to top, rgb(2,6,23) 0%, rgba(2,6,23,0.92) 30%, rgba(2,6,23,0.5) 55%, transparent 100%)'
+                      background: 'linear-gradient(to top, rgb(2,6,23) 0%, rgba(2,6,23,0.92) 40%, rgba(2,6,23,0.5) 60%, transparent 100%)'
                     }} />
                   </div>
 
@@ -335,7 +362,7 @@ export const PortfolioSlider: React.FC = () => {
                 </div>
 
                 {/* Features grid */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {project.features.map((feature, i) => (
                     <motion.div
                       key={i}

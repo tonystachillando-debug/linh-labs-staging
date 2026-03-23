@@ -23,7 +23,7 @@ export const Hero: React.FC = () => {
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <section ref={ref} id="home" className="relative h-[100dvh] min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section ref={ref} id="home" className="relative min-h-[100dvh] pt-32 pb-20 md:pt-0 md:pb-0 flex items-center justify-center overflow-hidden">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-grid-white opacity-[0.15] pointer-events-none" />
 
@@ -50,7 +50,7 @@ export const Hero: React.FC = () => {
             </span>
           </motion.div>
 
-          <h1 className="font-display text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tighter mb-10">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] md:leading-[0.95] tracking-tighter mb-8 md:mb-10">
             <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="block text-slate-400 text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-light mt-4"
+              className="block text-slate-400 text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-light mt-3 md:mt-4"
             >
               {t('hero.title3')}
             </motion.span>
@@ -120,7 +120,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute left-1/2 -translate-x-1/2 bottom-[-100px]"
+            className="hidden md:block absolute left-1/2 -translate-x-1/2 bottom-[-100px]"
           >
             <a
               href="#mission"

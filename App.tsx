@@ -40,6 +40,7 @@ import { Mission } from './components/Mission';
 import { Services } from './components/Services';
 import { AutomationCatalogue } from './components/AutomationCatalogue';
 import { PortfolioSlider } from './components/PortfolioSlider';
+import { Team } from './components/Team';
 import { Partners } from './components/Partners';
 import { ChatSection } from './components/ChatSection';
 import { Footer } from './components/Footer';
@@ -72,6 +73,7 @@ function HomePage() {
         <Services />
         <AutomationCatalogue />
         <PortfolioSlider />
+        <Team />
         <ChatSection newMessages={syncedMessages} />
         <Partners />
         <LeadQuiz />
