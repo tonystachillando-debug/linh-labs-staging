@@ -352,23 +352,25 @@ export const PortfolioSlider: React.FC = () => {
                   )}
 
                   {/* Overlaid project title at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between gap-4">
-                    <p className="text-slate-300 text-sm leading-relaxed max-w-sm flex-1">
-                      {t(project.subtitleKey)}
-                    </p>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col items-start gap-4">
+                    <div className="bg-black/50 backdrop-blur-md p-4 md:p-5 rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] max-w-md">
+                      <p className="text-slate-200 text-sm leading-relaxed">
+                        {t(project.subtitleKey)}
+                      </p>
+                    </div>
                     {!project.hideCta && (
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-widest text-white transition-all duration-300 hover:scale-105 hover:shadow-xl group/cta shrink-0"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest text-white transition-all duration-300 hover:scale-105 hover:shadow-xl group/cta shrink-0 shadow-lg mt-1"
                       style={{
-                        background: `linear-gradient(135deg, ${project.accentColor}, ${project.accentColor}aa)`,
-                        boxShadow: `0 4px 16px ${project.accentColor}30`,
+                        background: `linear-gradient(135deg, ${project.accentColor}, ${project.accentColor}cc)`,
+                        boxShadow: `0 8px 24px ${project.accentColor}40`,
                       }}
                     >
                       {t(project.ctaKey)}
-                      <ExternalLink className="w-3 h-3 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform" />
+                      <ExternalLink className="w-3.5 h-3.5 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform" />
                     </a>
                     )}
                   </div>
