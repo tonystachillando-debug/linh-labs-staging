@@ -170,23 +170,24 @@ export const PortfolioSlider: React.FC = () => {
               </h2>
             </motion.div>
 
-            {/* Vertical project list / navigation */}
-            <div className="flex flex-col gap-1">
+            {/* Project list / navigation */}
+            <div className="flex flex-row lg:flex-col gap-3 lg:gap-1 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
               {projects.map((p, i) => {
                 const isActive = i === currentSlide;
                 return (
                   <button
                     key={p.id}
                     onClick={() => goTo(i)}
-                    className="group w-full text-left px-4 py-4 rounded-2xl transition-all duration-300 relative overflow-hidden"
+                    className="hide-scrollbar group flex-none w-[85vw] sm:w-[320px] lg:w-full text-left px-4 py-4 rounded-2xl transition-all duration-300 relative overflow-hidden snap-center"
                     style={{
                       background: isActive ? 'rgba(255,255,255,0.04)' : 'transparent',
                       border: isActive ? `1px solid ${p.accentColor}22` : '1px solid transparent',
                     }}
                   >
-                    {/* Active left indicator */}
+                    {/* Active left indicator (Desktop) */}
                     <div
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] rounded-full transition-all duration-300"
+                      className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-[3px] rounded-full transition-all duration-300"
                       style={{
                         height: isActive ? '60%' : '0%',
                         backgroundColor: p.accentColor,
@@ -194,7 +195,17 @@ export const PortfolioSlider: React.FC = () => {
                       }}
                     />
 
-                    <div className="flex items-center gap-4 pl-2">
+                    {/* Active bottom indicator (Mobile) */}
+                    <div
+                      className="lg:hidden absolute bottom-0 left-1/2 -translate-x-1/2 h-[3px] rounded-full transition-all duration-300"
+                      style={{
+                        width: isActive ? '60%' : '0%',
+                        backgroundColor: p.accentColor,
+                        boxShadow: isActive ? `0 0 12px ${p.accentColor}` : 'none',
+                      }}
+                    />
+
+                    <div className="flex items-center gap-4 pl-2 lg:pl-2">
                       {/* Number */}
                       <span
                         className="font-display text-xs font-bold tracking-widest transition-colors duration-300"
@@ -205,7 +216,7 @@ export const PortfolioSlider: React.FC = () => {
 
                       {/* Project name */}
                       <span
-                        className="font-display text-lg md:text-xl font-bold transition-colors duration-300 flex-1"
+                        className="font-display text-lg md:text-xl font-bold transition-colors duration-300 flex-1 whitespace-nowrap lg:whitespace-normal"
                         style={{ color: isActive ? '#fff' : 'rgba(148,163,184,0.5)' }}
                       >
                         {p.titleKey && t(p.titleKey) !== p.titleKey ? t(p.titleKey) : ''}
@@ -214,7 +225,7 @@ export const PortfolioSlider: React.FC = () => {
 
                       {/* Arrow */}
                       <ArrowRight
-                        className="w-4 h-4 transition-all duration-300"
+                        className="w-4 h-4 transition-all duration-300 shrink-0"
                         style={{
                           color: isActive ? p.accentColor : 'transparent',
                           transform: isActive ? 'translateX(0)' : 'translateX(-8px)',
@@ -229,12 +240,12 @@ export const PortfolioSlider: React.FC = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-wrap gap-2 mt-3 pl-10"
+                        className="flex flex-wrap gap-2 mt-3 pl-2 lg:pl-10"
                       >
                         {p.tags.slice(0, 3).map(tag => (
                           <span
                             key={tag}
-                            className="text-xs px-2.5 py-1 rounded-full font-medium"
+                            className="text-xs px-2.5 py-1 rounded-full font-medium whitespace-nowrap"
                             style={{
                               background: `${p.accentColor}18`,
                               color: p.accentColor,
@@ -252,7 +263,7 @@ export const PortfolioSlider: React.FC = () => {
             </div>
 
             {/* Counter */}
-            <div className="mt-8 pl-4 flex items-baseline gap-2">
+            <div className="hidden lg:flex mt-8 pl-4 items-baseline gap-2">
               <span className="font-display text-4xl font-bold text-white">{project.number}</span>
               <span className="text-slate-600 text-sm font-display">/ {String(projects.length).padStart(2, '0')}</span>
             </div>
