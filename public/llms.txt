@@ -28,7 +28,7 @@ Catalogo completo: https://linhlabs.com/catalogo
 
 ## Progetti Realizzati
 
-- **Ragalo**: App RAG-powered che trasforma documenti in conversazioni intelligenti — https://ragchat-production-8651.up.railway.app/
+- **Ragalo**: App RAG-powered che trasforma documenti in conversazioni intelligenti — https://www.ragalo.xyz/
 - **Pumbo**: Personal Stylist AI con virtual try-on
 - **Sfatify**: AI assistant per Google Sheets — istruzioni testuali e upload immagini
 - **Age of Agents**: Gioco RTS agentico su blockchain MegaETH
