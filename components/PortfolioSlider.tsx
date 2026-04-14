@@ -60,7 +60,7 @@ export const PortfolioSlider: React.FC = () => {
     {
       id: 'sfatify',
       image: '/sfatify.png',
-      url: 'https://sfatify.up.railway.app/',
+      url: 'https://sfatify.vercel.app/',
       badgeKey: 'sfatify.badge',
       titleHighlightKey: 'sfatify.titleHighlight',
       subtitleKey: 'sfatify.subtitle',
