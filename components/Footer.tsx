@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
                   <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                     <MapPin className="w-4 h-4 text-cyan-500" />
                   </div>
-                  <span className="text-sm">Via Arcivescovo Calabiana, Milano</span>
+                  <span className="text-sm">Via Arcivescovo Calabiana, 6, Milano</span>
                 </div>
               </li>
             </ul>
@@ -122,7 +122,7 @@ export const Footer: React.FC = () => {
                   <MapPin className="w-6 h-6 text-slate-700" />
                 </div>
               )}
-               {/* Overlay gradient */}
+              {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-700" />
             </div>
           </div>
