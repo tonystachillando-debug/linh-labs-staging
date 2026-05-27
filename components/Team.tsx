@@ -60,13 +60,13 @@ export const Team = () => {
               <div className="relative mb-6">
                 {/* Outer rotating/glowing ring on hover */}
                 <div
-                  className="absolute -inset-1 rounded-full bg-gradient-to-tr from-white/40 to-slate-300/20 opacity-0 group-hover:opacity-40 blur-md transition-all duration-700 group-hover:duration-300"
+                  className="absolute -inset-1 rounded-full bg-gradient-to-tr from-white/40 to-slate-300/20 opacity-0 group-hover:opacity-40 blur-md transition-all duration-700 group-hover:duration-300 pointer-events-none"
                 />
 
                 {/* Avatar wrapper */}
                 <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border border-white/10 bg-slate-900 shadow-2xl transition-transform duration-500 group-hover:scale-[1.03]">
                   {/* Inner subtle glow */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-slate-900/10 z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-slate-900/10 z-10 pointer-events-none" />
 
                   <img
                     src={member.image}
@@ -80,7 +80,7 @@ export const Team = () => {
                 </div>
               </div>
 
-              <h3 className="text-xl lg:text-2xl font-display font-bold text-white mb-2 transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300">
+              <h3 className="text-xl lg:text-2xl font-display font-bold text-white mb-2 transition-colors duration-300 group-hover:text-slate-100">
                 {member.name}
               </h3>
               <p className="text-sm uppercase tracking-widest font-semibold" style={{ color: member.accentColor }}>
