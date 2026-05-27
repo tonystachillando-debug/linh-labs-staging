@@ -9,7 +9,6 @@ export const Team = () => {
       role: 'Co-founder',
       image: '/images/antonio.png',
       accentColor: '#34d399', // emerald
-      gradient: 'from-emerald-400 to-cyan-500',
     },
     {
       id: 'daniele',
@@ -17,7 +16,6 @@ export const Team = () => {
       role: 'Co-founder',
       image: '/images/daniele.png',
       accentColor: '#a78bfa', // violet
-      gradient: 'from-violet-400 to-purple-600',
     },
     {
       id: 'giuliano',
@@ -25,7 +23,6 @@ export const Team = () => {
       role: 'Co-founder',
       image: '/images/giuliano.png',
       accentColor: '#38bdf8', // sky
-      gradient: 'from-sky-400 to-blue-600',
     },
   ];
 
@@ -63,13 +60,13 @@ export const Team = () => {
               <div className="relative mb-6">
                 {/* Outer rotating/glowing ring on hover */}
                 <div
-                  className={`absolute -inset-1 rounded-full bg-gradient-to-tr ${member.gradient} opacity-0 group-hover:opacity-40 blur-md transition-all duration-700 group-hover:duration-300`}
+                  className="absolute -inset-1 rounded-full bg-gradient-to-tr from-white/40 to-slate-300/20 opacity-0 group-hover:opacity-40 blur-md transition-all duration-700 group-hover:duration-300"
                 />
 
                 {/* Avatar wrapper */}
                 <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border border-white/10 bg-slate-900 shadow-2xl transition-transform duration-500 group-hover:scale-[1.03]">
                   {/* Inner subtle glow */}
-                  <div className={`absolute inset-0 bg-gradient-to-tr ${member.gradient} opacity-20 mix-blend-overlay z-10`} />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-slate-900/10 z-10" />
 
                   <img
                     src={member.image}
