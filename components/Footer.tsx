@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
             <div ref={mapRef} className="rounded-2xl overflow-hidden border border-white/10 h-44 relative group shadow-xl shadow-black/40">
               {mapVisible ? (
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89553.23978771758!2d9.09525316664465!3d45.46282466956998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilan%2C%20Metropolitan%20City%20of%20Milan%2C%20Italy!5e0!3m2!1sen!2sus!4v1715600000000!5m2!1sen!2sus"
+                  src="https://maps.google.com/maps?q=Via+Arcivescovo+Calabiana+6+Milano+Italy&z=11&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
