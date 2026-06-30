@@ -37,7 +37,7 @@ export const PortfolioSlider: React.FC = () => {
     {
       id: 'ragalo',
       image: '/ragolo.png',
-      url: 'https://ragchat-production-8651.up.railway.app/',
+      url: 'https://www.ragalo.xyz/',
       badgeKey: 'ragalo.badge',
       titleHighlightKey: 'ragalo.titleHighlight',
       subtitleKey: 'ragalo.subtitle',
@@ -60,7 +60,7 @@ export const PortfolioSlider: React.FC = () => {
     {
       id: 'sfatify',
       image: '/sfatify.png',
-      url: 'https://sfatify.up.railway.app/',
+      url: 'https://sfatify.vercel.app/',
       badgeKey: 'sfatify.badge',
       titleHighlightKey: 'sfatify.titleHighlight',
       subtitleKey: 'sfatify.subtitle',
