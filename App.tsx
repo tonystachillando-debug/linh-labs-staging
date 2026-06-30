@@ -62,8 +62,8 @@ function HomePage() {
   return (
     <div className="bg-slate-950 min-h-screen text-slate-50 selection:bg-cyan-500/30 overflow-x-hidden">
       <PageSEO
-        title="Linh Labs | Consulenza AI per il Business — Milano"
-        description="Linh Labs trasforma l'intelligenza artificiale in vantaggio competitivo reale. Chatbot avanzati, sistemi RAG, automazioni n8n e consulenza AI per aziende a Milano e in tutta Italia."
+        title="Linh Labs | Consulenza AI per il Business — Catania"
+        description="Linh Labs trasforma l'intelligenza artificiale in vantaggio competitivo reale. Chatbot avanzati, sistemi RAG, automazioni n8n e consulenza AI per aziende a Catania e in tutta Italia."
         canonical="https://linhlabs.com/"
       />
       <Navbar />

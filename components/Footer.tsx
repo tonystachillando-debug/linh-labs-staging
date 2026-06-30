@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
                   <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                     <MapPin className="w-4 h-4 text-cyan-500" />
                   </div>
-                  <span className="text-sm">Via Arcivescovo Calabiana, Milano</span>
+                  <span className="text-sm">Via Giovanni Lavaggi 37, Catania (CT)</span>
                 </div>
               </li>
             </ul>
@@ -107,14 +107,14 @@ export const Footer: React.FC = () => {
             <div ref={mapRef} className="rounded-2xl overflow-hidden border border-white/10 h-44 relative group shadow-xl shadow-black/40">
               {mapVisible ? (
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89553.23978771758!2d9.09525316664465!3d45.46282466956998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilan%2C%20Metropolitan%20City%20of%20Milan%2C%20Italy!5e0!3m2!1sen!2sus!4v1715600000000!5m2!1sen!2sus"
+                  src="https://maps.google.com/maps?q=Via%20Giovanni%20Lavaggi%2037,%20Catania&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Linh Labs office location in Milan"
+                  title="Linh Labs office location in Catania"
                   className="grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 />
               ) : (
@@ -133,9 +133,13 @@ export const Footer: React.FC = () => {
 
       {/* Bottom bar */}
       <div className="container mx-auto px-6 pb-10">
-        <div className="flex justify-center items-center pt-8 border-t border-white/5">
-          <div className="text-slate-600 text-xs tracking-wide">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5 text-slate-600 text-xs tracking-wide">
+          <div>
             © {new Date().getFullYear()} <span className="text-slate-500">Linh Labs</span>. {t('footer.rights')}
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <span>Partita IVA: 06297460872</span>
+            <span>PEC: <a href="mailto:linhlabs@pec.it" className="hover:text-white transition-colors">linhlabs@pec.it</a></span>
           </div>
         </div>
       </div>

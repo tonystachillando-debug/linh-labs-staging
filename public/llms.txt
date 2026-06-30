@@ -1,6 +1,6 @@
 # Linh Labs
 
-> Linh Labs è una società di consulenza AI con sede a Milano, Italia. Aiutiamo aziende italiane e internazionali a trasformare processi aziendali in vantaggi competitivi concreti attraverso intelligenza artificiale e automazione.
+> Linh Labs è una società di consulenza AI con sede a Catania, Italia. Aiutiamo aziende italiane e internazionali a trasformare processi aziendali in vantaggi competitivi concreti attraverso intelligenza artificiale e automazione.
 
 ## Chi Siamo
 
@@ -44,8 +44,12 @@ Catalogo completo: https://linhlabs.com/catalogo
 - **Sito web**: https://linhlabs.com
 - **Email**: info@linhlabs.com
 - **Telefono**: +39 335 5200646
-- **Indirizzo**: Via Arcivescovo Calabiana, Milano, Italia
+- **Indirizzo**: Via Giovanni Lavaggi 37, Catania (CT), Italia
+- **PEC**: linhlabs@pec.it
 
 ## Informazioni Legali
+
+- **Partita IVA**: 06297460872
+- **PEC**: linhlabs@pec.it
 
 © 2026 Linh Labs. Tutti i diritti riservati.
