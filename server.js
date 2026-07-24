@@ -8,6 +8,7 @@ import { dirname, resolve } from 'path';
 import { getLatestArticles, addSubscriber, confirmSubscriber, unsubscribeSubscriber } from './server/db.js';
 import { runNewsScan } from './server/newsEngine.js';
 import { sendDailyNewsletter } from './server/newsletter.js';
+import { generateCarouselCopy, renderInstagramCarouselHTML } from './server/instagramCarousel.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -137,6 +138,19 @@ app.post('/api/news/trigger-scan', async (req, res) => {
   } catch (err) {
     console.error('❌ Error during news scan trigger:', err);
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Generate Instagram Carousel slides preview
+app.get('/api/news/carousel-preview', async (req, res) => {
+  try {
+    const articles = getLatestArticles(5);
+    const copy = await generateCarouselCopy(articles);
+    const html = renderInstagramCarouselHTML(copy);
+    res.setHeader('Content-Type', 'text/html');
+    res.send(html);
+  } catch (err) {
+    res.status(500).send(`Error generating Instagram carousel: ${err.message}`);
   }
 });
 
