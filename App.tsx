@@ -47,6 +47,7 @@ import { Footer } from './components/Footer';
 import { StickyChat } from './components/StickyChat';
 import { CataloguePage } from './components/CataloguePage';
 import { LeadQuiz } from './components/LeadQuiz';
+import { AINewsFeed } from './components/AINewsFeed';
 
 function HomePage() {
   const [syncedMessages, setSyncedMessages] = React.useState<{ id: string, text: string, sender: 'user' | 'bot' }[]>([]);
@@ -71,6 +72,7 @@ function HomePage() {
         <Hero />
         <Mission />
         <Services />
+        <AINewsFeed />
         <AutomationCatalogue />
         <PortfolioSlider />
         <Team />

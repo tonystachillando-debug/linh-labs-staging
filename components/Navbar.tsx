@@ -14,6 +14,7 @@ export const Navbar: React.FC = () => {
     { name: t('nav.home'), href: '/#home' },
     { name: t('nav.about'), href: '/#mission' },
     { name: t('nav.services'), href: '/#services' },
+    { name: 'AI Radar', href: '/#ai-news' },
     { name: t('nav.catalogue'), href: '/catalogo' },
   ];
 
