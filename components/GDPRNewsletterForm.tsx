@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageSquare, Check, ShieldCheck, ArrowRight, Loader2, Lock } from 'lucide-react';
+import { Mail, MessageSquare, ShieldCheck, ArrowRight, Loader2, Lock, Sparkles } from 'lucide-react';
 
 export const GDPRNewsletterForm: React.FC = () => {
   const [channel, setChannel] = useState<'email' | 'whatsapp'>('email');
@@ -35,7 +35,6 @@ export const GDPRNewsletterForm: React.FC = () => {
           setResponseMsg({ success: false, text: data.error || 'Errore durante la registrazione.' });
         }
       } else {
-        // WhatsApp registration
         const res = await fetch('/api/whatsapp/webhook', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -43,7 +42,7 @@ export const GDPRNewsletterForm: React.FC = () => {
         });
         const data = await res.json();
         if (data.success) {
-          setResponseMsg({ success: true, text: 'Iscrizione WhatsApp registrata! Riceverai i principali aggiornamenti AI sul tuo numero.' });
+          setResponseMsg({ success: true, text: 'Iscrizione WhatsApp registrata! Riceverai gli aggiornamenti AI giornalieri direttamente su WhatsApp.' });
           setPhone('');
           setConsent(false);
         } else {
@@ -58,44 +57,49 @@ export const GDPRNewsletterForm: React.FC = () => {
   };
 
   return (
-    <div className="relative rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 p-8 sm:p-12 border border-slate-800 shadow-2xl overflow-hidden">
-      {/* Glow highlight */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
+    <div className="relative rounded-3xl bg-slate-900/80 p-8 sm:p-14 border border-slate-800 shadow-2xl overflow-hidden backdrop-blur-xl">
+      {/* Brand Glowing Accent Orbs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/15 rounded-full blur-[110px] pointer-events-none" />
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-4">
+        
+        {/* Brand Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold uppercase tracking-widest mb-6">
           <ShieldCheck className="w-4 h-4 text-cyan-400" />
           Iscrizione 100% GDPR Compliant
         </div>
 
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        {/* Heading in Space Grotesk font */}
+        <h3 className="font-display text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug">
           Ricevi il Digest AI Quotidiano di Linh Labs
         </h3>
-        <p className="mt-2 text-slate-400 text-sm sm:text-base">
-          Scegli il tuo canale preferito. Inviamo solo le notizie più rilevanti dell'Intelligenza Artificiale, senza spam.
+
+        <p className="mt-3 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+          Niente spam, solo il meglio dell'Intelligenza Artificiale applicata. Scegli il tuo canale preferito.
         </p>
 
         {/* Channel Selector Tabs */}
-        <div className="flex justify-center mt-6 mb-8">
-          <div className="inline-flex p-1 bg-slate-950 rounded-2xl border border-slate-800">
+        <div className="flex justify-center mt-8 mb-10">
+          <div className="inline-flex p-1.5 bg-slate-950/90 rounded-full border border-slate-800/90 shadow-inner">
             <button
               type="button"
               onClick={() => setChannel('email')}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition ${
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs font-extrabold uppercase tracking-wider transition duration-300 ${
                 channel === 'email'
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-950/50'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Mail className="w-4 h-4" /> Newsletter Email
+              <Mail className="w-4 h-4" /> Email Newsletter
             </button>
 
             <button
               type="button"
               onClick={() => setChannel('whatsapp')}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition ${
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs font-extrabold uppercase tracking-wider transition duration-300 ${
                 channel === 'whatsapp'
-                  ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-950/50'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -105,7 +109,7 @@ export const GDPRNewsletterForm: React.FC = () => {
         </div>
 
         {/* Subscription Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 max-w-xl mx-auto">
+        <form onSubmit={handleSubmit} className="space-y-5 max-w-xl mx-auto">
           {channel === 'email' ? (
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-grow">
@@ -116,13 +120,13 @@ export const GDPRNewsletterForm: React.FC = () => {
                   placeholder="Inserisci la tua email professionale..."
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition"
+                  className="w-full pl-12 pr-4 py-4 bg-slate-950/90 border border-slate-800 rounded-2xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition duration-200"
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-3.5 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold text-sm rounded-xl transition shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 whitespace-nowrap"
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-extrabold text-xs uppercase tracking-widest rounded-2xl transition duration-300 shadow-xl flex items-center justify-center gap-2.5 disabled:opacity-50 whitespace-nowrap"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Iscriviti Ora <ArrowRight className="w-4 h-4" /></>}
               </button>
@@ -137,20 +141,20 @@ export const GDPRNewsletterForm: React.FC = () => {
                   placeholder="Numero WhatsApp (es. +39 340 1234567)..."
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
+                  className="w-full pl-12 pr-4 py-4 bg-slate-950/90 border border-slate-800 rounded-2xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition duration-200"
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm rounded-xl transition shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 whitespace-nowrap"
+                className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-xs uppercase tracking-widest rounded-2xl transition duration-300 shadow-xl flex items-center justify-center gap-2.5 disabled:opacity-50 whitespace-nowrap"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Attiva WhatsApp <ArrowRight className="w-4 h-4" /></>}
               </button>
             </div>
           )}
 
-          {/* Explicit GDPR Consent Checkbox */}
+          {/* Explicit GDPR Checkbox */}
           <div className="flex items-start gap-3 text-left pt-2">
             <input
               type="checkbox"
@@ -159,29 +163,30 @@ export const GDPRNewsletterForm: React.FC = () => {
               onChange={(e) => setConsent(e.target.checked)}
               className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-950 text-purple-600 focus:ring-purple-500 focus:ring-offset-slate-900 cursor-pointer"
             />
-            <label htmlFor="gdpr-consent" className="text-xs text-slate-400 leading-relaxed cursor-pointer">
-              Acconsento al trattamento dei dati personali ai sensi del regolamento GDPR (UE 2016/679). Posso disiscrivermi in qualsiasi momento con un solo click.
+            <label htmlFor="gdpr-consent" className="text-xs text-slate-400 leading-relaxed cursor-pointer font-medium">
+              Acconsento al trattamento dei dati personali ai sensi del regolamento GDPR (UE 2016/679). Posso disiscrivermi in qualsiasi momento con 1 singolo click.
             </label>
           </div>
         </form>
 
         {responseMsg && (
-          <div className={`mt-4 p-3.5 rounded-xl text-xs font-semibold ${
+          <div className={`mt-5 p-4 rounded-2xl text-xs font-semibold backdrop-blur-md ${
             responseMsg.success
-              ? 'bg-emerald-950/60 border border-emerald-500/30 text-emerald-300'
-              : 'bg-rose-950/60 border border-rose-500/30 text-rose-300'
+              ? 'bg-emerald-950/60 border border-emerald-500/40 text-emerald-300'
+              : 'bg-rose-950/60 border border-rose-500/40 text-rose-300'
           }`}>
             {responseMsg.text}
           </div>
         )}
 
-        <div className="mt-6 flex items-center justify-center gap-4 text-xs text-slate-500">
-          <span className="flex items-center gap-1"><Lock className="w-3.5 h-3.5 text-purple-400" /> Dati protetti & crittografati</span>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 font-medium">
+          <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-purple-400" /> Dati Crittografati</span>
           <span>•</span>
-          <span>Zero Spam</span>
+          <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Zero Spam</span>
           <span>•</span>
           <span>1-Click Unsubscribe</span>
         </div>
+
       </div>
     </div>
   );
