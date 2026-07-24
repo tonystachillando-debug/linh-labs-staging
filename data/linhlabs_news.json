@@ -1,7 +1,7 @@
 {
   "articles": [
     {
-      "id": "cfa52245-b192-4713-9f3a-9e4929d26e0d",
+      "id": "fe7805c3-7c81-45d9-b8f4-4288055f6732",
       "url_hash": "97046d805a78477e3887110b4df8ae4a517093a675fb11ac584febe26289d098",
       "title_hash": "d278ee87b89c4995194bdc9341d4f78c1bd82f201e891a97bbed27ad849d2251",
       "title": "AegisAI Raccoglie $36M per Combattere lo Spear Phishing Generato da Agenti AI",
@@ -9,17 +9,16 @@
       "source": "VentureBeat AI",
       "category": "Strategia & Mercato",
       "published_at": "2026-07-24T07:15:00.000Z",
-      "summary_it": "La startup AegisAI, fondata da ex dirigenti della sicurezza Google, ha chiuso un round di finanziamento da 36 milioni di dollari. La tecnologia sviluppa agenti difensivi capaci di individuare in tempo reale email di truffa sofisticate create con intelligenza artificiale.",
+      "summary_it": "La startup di cybersicurezza AegisAI ha chiuso un round di investimento da 36 milioni di dollari. Fondata da ex esperti di sicurezza Google, la società impiega agenti AI difensivi capaci di esaminare la posta aziendale per identificare ed intercettare in tempo reale tentativi di truffa estremamente realistici creati con AI generativa.",
       "takeaways": [
-        "Analisi comportamentale profonda sulle anomalie comunicative aziendali",
-        "Risposta automatizzata e blocco immediato delle minacce prima della consegna",
-        "Forte interesse da parte dei settori bancario ed assicurativo"
+        "Protezione proattiva contro minacce informatiche generate da AI",
+        "Esame comportamentale delle comunicazioni in tempo reale"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:23:32.787Z"
+      "created_at": "2026-07-24T11:45:52.414Z"
     },
     {
-      "id": "82599927-28e2-47be-8a88-015ac3285106",
+      "id": "a9923f66-60a1-419e-b5fe-378461ef418a",
       "url_hash": "c8374f9e627f8695b776128e3332c6f9f0d1b2e22200d091eae39fceaf168da8",
       "title_hash": "93668f443658a4142192799f670c773cb83cd25e283c74042e83b484e393acde",
       "title": "Runway Lancia Media Router: L'Algoritmo che Seleziona la Migliore AI Generativa",
@@ -27,17 +26,16 @@
       "source": "TechCrunch AI",
       "category": "AI Enterprise",
       "published_at": "2026-07-24T07:45:00.000Z",
-      "summary_it": "Runway ha presentato Media Router, una soluzione avanzata che indirizza le richieste di generazione video e immagine verso il modello ottimale in base ai parametri di costo, velocità o risoluzione richiesti dallo sviluppatore.",
+      "summary_it": "Runway ha svelato Media Router, un sistema d'instradamento intelligente che seleziona il miglior modello per generare video, immagini o audio. In base alle priorità stabilite dagli sviluppatori (velocità, costo o qualità visiva), l'algoritmo distribuisce le richieste ottimizzando la resa dei progetti creativi.",
       "takeaways": [
-        "Ottimizzazione automatica dei costi di calcolo fino al 40%",
-        "Routing intelligente tra modelli proprietari e di terze parti",
-        "Interfaccia API unica per la produzione di contenuti multimediali"
+        "Riduzione dei costi di calcolo fino al 40% sulle pipeline multimediali",
+        "API unica per coordinare modelli generativi multipli"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:23:32.787Z"
+      "created_at": "2026-07-24T11:45:52.414Z"
     },
     {
-      "id": "bfaa4292-8574-4f3c-9efc-f32f0f8f140f",
+      "id": "9807f48c-3177-49c7-848d-1b42799bd46d",
       "url_hash": "ed8ee8512f17f0305278f0b8e4d881c3cff04dd99e877df3b96664b1f2d8670f",
       "title_hash": "722c5e34b90914c955bcba6a9589d017d4d71f0ef09a9e49bcf22875cd09c252",
       "title": "Anthropic Aggiorna Claude Voice Mode: Interazione Vocale Istantanea e Multimodale",
@@ -45,17 +43,16 @@
       "source": "MIT Tech Review",
       "category": "Ricerca & Modelli",
       "published_at": "2026-07-24T08:00:00.000Z",
-      "summary_it": "Anthropic ha rilasciato il nuovo aggiornamento per la modalità vocale di Claude. Il modello risponde con una latenza inferiore ai 200 millisecondi ed è in grado di pianificare appuntamenti, riassumere riunioni dal vivo e redigere email complesse mediante comandi vocali naturali.",
+      "summary_it": "Anthropic ha rilasciato un importante aggiornamento per la modalità vocale di Claude. Con una latenza ridotta al sotto dei 200 millisecondi, l'AI è in grado di sostenere conversazioni fluide, comprendere le sfumature espressive umane, organizzare calendari di lavoro e sintetizzare riunioni aziendali direttamente da comandi vocali.",
       "takeaways": [
-        "Latenza quasi zero e comprensione delle sfumature emotive del parlato",
-        "Integrazione immediata con Google Calendar e suite di produttività aziendale",
-        "Disponibile sia per account individuali che per l'offerta Enterprise"
+        "Risposta immediata senza pause percepite dall'utente (<200ms)",
+        "Integrazione diretta con Google Calendar e suite di lavoro"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:23:32.787Z"
+      "created_at": "2026-07-24T11:45:52.414Z"
     },
     {
-      "id": "923af755-0d64-4373-812e-46b1c742eeca",
+      "id": "7238c375-1743-4d51-ac40-534d24c26af3",
       "url_hash": "4ba9387cd4fcb17db4c418a7f943cbbce3168b69d64a75b11a3c33cdc640bad6",
       "title_hash": "99a24f3f8531901674a589b3d834028a7caa67c8c5fd198150f173eeb5b54f67",
       "title": "AMD Sfida il Dominio di Nvidia con il Sistema Rack-Scale Helios AI",
@@ -63,17 +60,16 @@
       "source": "VentureBeat AI",
       "category": "Infrastruttura & Hardware",
       "published_at": "2026-07-24T08:30:00.000Z",
-      "summary_it": "AMD ha annunciato il lancio commerciale di Helios, un sistema supercomputer su scala rack progettato per competere direttamente con le architetture Blackwell di Nvidia. Garantisce un'efficienza energetica superiore del 35% nell'inferenza di modelli LLM con centinaia di miliardi di parametri.",
+      "summary_it": "AMD compie un passo decisivo nel mercato dell'hardware con il nuovo Helios, un supercomputer su scala rack ideato per rivaleggiare con l'architettura Blackwell di Nvidia. L'infrastruttura offre un'efficienza energetica superiore del 35% durante l'inferenza di modelli linguistici di grandi dimensioni, abbattendo drasticamente i costi operativi dei data center.",
       "takeaways": [
-        "Riduzione significativa dei consumi energetici per data center AI",
-        "Compatibilità nativa con cluster PyTorch e framework open source",
-        "Prime consegne previste entro la fine dell'anno ai principali cloud provider"
+        "Risparmio energetico del 35% sull'elaborazione di LLM complessi",
+        "Compatibilità nativa con PyTorch e framework open source"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:23:32.785Z"
+      "created_at": "2026-07-24T11:45:52.414Z"
     },
     {
-      "id": "8f131e0a-6e34-43d9-8536-a9c510933eaa",
+      "id": "20ddee3d-406a-4201-b9c4-fde379dc7fd9",
       "url_hash": "0f71b99701c5accbacfc7d0f3a12f871e6e2665822dcba0d0ba30288eb4ede41",
       "title_hash": "392fe6324d4a0ca2b86811f43fd40b22646defa2b940c7026297a36ac210bf9d",
       "title": "OpenAI Lancia ChatGPT Health: Integrazione Dati Medici e Assistenza Personale",
@@ -81,218 +77,13 @@
       "source": "TechCrunch AI",
       "category": "LLM & Agenti",
       "published_at": "2026-07-24T09:00:00.000Z",
-      "summary_it": "OpenAI ha esteso a livello globale la nuova suite ChatGPT Health. La piattaforma permette agli utenti di sincronizzare in modo sicuro i dati biometrici da Apple Health e MyFitnessPal, offrendo consigli personalizzati sul benessere supportati da modelli ragionativi dedicati.",
+      "summary_it": "OpenAI ha lanciato ufficialmente ChatGPT Health, un'estensione dedicata alla salute personale. La piattaforma consente di collegare in totale sicurezza i dati biometrici provenienti da Apple Health e MyFitnessPal, analizzando parametri fisici ed esami per fornire raccomandazioni personalizzate sul benessere guidate dai più recenti modelli di ragionamento AI.",
       "takeaways": [
-        "Integrazione diretta con dispositivi indossabili ed app di tracciamento salute",
-        "Livello avanzato di crittografia end-to-end conforme alle normative mediche HIPAA",
-        "Supporto in tempo reale per analisi di esami e routine di prevenzione"
+        "Sincronizzazione biometrica in tempo reale con Apple Health",
+        "Crittografia avanzata e piena conformità alle norme di riservatezza sanitaria"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:23:32.780Z"
-    },
-    {
-      "id": "b3e839c2-9ab7-454d-bd45-2ccf9726c0b3",
-      "url_hash": "f3d8261eccac2113501bdbaa64315a2899d888cf91dee7f99dfd50662ec9d2ed",
-      "title_hash": "01e33984c5c64c0c0fede8324f0034622647080d0f5f25fbf5ed96b8ba182552",
-      "title": "ServiceNow bets $40 million on Indian banking software specialist to expand its financial services push",
-      "url": "https://techcrunch.com/2026/07/22/servicenow-bets-40m-on-indian-firm-businessnext-at-700m-valuation-to-deepen-banking-ai-push/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 06:09:13 +0000",
-      "summary_it": "ServiceNow's investment gives BusinessNext a strategic partner to expand its AI-powered banking software globally....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:13.215Z"
-    },
-    {
-      "id": "43045f13-d912-43c6-af97-935db72715a8",
-      "url_hash": "899d5de63282237b847359faca18c66973e76f2e10103206b05d0ed4b6ac48ec",
-      "title_hash": "58d60938344f8ac85be619c6ad1de2575fec13b0e6439651b24f68cee46c55ae",
-      "title": "Experts say exploiting Anthropic&#8217;s Fable isn&#8217;t how Kimi K3 got so good",
-      "url": "https://techcrunch.com/2026/07/23/experts-say-exploiting-anthropics-fable-isnt-how-kimi-k3-got-so-good/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 11:00:00 +0000",
-      "summary_it": "\"I don't think you get a model this strong and this quickly on the heels of Fable doing strictly distillation,\" one expert told TechCrunch....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:13.215Z"
-    },
-    {
-      "id": "0d415b3a-fe5a-477c-8d73-f1465f85d71a",
-      "url_hash": "719763c60dc4510bdb1efa92d50af5c11a7e8c4b7969386b19d1b3a50a2e7a9d",
-      "title_hash": "daada9247b73cea9d1049aadfc78ee525ed66ba72f3185464f557d36887b0c4d",
-      "title": "Google&#8217;s Gemini nears billion-user milestone",
-      "url": "https://techcrunch.com/2026/07/23/google-closes-in-on-another-billion-user-product-with-gemini/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 14:52:44 +0000",
-      "summary_it": "Gemini had over 750 million monthly users in February....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:13.214Z"
-    },
-    {
-      "id": "4276d0c6-38a7-4ca6-94c0-c3b3eb9cbd4c",
-      "url_hash": "0138225a35cf708d178136fec70a88e14f9d4dd70d4c2ed437dabc04eaaf5441",
-      "title_hash": "ff31a2324be2fde072e3c7b09bb111af05a8b1b00a8701da9e6394e1a16a3377",
-      "title": "AI chip startup Etched defies skeptics, hits $10.3B valuation from big-name investors",
-      "url": "https://techcrunch.com/2026/07/23/ai-chip-startup-etched-defies-skeptics-hits-10-3b-valuation-from-big-name-investors/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 15:00:00 +0000",
-      "summary_it": "Etched, founded by three Harvard dropouts, has created new chips and memory components that speed up inference on any AI model -- no GPUs required, it says....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:13.214Z"
-    },
-    {
-      "id": "d0f5ba3c-3a51-46f5-add2-6914ccf841a4",
-      "url_hash": "e33087cfb2d36e3384c8d42bdd9ada13ab83f2d5fe4e99c3a1d33b416710383a",
-      "title_hash": "b44d4aeabe1651567c0dbb4182803ebc60a56b197d6218f9855cbb422f420241",
-      "title": "Nvidia is sending GPUs to the moon",
-      "url": "https://techcrunch.com/2026/07/23/nvidia-is-sending-gpus-to-the-moon/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 15:00:00 +0000",
-      "summary_it": "If there's a place in the universe without GPUs, Nvidia is sending them there....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:13.214Z"
-    },
-    {
-      "id": "1047dc8f-d13b-400e-b67f-ca83c42b5413",
-      "url_hash": "5381ce89facb43bc045e4513c423aa0635e8b181c16b28353096596300434443",
-      "title_hash": "382ed5e9823daf088d0c2487577b900765d8ff6b2dca9675d183e8e2f9f13cb0",
-      "title": "Meta launched a new AI optimism ad set to a song about human extinction",
-      "url": "https://techcrunch.com/2026/07/23/meta-launched-a-new-ai-optimism-ad-set-to-a-song-about-human-extinction/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 16:28:50 +0000",
-      "summary_it": "David Bowie's song \"Five Years,\" which Meta used in a supposedly inspiring advertisement, is about humans learning that they have five years left to live before the apocalypse....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:13.214Z"
-    },
-    {
-      "id": "50e5b5db-438b-4a3b-ab17-9d52e6071670",
-      "url_hash": "9d9ec82468cab6cb925dc5f193d9eba1f9a4343272134034cd5b8fc847ada0d3",
-      "title_hash": "37437fd497fccf7b0d44e9d4045a300f3f4994ff78b59797dd6e8abfae32c5ac",
-      "title": "OpenAI makes ChatGPT Health available to all US users",
-      "url": "https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 17:00:00 +0000",
-      "summary_it": "Users can also integrate their personal data from services like Apple Health, Function, and MyFitnessPal....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:11.565Z"
-    },
-    {
-      "id": "a1f5bf09-0aea-4071-9b3f-d218e0e1fab7",
-      "url_hash": "febec2b845e71f8889b6271db0bb013e647c87b4ec4501ba1d73bfffd25b8f5d",
-      "title_hash": "ce472d853b1208d23dc53293c04c62f3f3b06f25f05871bb7208b4734efcf6cb",
-      "title": "Runway launches AI model router as generative media gets crowded",
-      "url": "https://techcrunch.com/2026/07/23/runway-bets-on-ai-model-routing-as-generative-media-gets-crowded/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 17:07:35 +0000",
-      "summary_it": "The Media Router is a tool that automatically selects the best image, video, or audio generation model for a request based on whether a developer prioritizes quality, speed or cost....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:11.565Z"
-    },
-    {
-      "id": "c6ca949b-35e9-441d-aa6d-1aae9bf77fcb",
-      "url_hash": "6bfa3a4782f2bc3372d89da3c3c614dfec6b02274c53eb2c84d43a103c08ad4e",
-      "title_hash": "45779465d9203cd34a2154f55b67ad3668f462c16364c30bbb460b1e9d42759f",
-      "title": "AegisAI, founded by former Google security execs, lands $36M to stop AI-driven spear phishing",
-      "url": "https://techcrunch.com/2026/07/23/aegisai-founded-by-former-google-security-execs-lands-36m-to-stop-ai-driven-spear-phishing/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 18:38:34 +0000",
-      "summary_it": "AegisAI co-founders developed AI agents that quickly analyze each message as a human would, paying attention to small anomalies that even the most elaborate checklist wouldn’t catch....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:11.565Z"
-    },
-    {
-      "id": "020689f6-a294-415d-a05a-7d426b753da2",
-      "url_hash": "1dcfbce1fc5d1f88028697de03191fb223287c1e2c71234ce20bab19f809e51e",
-      "title_hash": "45b37b3da72b53a2c201085c549749f22d8e7917834c775e8131ef9a10a45f18",
-      "title": "Anthropic updates Claude voice mode with more capable models",
-      "url": "https://techcrunch.com/2026/07/23/anthropic-updates-claude-voice-mode-with-more-capable-models/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 19:00:00 +0000",
-      "summary_it": "Claude's new voice model will let you reschedule your meeting or draft an email....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:11.564Z"
-    },
-    {
-      "id": "33d82f7e-568e-4451-95df-17fbec9762fa",
-      "url_hash": "8b605c4469d715384202b92cd3502f61efd6c8d4d38199832f34e21347f5770e",
-      "title_hash": "0a4d6866769cbedd7cc8d9a09410fa2df445b6d0875dc2f5ae3cc5cb2775b543",
-      "title": "AMD takes on Nvidia with its Helios AI rack-scale system",
-      "url": "https://techcrunch.com/2026/07/23/amd-takes-on-nvidia-with-its-helios-ai-rack-scale-system/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Thu, 23 Jul 2026 20:33:02 +0000",
-      "summary_it": "AMD is challenging its chipmaker rival with a new rack-scale system that will start shipping to customers later this year....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:11.564Z"
-    },
-    {
-      "id": "8c3f1b9b-3c49-4ae5-a0e4-1e2a42114018",
-      "url_hash": "96a2fd881fd3f49fba26e698bbf717f531531bbb302c1bd5250fd12e4856f47f",
-      "title_hash": "1f06667fcdaf4052e6622ca65b1f3fdc2d66960f0923abcc99ba7dd59dd51371",
-      "title": "How AI guardrails are impeding the work of offensive cybersecurity researchers",
-      "url": "https://techcrunch.com/2026/07/23/how-ai-guardrails-are-impeding-the-work-of-offensive-cybersecurity-researchers/",
-      "source": "TechCrunch AI",
-      "category": "Novità AI",
-      "published_at": "Fri, 24 Jul 2026 01:00:00 +0000",
-      "summary_it": "We spoke with several cybersecurity researchers, who look for unknown vulnerabilities and develop tools to exploit them, about how OpenAI’s and Anthropic’s guardrails affect their work....",
-      "takeaways": [
-        "Notizia del giorno da fonte ufficiale",
-        "Approfondisci al link della fonte"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:20:11.559Z"
+      "created_at": "2026-07-24T11:45:52.413Z"
     }
   ],
   "subscribers": [],
