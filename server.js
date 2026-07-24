@@ -174,6 +174,35 @@ app.post('/api/news/generate-carousel-images', async (req, res) => {
   }
 });
 
+// AI Proofreader route for draft correction
+app.post('/api/news/proofread', async (req, res) => {
+  try {
+    const { articleId, article } = req.body;
+    const { proofreadArticleContent } = await import('./server/newsProofreader.js');
+    const { updateArticle } = await import('./server/db.js');
+
+    const result = await proofreadArticleContent(article);
+
+    if (articleId) {
+      updateArticle(articleId, {
+        title: result.title,
+        summary_it: result.summary_it,
+        takeaways: result.takeaways,
+        is_proofread: true
+      });
+    }
+
+    res.json({
+      success: true,
+      proofreadResult: result,
+      message: '✨ Bozza revisionata e corretta dall’AI Proofreader con successo!'
+    });
+  } catch (err) {
+    console.error('❌ Errore correzione bozze:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Trigger daily newsletter broadcast
 app.post('/api/news/trigger-newsletter', async (req, res) => {
   try {

@@ -179,6 +179,25 @@ export const AdminRadarDashboard: React.FC = () => {
                   </div>
 
                   <div className="flex items-center gap-3 flex-shrink-0">
+                    <button
+                      onClick={async () => {
+                        setActionMsg(`✏️ Correzione di bozza AI in corso per "${art.title.slice(0, 30)}..."`);
+                        const res = await fetch('/api/news/proofread', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ articleId: art.id, article: art })
+                        });
+                        const data = await res.json();
+                        if (data.success) {
+                          setActionMsg(`✨ Bozza corretta ed aggiornata con successo!`);
+                          loadData();
+                        }
+                      }}
+                      className="p-2.5 rounded-xl bg-purple-600/20 border border-purple-500/40 hover:bg-purple-600/40 text-purple-200 text-xs font-semibold flex items-center gap-1.5 transition"
+                    >
+                      <Sparkles className="w-4 h-4 text-purple-400" /> Correttore Bozze AI
+                    </button>
+
                     <a href={art.url} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5">
                       <ExternalLink className="w-4 h-4" /> Fonte
                     </a>

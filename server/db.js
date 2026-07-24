@@ -117,18 +117,20 @@ export function getLatestArticles(limit = 10, includeDrafts = false) {
   return db.articles.filter(a => a.status === 'published' || a.status === undefined).slice(0, limit);
 }
 
-// Publish specific articles
-export function publishArticles(articleIds) {
+// Update specific article content (e.g. proofread text)
+export function updateArticle(id, updatedFields) {
   const db = loadDB();
-  let count = 0;
-  db.articles.forEach(art => {
-    if (!articleIds || articleIds.length === 0 || articleIds.includes(art.id)) {
-      art.status = 'published';
-      count++;
-    }
-  });
-  saveDB(db);
-  return count;
+  const index = db.articles.findIndex(a => a.id === id);
+  if (index !== -1) {
+    db.articles[index] = {
+      ...db.articles[index],
+      ...updatedFields,
+      updated_at: new Date().toISOString()
+    };
+    saveDB(db);
+    return db.articles[index];
+  }
+  return null;
 }
 
 // Get pending articles for newsletter broadcast
