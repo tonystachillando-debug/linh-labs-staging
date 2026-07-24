@@ -49,6 +49,7 @@ import { CataloguePage } from './components/CataloguePage';
 import { LeadQuiz } from './components/LeadQuiz';
 import { AINewsFeed } from './components/AINewsFeed';
 import { AdminRadarDashboard } from './components/AdminRadarDashboard';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
 
 function HomePage() {
   const [syncedMessages, setSyncedMessages] = React.useState<{ id: string, text: string, sender: 'user' | 'bot' }[]>([]);
@@ -94,6 +95,16 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/admin" element={<AdminRadarDashboard />} />
+        <Route path="/privacy" element={
+          <>
+            <PageSEO
+              title="Informativa sulla Privacy & Cookie Policy (GDPR) — Linh Labs"
+              description="Informativa sulla Privacy e sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR) di Linh Labs, Catania (CT)."
+              canonical="https://linhlabs.com/privacy"
+            />
+            <PrivacyPolicy />
+          </>
+        } />
         <Route path="/catalogo" element={
           <>
             <PageSEO

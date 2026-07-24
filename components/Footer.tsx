@@ -137,9 +137,12 @@ export const Footer: React.FC = () => {
           <div>
             © {new Date().getFullYear()} <span className="text-slate-500">Linh Labs</span>. {t('footer.rights')}
           </div>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
             <span>Partita IVA: 06297460872</span>
             <span>PEC: <a href="mailto:linhlabs@pec.it" className="hover:text-white transition-colors">linhlabs@pec.it</a></span>
+            <Link to="/privacy" className="text-slate-400 hover:text-cyan-400 font-semibold transition-colors underline">
+              Privacy & Cookie Policy (GDPR)
+            </Link>
           </div>
         </div>
       </div>
