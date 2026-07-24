@@ -141,7 +141,7 @@ app.post('/api/news/trigger-scan', async (req, res) => {
   }
 });
 
-// Generate Instagram Carousel slides preview
+// Generate Instagram Carousel slides preview (HTML)
 app.get('/api/news/carousel-preview', async (req, res) => {
   try {
     const articles = getLatestArticles(5);
@@ -151,6 +151,26 @@ app.get('/api/news/carousel-preview', async (req, res) => {
     res.send(html);
   } catch (err) {
     res.status(500).send(`Error generating Instagram carousel: ${err.message}`);
+  }
+});
+
+// Generate & save actual 1080x1350px Carousel Slide Image files
+app.post('/api/news/generate-carousel-images', async (req, res) => {
+  try {
+    const { generateCarouselSlideImages } = await import('./server/instagramImageGenerator.js');
+    const articles = getLatestArticles(5);
+    const copy = await generateCarouselCopy(articles);
+    const slideFiles = await generateCarouselSlideImages(copy);
+
+    res.json({
+      success: true,
+      message: `🎉 Generate con successo ${slideFiles.length} slide per Instagram in formato 1080x1350px!`,
+      slides: slideFiles,
+      carouselCopy: copy
+    });
+  } catch (err) {
+    console.error('❌ Errore generazione immagini carosello:', err);
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 

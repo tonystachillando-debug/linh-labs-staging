@@ -163,10 +163,15 @@ export const AdminRadarDashboard: React.FC = () => {
               {articles.map((art, idx) => (
                 <div key={art.id || idx} className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-purple-500/40 transition">
                   <div className="space-y-2 max-w-3xl">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 flex-wrap">
                       <span className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-300 text-[10px] font-extrabold uppercase rounded-full">
                         {art.category}
                       </span>
+                      {art.ranking_scores && (
+                        <span className="px-2.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[10px] font-bold rounded-full">
+                          ⭐ Score Oggettivo: {art.ranking_scores.total_score}/100
+                        </span>
+                      )}
                       <span className="text-xs text-slate-500 font-medium">{art.source} • {new Date(art.published_at).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })}</span>
                     </div>
                     <h3 className="font-display text-lg font-bold text-white">{art.title}</h3>
@@ -214,17 +219,33 @@ export const AdminRadarDashboard: React.FC = () => {
           <div className="space-y-6 text-center">
             <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 max-w-3xl mx-auto">
               <Image className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
-              <h2 className="font-display text-2xl font-bold text-white mb-2">Generatore Caroselli Instagram AI (1080x1350px)</h2>
-              <p className="text-slate-400 text-sm mb-6">Genera la sequenza di slide pronte per i social basate sull'edizione del 24 Luglio 2026.</p>
+              <h2 className="font-display text-2xl font-bold text-white mb-2">Generatore Immagini Slide Instagram AI (1080x1350px)</h2>
+              <p className="text-slate-400 text-sm mb-6">Genera i file immagini ad alta risoluzione (1080x1350px) pronti per essere pubblicati direttamente sul profilo Instagram di Linh Labs.</p>
               
-              <a
-                href="/api/news/carousel-preview"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white font-extrabold text-xs uppercase tracking-widest shadow-xl hover:scale-105 transition duration-300"
-              >
-                <Eye className="w-4 h-4" /> Apri Anteprima Slide Carosello Full Screen →
-              </a>
+              <div className="flex items-center justify-center gap-4 flex-wrap">
+                <a
+                  href="/api/news/carousel-preview"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-widest transition"
+                >
+                  <Eye className="w-4 h-4" /> Anteprima Slide HTML
+                </a>
+
+                <button
+                  onClick={async () => {
+                    setActionMsg('Generazione delle immagini 1080x1350px in corso...');
+                    const res = await fetch('/api/news/generate-carousel-images', { method: 'POST' });
+                    const data = await res.json();
+                    if (data.success) {
+                      setActionMsg(data.message);
+                    }
+                  }}
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white font-extrabold text-xs uppercase tracking-widest shadow-xl hover:scale-105 transition duration-300"
+                >
+                  <Sparkles className="w-4 h-4" /> Genera File Immagini Slide (1080x1350px)
+                </button>
+              </div>
             </div>
           </div>
         )}

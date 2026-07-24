@@ -1,16 +1,16 @@
 import { isArticleDuplicate, saveArticles } from './db.js';
+import { rankAndSortArticles } from './newsRanking.js';
 
 // Pre-configured top RSS feeds for daily AI news
 const FEEDS = [
-  { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/' },
-  { name: 'VentureBeat AI', url: 'https://venturebeat.com/category/ai/feed/' },
-  { name: 'MIT Tech Review', url: 'https://www.technologyreview.com/feed/' },
   { name: 'OpenAI Blog', url: 'https://openai.com/news/rss.xml' },
+  { name: 'ArXiv AI Digest', url: 'http://export.arxiv.org/rss/cs.AI' },
   { name: 'Hugging Face Blog', url: 'https://huggingface.co/blog/feed.xml' },
-  { name: 'ArXiv AI Digest', url: 'http://export.arxiv.org/rss/cs.AI' }
+  { name: 'MIT Tech Review', url: 'https://www.technologyreview.com/feed/' },
+  { name: 'VentureBeat AI', url: 'https://venturebeat.com/category/ai/feed/' },
+  { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/' }
 ];
 
-// Helper to extract items from RSS XML text without heavy external libraries
 function parseRSS(xmlText, sourceName) {
   const items = [];
   const itemRegex = /<item[\s\S]*?>([\s\S]*?)<\/item>/gi;
@@ -42,37 +42,37 @@ function parseRSS(xmlText, sourceName) {
   return items;
 }
 
-// Call AI Provider (OpenRouter Gemini Flash OR Local Ollama)
+// Call AI Provider (Ollama / OpenRouter) with Simplified Italian Output Prompt
 async function summarizeWithAI(rawNewsList) {
-  const provider = process.env.AI_PROVIDER || 'openrouter'; // 'openrouter' or 'ollama'
+  const provider = process.env.AI_PROVIDER || 'openrouter';
   const apiKey = process.env.OPENROUTER_API_KEY;
   const ollamaUrl = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
 
-  const systemPrompt = `Sei l'Analista Strategico AI di Linh Labs (laboratorio di intelligenza artificiale applicata).
-Il tuo compito è analizzare le notizie AI grezze del giorno, selezionare le più rilevanti e creare un resoconto chiaro, professionale e in italiano impeccabile.
+  const systemPrompt = `Sei l'Analista Strategico AI di Linh Labs.
+Il tuo compito è TRADURRE e SINTETIZZARE le notizie AI in ITALIANO SEMPLICE, CHIARO E IMMEDIATAMENTE COMPRENSIBILE da imprenditori e professionisti (senza gergo incomprensibile).
 
-Per ogni notizia valida, fornisci un JSON in formato ARRAY di oggetti con le seguenti proprietà:
+Per ogni notizia, crea un JSON in formato ARRAY di oggetti:
 [
   {
-    "title": "Titolo d'impatto in italiano",
-    "summary_it": "Riassunto chiaro in 2-3 frasi di cosa è successo e perché è importante.",
+    "title": "Titolo in italiano chiaro e scorrevole",
+    "summary_it": "Sintesi semplice in 2 frasi: spiegazione di cosa è successo e perché cambia le cose.",
     "takeaways": [
-      "Punto chiave 1",
-      "Punto chiave 2",
-      "Punto chiave 3"
+      "Punto chiave 1 (Impatto concreto)",
+      "Punto chiave 2 (Opportunità o rischio)",
+      "Punto chiave 3 (Prossimo passo)"
     ],
     "category": "Una tra: 'LLM & Agenti', 'AI Enterprise', 'Infrastruttura & Hardware', 'Ricerca & Modelli', 'Strategia & Mercato'",
-    "source_url": "URL originale della notizia"
+    "source_url": "URL originale"
   }
 ]
-Restituisci ESCLUSIVAMENTE il JSON valido, senza testo introduttivo o markdown superfluo.`;
+Restituisci ESCLUSIVAMENTE il JSON valido.`;
 
-  const userPrompt = `Ecco le notizie del giorno estratte dalle testate internazionali:\n` +
+  const userPrompt = `Ecco le notizie estratte:\n` +
     rawNewsList.map((n, i) => `[${i + 1}] Titolo: ${n.title}\nFonte: ${n.source}\nURL: ${n.url}\nContesto: ${n.raw_description}\n`).join('\n---\n');
 
   try {
     if (provider === 'ollama') {
-      console.log('🤖 Scansione AI via Ollama Locale...');
+      console.log('🤖 Traduzione e Sintesi Semplificata AI con Ollama Locale...');
       const response = await fetch(`${ollamaUrl}/api/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -88,14 +88,14 @@ Restituisci ESCLUSIVAMENTE il JSON valido, senza testo introduttivo o markdown s
       const data = await response.json();
       return JSON.parse(data.response);
     } else {
-      console.log('⚡ Scansione AI via OpenRouter (Gemini Flash)...');
+      console.log('⚡ Traduzione e Sintesi Semplificata AI con OpenRouter (Gemini Flash)...');
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey || 'sk-or-dummy'}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://linhlabs.it',
-          'X-Title': 'Linh Labs Daily AI News'
+          'HTTP-Referer': 'https://linhlabs.com',
+          'X-Title': 'Linh Labs AI Radar'
         },
         body: JSON.stringify({
           model: process.env.OPENROUTER_MODEL || 'google/gemini-2.0-flash-001',
@@ -118,7 +118,7 @@ Restituisci ESCLUSIVAMENTE il JSON valido, senza testo introduttivo o markdown s
       return Array.isArray(parsed) ? parsed : (parsed.news || parsed.articles || [parsed]);
     }
   } catch (err) {
-    console.error('❌ Errore durante il processo di summarization AI:', err.message);
+    console.error('❌ Errore durante la traduzione ed elaborazione AI:', err.message);
     return rawNewsList.map(n => ({
       title: n.title,
       summary_it: n.raw_description.slice(0, 200) + '...',
@@ -129,10 +129,10 @@ Restituisci ESCLUSIVAMENTE il JSON valido, senza testo introduttivo o markdown s
   }
 }
 
-// Main scanner runner
+// Main scanner runner with Objective Ranking Filter
 export async function runNewsScan() {
   console.log('🌐 Avvio scansione testate AI...');
-  const candidates = [];
+  const rawCandidates = [];
 
   for (const feed of FEEDS) {
     try {
@@ -144,7 +144,7 @@ export async function runNewsScan() {
 
       for (const item of items) {
         if (!isArticleDuplicate(item.url, item.title)) {
-          candidates.push(item);
+          rawCandidates.push(item);
         } else {
           console.log(`⏭️ Skippata notizia già presente in DB: "${item.title.slice(0, 40)}..."`);
         }
@@ -154,13 +154,16 @@ export async function runNewsScan() {
     }
   }
 
-  if (candidates.length === 0) {
+  if (rawCandidates.length === 0) {
     console.log('✅ Nessuna nuova notizia da pubblicare oggi (tutte già elaborate).');
     return { added: 0, articles: [] };
   }
 
-  console.log(`🔎 Trovate ${candidates.length} notizie non lette in precedenza. Elaborazione con AI...`);
-  const selectedCandidates = candidates.slice(0, 6);
+  // 1. Objective News Ranking Algorithm Sort
+  const rankedCandidates = rankAndSortArticles(rawCandidates);
+  console.log(`📊 Valutazione oggettiva completata. Top 5 notizie selezionate da un totale di ${rankedCandidates.length} candidate.`);
+
+  const selectedCandidates = rankedCandidates.slice(0, 5);
   const aiSummaries = await summarizeWithAI(selectedCandidates);
 
   const finalArticles = aiSummaries.map((s, idx) => {
@@ -172,12 +175,13 @@ export async function runNewsScan() {
       category: s.category || 'AI Innovation',
       published_at: raw.published_at || new Date().toISOString(),
       summary_it: s.summary_it || raw.raw_description,
-      takeaways: s.takeaways || []
+      takeaways: s.takeaways || [],
+      ranking_scores: raw.ranking_scores || { total_score: 85 }
     };
   });
 
   const addedCount = saveArticles(finalArticles);
-  console.log(`🎉 Inserite con successo ${addedCount} nuove notizie uniche nel database Linh Labs.`);
+  console.log(`🎉 Inserite con successo ${addedCount} notizie ad alto ranking nel database Linh Labs.`);
 
   return { added: addedCount, articles: finalArticles };
 }
