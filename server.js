@@ -166,6 +166,31 @@ app.post('/api/news/trigger-newsletter', async (req, res) => {
   }
 });
 
+// One-click publish edition to site & trigger newsletter broadcast
+app.post('/api/news/publish-edition', async (req, res) => {
+  try {
+    const { articleIds, sendEmail } = req.body;
+    const { publishArticles } = await import('./server/db.js');
+    const publishedCount = publishArticles(articleIds);
+
+    let newsletterResult = null;
+    if (sendEmail !== false) {
+      const siteUrl = `${req.protocol}://${req.get('host')}`;
+      newsletterResult = await sendDailyNewsletter(transporter, siteUrl);
+    }
+
+    res.json({
+      success: true,
+      publishedCount,
+      newsletterResult,
+      message: `🎉 Pubblicate con successo ${publishedCount} notizie sul sito live!`
+    });
+  } catch (err) {
+    console.error('❌ Errore pubblicazione automatica:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // ─── 3. GDPR NEWSLETTER SUBSCRIPTION ENDPOINTS ─────────────────────────────
 
 // Subscribe endpoint with double opt-in email

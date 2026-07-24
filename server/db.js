@@ -109,9 +109,26 @@ export function saveArticles(articles) {
 }
 
 // Get latest published articles (for site & newsletter)
-export function getLatestArticles(limit = 10) {
+export function getLatestArticles(limit = 10, includeDrafts = false) {
   const db = loadDB();
-  return db.articles.slice(0, limit);
+  if (includeDrafts) {
+    return db.articles.slice(0, limit);
+  }
+  return db.articles.filter(a => a.status === 'published' || a.status === undefined).slice(0, limit);
+}
+
+// Publish specific articles
+export function publishArticles(articleIds) {
+  const db = loadDB();
+  let count = 0;
+  db.articles.forEach(art => {
+    if (!articleIds || articleIds.length === 0 || articleIds.includes(art.id)) {
+      art.status = 'published';
+      count++;
+    }
+  });
+  saveDB(db);
+  return count;
 }
 
 // Get pending articles for newsletter broadcast

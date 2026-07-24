@@ -59,6 +59,26 @@ export const AdminRadarDashboard: React.FC = () => {
     }
   };
 
+  const handlePublishEdition = async () => {
+    setActionMsg('Pubblicazione immediata sul sito live ed invio newsletter in corso...');
+    try {
+      const res = await fetch('/api/news/publish-edition', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sendEmail: true })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setActionMsg(`🚀 PUBBLICATO! ${data.publishedCount} notizie sono ora visibili sul sito e inviate via email.`);
+        loadData();
+      } else {
+        setActionMsg('⚠️ Errore durante la pubblicazione.');
+      }
+    } catch (err) {
+      setActionMsg('❌ Errore durante la pubblicazione.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#020617] text-white pt-24 pb-20 px-4 sm:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
@@ -78,15 +98,16 @@ export const AdminRadarDashboard: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={handleScanTrigger}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-bold text-xs uppercase tracking-wider transition"
             >
-              <RefreshCw className="w-4 h-4" /> Avvia Scansione AI
+              <RefreshCw className="w-4 h-4" /> 1. Scansiona AI
             </button>
+            
             <button
-              onClick={handleNewsletterTrigger}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-500 hover:from-cyan-500 hover:to-teal-400 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg"
+              onClick={handlePublishEdition}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-extrabold text-xs uppercase tracking-wider transition shadow-xl"
             >
-              <Send className="w-4 h-4" /> Invia Newsletter
+              <Play className="w-4 h-4 fill-white" /> 2. Approva & Pubblica Live sul Sito
             </button>
           </div>
         </div>
