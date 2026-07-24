@@ -48,6 +48,7 @@ import { StickyChat } from './components/StickyChat';
 import { CataloguePage } from './components/CataloguePage';
 import { LeadQuiz } from './components/LeadQuiz';
 import { AINewsFeed } from './components/AINewsFeed';
+import { AdminRadarDashboard } from './components/AdminRadarDashboard';
 
 function HomePage() {
   const [syncedMessages, setSyncedMessages] = React.useState<{ id: string, text: string, sender: 'user' | 'bot' }[]>([]);
@@ -92,6 +93,7 @@ function App() {
       <ScrollToHash />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/admin" element={<AdminRadarDashboard />} />
         <Route path="/catalogo" element={
           <>
             <PageSEO
