@@ -1,7 +1,7 @@
 {
   "articles": [
     {
-      "id": "fe7805c3-7c81-45d9-b8f4-4288055f6732",
+      "id": "057e9af9-f667-445f-9424-fafadb445dc2",
       "url_hash": "97046d805a78477e3887110b4df8ae4a517093a675fb11ac584febe26289d098",
       "title_hash": "d278ee87b89c4995194bdc9341d4f78c1bd82f201e891a97bbed27ad849d2251",
       "title": "AegisAI Raccoglie $36M per Combattere lo Spear Phishing Generato da Agenti AI",
@@ -15,10 +15,10 @@
         "Esame comportamentale delle comunicazioni in tempo reale"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:45:52.414Z"
+      "created_at": "2026-07-25T10:52:08.370Z"
     },
     {
-      "id": "a9923f66-60a1-419e-b5fe-378461ef418a",
+      "id": "8cb26092-28b8-442d-81e7-c13cbe4fc46c",
       "url_hash": "c8374f9e627f8695b776128e3332c6f9f0d1b2e22200d091eae39fceaf168da8",
       "title_hash": "93668f443658a4142192799f670c773cb83cd25e283c74042e83b484e393acde",
       "title": "Runway Lancia Media Router: L'Algoritmo che Seleziona la Migliore AI Generativa",
@@ -32,10 +32,10 @@
         "API unica per coordinare modelli generativi multipli"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:45:52.414Z"
+      "created_at": "2026-07-25T10:52:08.370Z"
     },
     {
-      "id": "9807f48c-3177-49c7-848d-1b42799bd46d",
+      "id": "7bf30c37-5d3e-4aab-a4e1-e01884f6a22b",
       "url_hash": "ed8ee8512f17f0305278f0b8e4d881c3cff04dd99e877df3b96664b1f2d8670f",
       "title_hash": "722c5e34b90914c955bcba6a9589d017d4d71f0ef09a9e49bcf22875cd09c252",
       "title": "Anthropic Aggiorna Claude Voice Mode: Interazione Vocale Istantanea e Multimodale",
@@ -49,10 +49,10 @@
         "Integrazione diretta con Google Calendar e suite di lavoro"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:45:52.414Z"
+      "created_at": "2026-07-25T10:52:08.365Z"
     },
     {
-      "id": "7238c375-1743-4d51-ac40-534d24c26af3",
+      "id": "6d215c30-cf8e-4455-b9f3-301972e8a7c3",
       "url_hash": "4ba9387cd4fcb17db4c418a7f943cbbce3168b69d64a75b11a3c33cdc640bad6",
       "title_hash": "99a24f3f8531901674a589b3d834028a7caa67c8c5fd198150f173eeb5b54f67",
       "title": "AMD Sfida il Dominio di Nvidia con il Sistema Rack-Scale Helios AI",
@@ -66,10 +66,10 @@
         "Compatibilità nativa con PyTorch e framework open source"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:45:52.414Z"
+      "created_at": "2026-07-25T10:52:08.365Z"
     },
     {
-      "id": "20ddee3d-406a-4201-b9c4-fde379dc7fd9",
+      "id": "9f9de624-a081-45d0-8644-9b629cc9eb74",
       "url_hash": "0f71b99701c5accbacfc7d0f3a12f871e6e2665822dcba0d0ba30288eb4ede41",
       "title_hash": "392fe6324d4a0ca2b86811f43fd40b22646defa2b940c7026297a36ac210bf9d",
       "title": "OpenAI Lancia ChatGPT Health: Integrazione Dati Medici e Assistenza Personale",
@@ -83,7 +83,92 @@
         "Crittografia avanzata e piena conformità alle norme di riservatezza sanitaria"
       ],
       "is_newsletter_sent": false,
-      "created_at": "2026-07-24T11:45:52.413Z"
+      "created_at": "2026-07-25T10:52:08.364Z"
+    },
+    {
+      "id": "6663f433-de3e-4b36-9232-e276d91449da",
+      "url_hash": "cb569ad8108b3fd660601e5579fc9d43c0382011b86e4a73b64841a51ac33521",
+      "title_hash": "19806edfbee26a86f93176dd2115d7c16d42af0623321966848788b59c0ba357",
+      "title": "EU AI Act: Entrano in Vigore le Linee Guida Operative per la Trasparenza degli Agenti Autonomi",
+      "url": "https://techcrunch.com/2026/07/25/eu-ai-act-transparency-guidelines",
+      "source": "MIT Tech Review",
+      "category": "Strategia & Mercato",
+      "published_at": "2026-07-25T07:15:00.000Z",
+      "summary_it": "La Commissione Europea ha pubblicato il manuale applicativo delle linee guida sull'EU AI Act relative agli agenti sintetici. Il regolamento stabilisce requisiti chiari di etichettatura dei contenuti AI e audit periodici per le aziende che distribuiscono chatbot e assistenti virtuali nell'Unione Europea.",
+      "takeaways": [
+        "Standard trasparenti per la tracciabilità e certificazione dei modelli AI",
+        "Linee guida chiare per lo sviluppo etico e conforme per le imprese europee"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-25T10:08:07.303Z"
+    },
+    {
+      "id": "9794f506-d1c3-4d53-bf29-26301496892c",
+      "url_hash": "52f7731e528254a50a544ef90b1d90b9821256aa5b908dc5d1debc3fceb0c086",
+      "title_hash": "76e5a956a1673f802366aa23347d17de7dc3bfb9989b3a4813254a57a59dc309",
+      "title": "Nvidia Presenta TensorRT-LLM v12: Inferenza AI 3x Più Veloce per i Data Center",
+      "url": "https://techcrunch.com/2026/07/25/nvidia-tensorrt-llm-v12-speedup",
+      "source": "VentureBeat AI",
+      "category": "Infrastruttura & Hardware",
+      "published_at": "2026-07-25T07:45:00.000Z",
+      "summary_it": "Nvidia ha ufficializzato il lancio della nuova release di TensorRT-LLM v12. La libreria di ottimizzazione incrementa del 300% la velocità di generazione del testo e la capacità di calcolo parallelo su GPU H200 e Blackwell.",
+      "takeaways": [
+        "Accelerazione delle prestazioni d'inferenza fino a 3 volte superiori",
+        "Gestione ottimizzata delle richieste ad altissimo traffico simultaneo"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-25T10:08:07.303Z"
+    },
+    {
+      "id": "5f9f6c3a-39c1-4864-b022-86792b7bfffb",
+      "url_hash": "4d235a20db99794ccbf3250c2bad299aed2308ba7977b7b007da787cdfc6c7e9",
+      "title_hash": "e530f5cc5979e464d7b4366721f968a4f1ad70559977745dae351fcab7c383bf",
+      "title": "Microsoft e OpenAI Lanciano Copilot Autonomous Agents Studio per le PMI",
+      "url": "https://techcrunch.com/2026/07/25/microsoft-copilot-agents-studio-pmi",
+      "source": "TechCrunch AI",
+      "category": "AI Enterprise",
+      "published_at": "2026-07-25T08:00:00.000Z",
+      "summary_it": "Microsoft ha integrato in Copilot la nuova suite Autonomous Agents Studio. La piattaforma permette alle piccole e medie imprese di creare assistenti AI personalizzati che automatizzano la gestione contabile, il supporto clienti e l'evasione degli ordini senza scrivere codice.",
+      "takeaways": [
+        "Creazione no-code di agenti operativi per processi aziendali in 5 minuti",
+        "Integrazione nativa con ERP, CRM e sistemi di fatturazione elettronica"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-25T10:08:07.303Z"
+    },
+    {
+      "id": "0923517b-5d75-43be-988f-aafbdb63edc4",
+      "url_hash": "fd139f30e5af017efc45a6cabb273d79277251576e99a560d7f79adfa943095d",
+      "title_hash": "62ecda9ad2b674b9da7eef355e83c8373dc473d24b2642e49f8bae08b1721382",
+      "title": "Meta Svela Llama 4 Enterprise: Architettura Mixture-of-Experts per la Privacy Aziendale",
+      "url": "https://techcrunch.com/2026/07/25/meta-llama-4-enterprise-launch",
+      "source": "Meta AI Research",
+      "category": "Infrastruttura & Hardware",
+      "published_at": "2026-07-25T08:30:00.000Z",
+      "summary_it": "Meta ha rilasciato Llama 4 Enterprise con architettura Mixture-of-Experts (MoE) ottimizzata per l'infrastruttura aziendale on-premise. Questa versione garantisce la massima riservatezza dei dati e costi di inferenza ridotti del 50% su server dedicati.",
+      "takeaways": [
+        "Esecuzione locale in ambienti aziendali ad alta sicurezza (100% GDPR compliant)",
+        "Efficienza MoE con consumi energetici e costi di gestione dimezzati"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-25T10:08:07.302Z"
+    },
+    {
+      "id": "9d5def1e-646e-4f99-bf24-7cb800f20da7",
+      "url_hash": "9de75f2f5f03f59840983c9734a25b926b8fa6a4b283f700ef33cb4e14088555",
+      "title_hash": "65f6e55d5d553133c9b6aa2d6cbbab9f538ed3583d3c25258bf5b9a9da2232d7",
+      "title": "Google DeepMind Presenta Gemini 2.5 Flash Ultra: Latenza Ridotta e Multimodalità Avanzata",
+      "url": "https://techcrunch.com/2026/07/25/google-deepmind-gemini-flash-ultra",
+      "source": "Google AI Blog",
+      "category": "LLM & Agenti",
+      "published_at": "2026-07-25T09:00:00.000Z",
+      "summary_it": "Google DeepMind ha annunciato il rilascio di Gemini 2.5 Flash Ultra, un modello ultra-rapido progettato per l'esecuzione di agenti autonomi a bassissima latenza. Il modello eccelle nella gestione di workflow complessi in tempo reale e nell'analisi fluida di flussi audio-video in streaming.",
+      "takeaways": [
+        "Latenza di risposta abbattuta del 45% rispetto ai modelli precedenti",
+        "Supporto nativo per agenti autonomi multi-modalità in tempo reale"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-25T10:08:07.302Z"
     }
   ],
   "subscribers": [],

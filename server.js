@@ -17,8 +17,40 @@ const __dirname = dirname(__filename);
 dotenv.config({ path: resolve(__dirname, '.env.local') });
 
 const app = express();
-app.use(cors());
+
+// Secure CORS configuration
+const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*';
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Admin-Password']
+}));
+
 app.use(express.json());
+
+// ─── ADMIN AUTHENTICATION MIDDLEWARE ──────────────────────────────────────
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'LinhLabsAdmin2026!';
+
+const requireAdminAuth = (req, res, next) => {
+  const authHeader = req.headers['x-admin-password'] || req.headers['authorization'];
+  let password = authHeader;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    password = authHeader.substring(7);
+  }
+  if (!password || password !== ADMIN_PASSWORD) {
+    return res.status(401).json({ success: false, error: 'Accesso negato: password Admin errata o mancante.' });
+  }
+  next();
+};
+
+// Admin authentication verification endpoint
+app.post('/api/admin/verify', (req, res) => {
+  const { password } = req.body;
+  if (password === ADMIN_PASSWORD) {
+    return res.json({ success: true, message: 'Autenticazione Admin riuscita.' });
+  }
+  return res.status(401).json({ success: false, error: 'Password Admin errata.' });
+});
 
 // Create reusable SMTP transporter
 const transporter = nodemailer.createTransport({
@@ -131,7 +163,7 @@ app.get('/api/news/latest', (req, res) => {
 });
 
 // Trigger daily news scan & deduplication loop
-app.post('/api/news/trigger-scan', async (req, res) => {
+app.post('/api/news/trigger-scan', requireAdminAuth, async (req, res) => {
   try {
     const result = await runNewsScan();
     res.json({ success: true, ...result });
@@ -155,7 +187,7 @@ app.get('/api/news/carousel-preview', async (req, res) => {
 });
 
 // Generate & save actual 1080x1350px Carousel Slide Image files
-app.post('/api/news/generate-carousel-images', async (req, res) => {
+app.post('/api/news/generate-carousel-images', requireAdminAuth, async (req, res) => {
   try {
     const { generateCarouselSlideImages } = await import('./server/instagramImageGenerator.js');
     const articles = getLatestArticles(5);
@@ -175,7 +207,7 @@ app.post('/api/news/generate-carousel-images', async (req, res) => {
 });
 
 // AI Proofreader route for draft correction
-app.post('/api/news/proofread', async (req, res) => {
+app.post('/api/news/proofread', requireAdminAuth, async (req, res) => {
   try {
     const { articleId, article } = req.body;
     const { proofreadArticleContent } = await import('./server/newsProofreader.js');
@@ -204,7 +236,7 @@ app.post('/api/news/proofread', async (req, res) => {
 });
 
 // Trigger daily newsletter broadcast
-app.post('/api/news/trigger-newsletter', async (req, res) => {
+app.post('/api/news/trigger-newsletter', requireAdminAuth, async (req, res) => {
   try {
     const siteUrl = `${req.protocol}://${req.get('host')}`;
     const result = await sendDailyNewsletter(transporter, siteUrl);
@@ -216,7 +248,7 @@ app.post('/api/news/trigger-newsletter', async (req, res) => {
 });
 
 // One-click publish edition to site & trigger newsletter broadcast
-app.post('/api/news/publish-edition', async (req, res) => {
+app.post('/api/news/publish-edition', requireAdminAuth, async (req, res) => {
   try {
     const { articleIds, sendEmail } = req.body;
     const { publishArticles } = await import('./server/db.js');
@@ -239,6 +271,7 @@ app.post('/api/news/publish-edition', async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 });
+
 
 // ─── 3. GDPR NEWSLETTER SUBSCRIPTION ENDPOINTS ─────────────────────────────
 
