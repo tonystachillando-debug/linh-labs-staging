@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 /**
  * Generate Instagram Carousel Copy using Local AI (Ollama) or OpenRouter fallback
  */
