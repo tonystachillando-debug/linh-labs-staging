@@ -12,7 +12,7 @@ if (!fs.existsSync(CAROUSEL_DIR)) {
 }
 
 /**
- * Generate 1080x1350 SVG/PNG Slide Images for Instagram
+ * Generate 1080x1350 SVG/PNG Slide Images with 100% Brand Consistency
  */
 export async function generateCarouselSlideImages(carouselData) {
   const slides = carouselData.slides || [];
@@ -25,99 +25,81 @@ export async function generateCarouselSlideImages(carouselData) {
     const isCover = slide.type === 'cover';
     const isCTA = slide.type === 'cta';
 
-    // Build vector SVG slide (1080x1350 resolution)
-    const svgContent = `
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+    // SVG Slide (1080x1350 resolution - 4:5 Aspect Ratio)
+    const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#020617" />
-      <stop offset="50%" stop-color="#0b0f19" />
-      <stop offset="100%" stop-color="#0f172a" />
-    </linearGradient>
-
-    <!-- Glow Gradient -->
-    <radialGradient id="purpleGlow" cx="90%" cy="10%" r="60%">
-      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35" />
-      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0" />
+    <radialGradient id="cyanGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#36D6B5" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#36D6B5" stop-opacity="0" />
     </radialGradient>
-
-    <radialGradient id="cyanGlow" cx="10%" cy="90%" r="60%">
-      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
-    </radialGradient>
-
-    <linearGradient id="ctaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7c3aed" />
-      <stop offset="100%" stop-color="#06b6d4" />
-    </linearGradient>
-
     <style>
-      .brand-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 38px; font-weight: 800; fill: #ffffff; }
-      .brand-accent { fill: #38bdf8; }
-      .slide-counter { font-family: 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 700; fill: #64748b; }
-      .tag-text { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 22px; font-weight: 800; fill: #38bdf8; letter-spacing: 2px; }
-      .headline { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: ${isCover ? '62px' : '46px'}; font-weight: 800; fill: #ffffff; line-height: 1.2; }
-      .body-text { font-family: 'Inter', system-ui, sans-serif; font-size: 30px; font-weight: 400; fill: #cbd5e1; line-height: 1.6; }
-      .takeaway-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 22px; font-weight: 800; fill: #38bdf8; letter-spacing: 1px; }
-      .takeaway-item { font-family: 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 500; fill: #94a3b8; }
+      .tag-text { font-family: 'Outfit', 'Inter', system-ui, sans-serif; font-size: 22px; font-weight: 700; fill: #36D6B5; letter-spacing: 2px; }
+      .headline { font-family: 'Outfit', 'Inter', system-ui, sans-serif; font-size: ${isCover ? '58px' : '46px'}; font-weight: 800; fill: #ffffff; line-height: 1.25; }
+      .body-text { font-family: 'Inter', system-ui, sans-serif; font-size: 28px; font-weight: 400; fill: #cbd5e1; line-height: 1.6; }
+      .takeaway-title { font-family: 'Outfit', 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 800; fill: #36D6B5; letter-spacing: 1.5px; }
+      .takeaway-item { font-family: 'Inter', system-ui, sans-serif; font-size: 26px; font-weight: 500; fill: #94a3b8; line-height: 1.5; }
       .footer-text { font-family: 'Inter', system-ui, sans-serif; font-size: 22px; font-weight: 600; fill: #64748b; }
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="1080" height="1350" fill="url(#bgGrad)" />
-  <circle cx="950" cy="150" r="500" fill="url(#purpleGlow)" />
-  <circle cx="150" cy="1200" r="500" fill="url(#cyanGlow)" />
+  <!-- Solid Obsidian Background -->
+  <rect width="1080" height="1350" fill="#0A0D14" />
+  <circle cx="540" cy="500" r="500" fill="url(#cyanGlow)" />
 
-  <!-- Outer Border Frame -->
-  <rect x="20" y="20" width="1040" height="1310" rx="36" fill="none" stroke="#1e293b" stroke-width="4" />
+  <!-- Outer Frame -->
+  <rect x="24" y="24" width="1032" height="1302" rx="32" fill="none" stroke="#1e293b" stroke-width="3" />
 
-  <!-- Header -->
-  <text x="80" y="110" class="brand-title">LINH<tspan class="brand-accent">LABS</tspan></text>
-  <text x="940" y="110" text-anchor="end" class="slide-counter">${slide.slide_number} / ${slides.length}</text>
+  <!-- Official Brand Logo -->
+  <g transform="translate(80, 80)">
+    <path d="M 18 5 L 38 5 C 47 5, 54 11, 52 20 L 43 49 C 40 57, 32 62, 24 62 C 16 62, 12 55, 15 47 L 20 32 C 22 27, 19 22, 14 22 C 9 22, 6 18, 7 13 C 9 8, 13 5, 18 5 Z" fill="#36D6B5"/>
+    <text x="75" y="48" font-family="'Outfit', 'Inter', sans-serif" font-size="44" font-weight="700" fill="#36D6B5">Labs</text>
+  </g>
+
+  <!-- Slide Counter -->
+  <text x="1000" y="115" text-anchor="end" font-family="'Inter', sans-serif" font-size="24" font-weight="700" fill="#64748b">${slide.slide_number} / ${slides.length}</text>
 
   <!-- Category Tag Badge -->
-  <rect x="80" y="180" width="340" height="54" rx="27" fill="#7c3aed" fill-opacity="0.15" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="2" />
-  <text x="100" y="215" class="tag-text">${(slide.tag || 'AI RADAR').toUpperCase()}</text>
+  <rect x="80" y="180" width="380" height="52" rx="26" fill="#36D6B5" fill-opacity="0.15" stroke="#36D6B5" stroke-opacity="0.4" stroke-width="2" />
+  <text x="100" y="214" class="tag-text">${(slide.tag || 'AI RADAR').toUpperCase()}</text>
 
   <!-- Headline -->
-  <foreignObject x="80" y="280" width="920" height="300">
+  <foreignObject x="80" y="270" width="920" height="280">
     <div xmlns="http://www.w3.org/1999/xhtml" class="headline">
       ${slide.headline}
     </div>
   </foreignObject>
 
-  <!-- Body Content -->
-  <foreignObject x="80" y="580" width="920" height="380">
+  <!-- Body Content in Glassmorphic Card -->
+  <rect x="80" y="550" width="920" height="340" rx="24" fill="#0F172A" fill-opacity="0.75" stroke="#1E293B" stroke-width="2" />
+  <foreignObject x="110" y="580" width="860" height="280">
     <div xmlns="http://www.w3.org/1999/xhtml" class="body-text">
       ${slide.body || slide.subtitle || ''}
     </div>
   </foreignObject>
 
-  <!-- Takeaways Box (if present) -->
+  <!-- Takeaways Box -->
   ${slide.takeaways && slide.takeaways.length > 0 ? `
-    <rect x="80" y="940" width="920" height="200" rx="20" fill="#0b0f19" stroke="#38bdf8" stroke-width="2" />
-    <text x="110" y="985" class="takeaway-title">PERCHÉ È IMPORTANTE:</text>
-    <foreignObject x="110" y="1005" width="860" height="110">
+    <rect x="80" y="920" width="920" height="240" rx="24" fill="#0F172A" stroke="#36D6B5" stroke-opacity="0.35" stroke-width="2" />
+    <text x="120" y="970" class="takeaway-title">PERCHÉ È IMPORTANTE</text>
+    <foreignObject x="120" y="990" width="840" height="140">
       <div xmlns="http://www.w3.org/1999/xhtml" class="takeaway-item">
-        ${slide.takeaways.map(t => `• ${t}`).join('<br/>')}
+        ${slide.takeaways.map(t => `✓ ${t}`).join('<br/>')}
       </div>
     </foreignObject>
   ` : ''}
 
   <!-- CTA Button for Last Slide -->
   ${isCTA ? `
-    <rect x="290" y="1020" width="500" height="100" rx="50" fill="url(#ctaGrad)" />
-    <text x="540" y="1080" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="28" font-weight="800" fill="#ffffff">
-      ${slide.cta_button || 'LINK IN BIO 🔗'}
+    <rect x="180" y="940" width="720" height="100" rx="50" fill="#36D6B5" />
+    <text x="540" y="1002" text-anchor="middle" font-family="'Outfit', 'Inter', sans-serif" font-size="30" font-weight="800" fill="#0A0D14">
+      ${slide.cta_button || 'ISCRIVITI ALLA NEWSLETTER GRATIS ➔'}
     </text>
   ` : ''}
 
   <!-- Footer -->
-  <line x1="80" y1="1240" x2="1000" y2="1240" stroke="#1e293b" stroke-width="2" />
-  <text x="80" y="1285" class="footer-text">linhlabs.com</text>
-  <text x="1000" y="1285" text-anchor="end" class="footer-text">Scorri per continuare →</text>
+  <line x1="80" y1="1230" x2="1000" y2="1230" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="1275" class="footer-text">linhlabs.com</text>
+  <text x="1000" y="1275" text-anchor="end" class="footer-text">Scorri per continuare →</text>
 </svg>`;
 
     fs.writeFileSync(filePath, svgContent, 'utf-8');
