@@ -1,22 +1,19 @@
-<svg width="450" height="120" viewBox="0 0 450 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Rounded 7 Teal Icon -->
-  <g transform="translate(8, 8)">
-    <path d="M 34 10 
-             L 66 10 
-             C 80 10, 92 20, 89 35 
-             L 73 82 
-             C 68 96, 54 104, 40 104 
-             C 27 104, 20 94, 24 80 
-             L 33 54 
-             C 36 46, 30 36, 22 36 
-             C 14 36, 10 30, 12 22 
-             C 15 13, 22 10, 34 10 Z" 
+<svg width="400" height="100" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded Teal 7 Icon -->
+  <g transform="translate(10, 10)">
+    <path d="M 28 8 
+             L 58 8 
+             C 72 8, 82 18, 79 32 
+             L 65 76 
+             C 60 88, 48 96, 36 96 
+             C 24 96, 18 86, 22 74 
+             L 30 50 
+             C 33 42, 28 34, 20 34 
+             C 12 34, 8 28, 10 20 
+             C 12 12, 18 8, 28 8 Z" 
           fill="#2DD4BF" />
   </g>
-
-  <!-- Brand Typography -->
-  <text x="120" y="76" font-family="'Outfit', 'Inter', system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" letter-spacing="-0.02em">
-    <tspan fill="#FFFFFF">Linh</tspan>
-    <tspan fill="#2DD4BF" dx="14">Labs</tspan>
-  </text>
+  
+  <!-- "Labs" Typography in matching Cyan/Teal -->
+  <text x="120" y="72" font-family="'Outfit', 'Inter', system-ui, -apple-system, sans-serif" font-size="64" font-weight="600" fill="#2DD4BF" letter-spacing="-0.01em">Labs</text>
 </svg>
