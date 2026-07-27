@@ -1,21 +1,21 @@
-<svg width="460" height="120" viewBox="0 0 460 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- New Solid Rounded Teal 7 Icon -->
-  <g transform="translate(5, 5)">
-    <path d="M 32 8 
-             L 72 8 
-             C 86 8, 96 18, 93 32 
-             L 77 78 
-             C 72 92, 60 104, 46 104 
-             C 34 104, 26 94, 30 82 
-             L 44 44 
-             C 47 36, 41 28, 32 28 
-             C 22 28, 14 20, 18 10 
-             C 21 8, 26 8, 32 8 Z" 
+<svg width="450" height="120" viewBox="0 0 450 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded 7 Teal Icon -->
+  <g transform="translate(8, 8)">
+    <path d="M 34 10 
+             L 66 10 
+             C 80 10, 92 20, 89 35 
+             L 73 82 
+             C 68 96, 54 104, 40 104 
+             C 27 104, 20 94, 24 80 
+             L 33 54 
+             C 36 46, 30 36, 22 36 
+             C 14 36, 10 30, 12 22 
+             C 15 13, 22 10, 34 10 Z" 
           fill="#2DD4BF" />
   </g>
 
-  <!-- Linh Labs Typography -->
-  <text x="120" y="78" font-family="'Outfit', 'Inter', system-ui, -apple-system, sans-serif" font-size="62" font-weight="700" letter-spacing="-0.02em">
+  <!-- Brand Typography -->
+  <text x="120" y="76" font-family="'Outfit', 'Inter', system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" letter-spacing="-0.02em">
     <tspan fill="#FFFFFF">Linh</tspan>
     <tspan fill="#2DD4BF" dx="14">Labs</tspan>
   </text>
