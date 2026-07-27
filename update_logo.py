@@ -1,4 +1,6 @@
-<svg width="500" height="140" viewBox="0 0 500 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+import os
+
+svg_content = '''<svg width="500" height="140" viewBox="0 0 500 140" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Solid Teal Hook Icon -->
   <g transform="translate(10, 10)">
     <path d="M 36 10
@@ -19,4 +21,16 @@
     <tspan fill="#FFFFFF">Linh</tspan>
     <tspan fill="#36D6B5" dx="16">Labs</tspan>
   </text>
-</svg>
+</svg>'''
+
+paths = [
+    '/Users/stazione/Desktop/LIHNLABS/LIHN LABS SITO/public/images/linhlabs-logo.svg',
+    '/Users/stazione/Desktop/LIHNLABS/LIHN LABS SITO/dist/images/linhlabs-logo.svg'
+]
+
+for path in paths:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(svg_content)
+
+print("SVG logo updated successfully!")
