@@ -41,8 +41,8 @@ export const Navbar: React.FC = () => {
         }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="scale-90 origin-left">
-          <Logo />
+        <Link to="/" className="origin-left hover:opacity-90 transition-opacity">
+          <Logo imgClassName="h-16 md:h-20 w-auto object-contain" />
         </Link>
 
         {/* Desktop Menu */}

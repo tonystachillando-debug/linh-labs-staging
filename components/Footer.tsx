@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 1: Brand */}
           <div className="lg:col-span-1 space-y-6">
-            <Logo />
+            <Logo imgClassName="h-20 md:h-24 w-auto object-contain" />
             <p className="text-slate-500 text-sm leading-relaxed font-light max-w-xs">
               {t('footer.description')}
             </p>
