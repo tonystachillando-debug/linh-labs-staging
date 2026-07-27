@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { Resvg } from '@resvg/resvg-js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,15 +13,17 @@ if (!fs.existsSync(CAROUSEL_DIR)) {
 }
 
 /**
- * Generate 1080x1350 SVG/PNG Slide Images with 100% Brand Consistency
+ * Generate 1080x1350 SVG AND PNG Slide Images with 100% Brand Consistency
  */
 export async function generateCarouselSlideImages(carouselData) {
   const slides = carouselData.slides || [];
   const generatedFiles = [];
 
   for (const slide of slides) {
-    const fileName = `slide_${slide.slide_number}.svg`;
-    const filePath = path.join(CAROUSEL_DIR, fileName);
+    const svgFileName = `slide_${slide.slide_number}.svg`;
+    const pngFileName = `slide_${slide.slide_number}.png`;
+    const svgFilePath = path.join(CAROUSEL_DIR, svgFileName);
+    const pngFilePath = path.join(CAROUSEL_DIR, pngFileName);
 
     const isCover = slide.type === 'cover';
     const isCTA = slide.type === 'cta';
@@ -102,11 +105,20 @@ export async function generateCarouselSlideImages(carouselData) {
   <text x="1000" y="1275" text-anchor="end" class="footer-text">Scorri per continuare →</text>
 </svg>`;
 
-    fs.writeFileSync(filePath, svgContent, 'utf-8');
+    // Save SVG
+    fs.writeFileSync(svgFilePath, svgContent, 'utf-8');
+
+    // Convert and Save High-Res PNG (1080x1350)
+    const resvg = new Resvg(Buffer.from(svgContent), { fitTo: { mode: 'width', value: 1080 } });
+    const pngBuffer = resvg.render().asPng();
+    fs.writeFileSync(pngFilePath, pngBuffer);
+
     generatedFiles.push({
       slide_number: slide.slide_number,
-      svgUrl: `/carousels/${fileName}`,
-      filePath
+      svgUrl: `/carousels/${svgFileName}`,
+      pngUrl: `/carousels/${pngFileName}`,
+      svgFilePath,
+      pngFilePath
     });
   }
 
