@@ -1,4 +1,7 @@
-<svg width="600" height="220" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+import os
+
+# Exact SVG logo matching the L7 Monogram + LinhLabs + YOUR AI PARTNER subtitle
+exact_svg = '''<svg width="600" height="220" viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g transform="translate(10, 10)">
     <!-- L Outline (White) -->
     <path d="M 45 35 
@@ -28,4 +31,16 @@
     <!-- Subtitle: YOUR AI PARTNER (White) -->
     <text x="218" y="158" font-family="'Outfit', 'Inter', system-ui, -apple-system, sans-serif" font-size="25" font-weight="600" fill="#FFFFFF" letter-spacing="0.48em">YOUR AI PARTNER</text>
   </g>
-</svg>
+</svg>'''
+
+paths = [
+    '/Users/stazione/Desktop/LIHNLABS/LIHN LABS SITO/public/images/linhlabs-logo.svg',
+    '/Users/stazione/Desktop/LIHNLABS/LIHN LABS SITO/dist/images/linhlabs-logo.svg'
+]
+
+for path in paths:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(exact_svg)
+
+print("Exact L7 LinhLabs logo generated successfully!")

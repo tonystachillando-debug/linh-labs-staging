@@ -13,7 +13,7 @@ if (!fs.existsSync(CAROUSEL_DIR)) {
 }
 
 /**
- * Generate 1080x1350 SVG AND PNG Slide Images with 100% Brand Consistency
+ * Generate 1080x1350 SVG AND PNG Slide Images with EXACT L7 Logo
  */
 export async function generateCarouselSlideImages(carouselData) {
   const slides = carouselData.slides || [];
@@ -52,10 +52,19 @@ export async function generateCarouselSlideImages(carouselData) {
   <!-- Outer Frame -->
   <rect x="24" y="24" width="1032" height="1302" rx="32" fill="none" stroke="#1e293b" stroke-width="3" />
 
-  <!-- Official Brand Logo -->
-  <g transform="translate(80, 80)">
-    <path d="M 18 5 L 38 5 C 47 5, 54 11, 52 20 L 43 49 C 40 57, 32 62, 24 62 C 16 62, 12 55, 15 47 L 20 32 C 22 27, 19 22, 14 22 C 9 22, 6 18, 7 13 C 9 8, 13 5, 18 5 Z" fill="#36D6B5"/>
-    <text x="75" y="48" font-family="'Outfit', 'Inter', sans-serif" font-size="44" font-weight="700" fill="#36D6B5">Labs</text>
+  <!-- Official L7 LinhLabs Brand Logo -->
+  <g transform="translate(80, 65) scale(0.55)">
+    <!-- L Outline (White) -->
+    <path d="M 45 35 L 45 125 C 45 150, 60 165, 85 165 L 135 165" stroke="#FFFFFF" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- 7 Filled Shape (Teal) -->
+    <path d="M 85 30 L 145 30 C 168 30, 180 44, 174 66 L 152 138 C 147 154, 133 166, 115 166 C 98 166, 90 152, 95 134 L 108 92 C 111 82, 104 72, 94 72 L 85 72 Z" fill="#36D6B5" />
+    <!-- LinhLabs Text -->
+    <text x="215" y="112" font-family="'Outfit', 'Inter', sans-serif" font-size="82" font-weight="700" letter-spacing="-0.02em">
+      <tspan fill="#FFFFFF">Linh</tspan>
+      <tspan fill="#36D6B5" dx="6">Labs</tspan>
+    </text>
+    <!-- Subtitle -->
+    <text x="218" y="158" font-family="'Outfit', 'Inter', sans-serif" font-size="25" font-weight="600" fill="#FFFFFF" letter-spacing="0.48em">YOUR AI PARTNER</text>
   </g>
 
   <!-- Slide Counter -->
