@@ -1,88 +1,34 @@
-
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
-  <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#020617" />
-      <stop offset="50%" stop-color="#0b0f19" />
-      <stop offset="100%" stop-color="#0f172a" />
-    </linearGradient>
-
-    <!-- Glow Gradient -->
-    <radialGradient id="purpleGlow" cx="90%" cy="10%" r="60%">
-      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35" />
-      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0" />
-    </radialGradient>
-
-    <radialGradient id="cyanGlow" cx="10%" cy="90%" r="60%">
-      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
-    </radialGradient>
-
-    <linearGradient id="ctaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7c3aed" />
-      <stop offset="100%" stop-color="#06b6d4" />
-    </linearGradient>
-
-    <style>
-      .brand-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 38px; font-weight: 800; fill: #ffffff; }
-      .brand-accent { fill: #38bdf8; }
-      .slide-counter { font-family: 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 700; fill: #64748b; }
-      .tag-text { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 22px; font-weight: 800; fill: #38bdf8; letter-spacing: 2px; }
-      .headline { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 46px; font-weight: 800; fill: #ffffff; line-height: 1.2; }
-      .body-text { font-family: 'Inter', system-ui, sans-serif; font-size: 30px; font-weight: 400; fill: #cbd5e1; line-height: 1.6; }
-      .takeaway-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 22px; font-weight: 800; fill: #38bdf8; letter-spacing: 1px; }
-      .takeaway-item { font-family: 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 500; fill: #94a3b8; }
-      .footer-text { font-family: 'Inter', system-ui, sans-serif; font-size: 22px; font-weight: 600; fill: #64748b; }
-    </style>
-  </defs>
-
-  <!-- Background -->
-  <rect width="1080" height="1350" fill="url(#bgGrad)" />
-  <circle cx="950" cy="150" r="500" fill="url(#purpleGlow)" />
-  <circle cx="150" cy="1200" r="500" fill="url(#cyanGlow)" />
-
-  <!-- Outer Border Frame -->
-  <rect x="20" y="20" width="1040" height="1310" rx="36" fill="none" stroke="#1e293b" stroke-width="4" />
-
-  <!-- Header -->
-  <text x="80" y="110" class="brand-title">LINH<tspan class="brand-accent">LABS</tspan></text>
-  <text x="940" y="110" text-anchor="end" class="slide-counter">5 / 6</text>
-
-  <!-- Category Tag Badge -->
-  <rect x="80" y="180" width="340" height="54" rx="27" fill="#7c3aed" fill-opacity="0.15" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="2" />
-  <text x="100" y="215" class="tag-text">INFRASTRUTTURA & HARDWARE</text>
-
-  <!-- Headline -->
-  <foreignObject x="80" y="280" width="920" height="300">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="headline">
-      AMD Sfida il Dominio di Nvidia con il Sistema Rack-Scale Helios AI
-    </div>
-  </foreignObject>
-
-  <!-- Body Content -->
-  <foreignObject x="80" y="580" width="920" height="380">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="body-text">
-      AMD compie un passo decisivo nel mercato dell'hardware con il nuovo Helios, un supercomputer su scala rack ideato per rivaleggiare con l'architettura Blackwell di Nvidia. L'infrastruttura offre un'efficienza energetica superiore del 35% durante l'inferenza di modelli linguistici di grandi dimensioni, abbattendo drasticamente i costi operativi dei data center.
-    </div>
-  </foreignObject>
-
-  <!-- Takeaways Box (if present) -->
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#0A0D14"/>
+  <circle cx="540" cy="500" r="400" fill="#36D6B5" fill-opacity="0.08" filter="blur(80px)"/>
   
-    <rect x="80" y="940" width="920" height="200" rx="20" fill="#0b0f19" stroke="#38bdf8" stroke-width="2" />
-    <text x="110" y="985" class="takeaway-title">PERCHÉ È IMPORTANTE:</text>
-    <foreignObject x="110" y="1005" width="860" height="110">
-      <div xmlns="http://www.w3.org/1999/xhtml" class="takeaway-item">
-        • Risparmio energetico del 35% sull'elaborazione di LLM complessi<br/>• Compatibilità nativa con PyTorch e framework open source
-      </div>
-    </foreignObject>
+  <text x="80" y="150" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#36D6B5" letter-spacing="3">STRATEGIC VISION</text>
   
-
-  <!-- CTA Button for Last Slide -->
+  <text x="80" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="58" font-weight="800" fill="#FFFFFF">
+    <tspan x="80" dy="0">Cosa significa tutto questo</tspan>
+    <tspan x="80" dy="75" fill="#36D6B5">per la tua azienda?</tspan>
+  </text>
   
+  <rect x="80" y="440" width="920" height="720" rx="28" fill="#0F172A" fill-opacity="0.8" stroke="#36D6B5" stroke-opacity="0.4" stroke-width="2"/>
+  
+  <g transform="translate(130, 520)">
+    <circle cx="30" cy="30" r="24" fill="#36D6B5" fill-opacity="0.2"/>
+    <text x="30" y="39" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#36D6B5" text-anchor="middle">1</text>
+    <text x="80" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">AGENTI AUTONOMI REALI</text>
+    <text x="80" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#94A3B8">Con latenza &lt;200ms gli agenti entrano nei workflow operativi reali.</text>
+  </g>
 
-  <!-- Footer -->
-  <line x1="80" y1="1240" x2="1000" y2="1240" stroke="#1e293b" stroke-width="2" />
-  <text x="80" y="1285" class="footer-text">linhlabs.com</text>
-  <text x="1000" y="1285" text-anchor="end" class="footer-text">Scorri per continuare →</text>
+  <g transform="translate(130, 720)">
+    <circle cx="30" cy="30" r="24" fill="#36D6B5" fill-opacity="0.2"/>
+    <text x="30" y="39" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#36D6B5" text-anchor="middle">2</text>
+    <text x="80" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">EFFICIENZA HARDWARE LOCALE</text>
+    <text x="80" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#94A3B8">Modelli MoE permettono privacy totale e costi ridotti dell'80%.</text>
+  </g>
+
+  <g transform="translate(130, 920)">
+    <circle cx="30" cy="30" r="24" fill="#36D6B5" fill-opacity="0.2"/>
+    <text x="30" y="39" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#36D6B5" text-anchor="middle">3</text>
+    <text x="80" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">COMPLIANCE OBBLIGATORIA</text>
+    <text x="80" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#94A3B8">La tracciabilità e la sicurezza dei dati AI diventano lo standard B2B.</text>
+  </g>
 </svg>

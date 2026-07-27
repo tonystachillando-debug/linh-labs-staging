@@ -1,6 +1,57 @@
 {
   "articles": [
     {
+      "id": "2d4b081b-fd6c-4c04-b7be-7f9ab377e13c",
+      "url_hash": "3546009a87e722d3594343cdca4749bbd675f723318a6b4ca86c78c726f3e785",
+      "title_hash": "377f60d1a01afc8e24f67519beb5bd5b1f32ac42c2caa18add0d86ea4142be99",
+      "title": "EU AI Act: Pubblicate le Linee Guida Ufficiali per l'Audit della Compliance B2B",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/it/ai_act_compliance_guidelines_2026",
+      "source": "EU Tech Commission",
+      "category": "Regolamentazione & Compliance",
+      "published_at": "2026-07-27T07:00:00.000Z",
+      "summary_it": "La Commissione Europea ha rilasciato il quadro operativo finale per gli audit di conformità all'EU AI Act. Le nuove linee guida definiscono i requisiti minimi di tracciabilità dei dati e di sicurezza per le aziende che integrano modelli generativi nei processi di produzione e customer care.",
+      "takeaways": [
+        "Standard ufficiali di audit trail per i log e la trasparenza dei dati AI",
+        "Framework di sicurezza obbligatorio per i software enterprise operanti in UE"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-27T09:45:22.942Z"
+    },
+    {
+      "id": "aa315702-ee06-49d8-a7e2-1e5ad55eb7c1",
+      "url_hash": "f2e150c81b874729a995f898c7be4081b8195ecc790a03b81652ce0988e773c2",
+      "title_hash": "703c37c6248d0a89653810cfa6df34ecba74d6b5839fad0460be816e6d3494ae",
+      "title": "Meta Rilascia Llama 4 Open-Weights: Architettura MoE ad Alta Efficienza",
+      "url": "https://ai.meta.com/blog/llama-4-open-weights-moe-release",
+      "source": "Meta AI Research",
+      "category": "Ricerca & Modelli",
+      "published_at": "2026-07-27T07:30:00.000Z",
+      "summary_it": "Meta ha reso disponibili i pesi aperti di Llama 4. Il nuovo modello sfrutta un'architettura Mixture-of-Experts (MoE) che consente di ridurre dell'80% i requisiti di memoria VRAM durante l'inferenza, permettendo l'esecuzione locale di modelli di classe enterprise su hardware standard.",
+      "takeaways": [
+        "Abbattimento dell'80% dei costi di calcolo per l'inferenza locale",
+        "Piena compatibilità open-source per integrazioni custom in azienda"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-27T09:45:22.942Z"
+    },
+    {
+      "id": "5a3386ff-7245-4921-92b9-b9b6c331214e",
+      "url_hash": "f86a38f1220aece9a0eb112f88d235ceb513e982936aa6195230deb253d5dcd2",
+      "title_hash": "882b101d1f57c780dba481acec1b09f5d5b41db7d2c9fea7940d6af9d99202ee",
+      "title": "Google DeepMind Presenta Gemini 3 Flash & Project Mariner per Agenti Autonomi",
+      "url": "https://blog.google/technology/ai/deepmind-gemini-3-flash-mariner-2026",
+      "source": "Google DeepMind News",
+      "category": "LLM & Agenti",
+      "published_at": "2026-07-27T08:00:00.000Z",
+      "summary_it": "Google DeepMind ha svelato Gemini 3 Flash unitamente a Project Mariner, un'infrastruttura d'orchestrazione ad ultra-bassa latenza progettata per consentire agli agenti AI di navigare nel web ed eseguire flussi operativi complessi in completa autonomia e sicurezza.",
+      "takeaways": [
+        "Latenza di risposta ridotta del 50% rispetto ai modelli precedenti",
+        "Orchestrazione nativa di agenti per automazione browser e workflow aziendali"
+      ],
+      "is_newsletter_sent": false,
+      "created_at": "2026-07-27T09:45:22.938Z"
+    },
+    {
       "id": "057e9af9-f667-445f-9424-fafadb445dc2",
       "url_hash": "97046d805a78477e3887110b4df8ae4a517093a675fb11ac584febe26289d098",
       "title_hash": "d278ee87b89c4995194bdc9341d4f78c1bd82f201e891a97bbed27ad849d2251",
