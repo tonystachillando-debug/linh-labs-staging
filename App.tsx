@@ -50,6 +50,7 @@ import { LeadQuiz } from './components/LeadQuiz';
 import { AINewsFeed } from './components/AINewsFeed';
 import { AdminRadarDashboard } from './components/AdminRadarDashboard';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TreasuryPage } from './components/TreasuryPage';
 
 function HomePage() {
   const [syncedMessages, setSyncedMessages] = React.useState<{ id: string, text: string, sender: 'user' | 'bot' }[]>([]);
@@ -113,6 +114,16 @@ function App() {
               canonical="https://linhlabs.com/catalogo"
             />
             <CataloguePage />
+          </>
+        } />
+        <Route path="/treasury" element={
+          <>
+            <PageSEO
+              title="Linh Treasury | Automazione Bonifici CBI & SEPA Instant — Linh Labs"
+              description="Elimina l'85% del tempo di Payroll e bonifici bancari. Connetti il tuo gestionale ai canali interbancari con generazione XML ISO 20022 a zero errori."
+              canonical="https://linhlabs.com/treasury"
+            />
+            <TreasuryPage />
           </>
         } />
       </Routes>
