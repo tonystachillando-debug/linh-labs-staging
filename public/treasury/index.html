@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linh Treasury | Automazione Bonifici CBI & SEPA Instant — Linh Labs</title>
+  <meta name="description" content="Elimina l'85% del tempo di Payroll e tesoreria aziendale. Collega il tuo gestionale direttamente ai portali bancari con validazione algoritmica a zero errori." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cyan: '#06b6d4',
+              blue: '#2563eb',
+              indigo: '#4f46e5',
+              purple: '#8b5cf6',
+              emerald: '#10b981',
+            },
+            slate: {
+              950: '#020617',
+              900: '#0b1120',
+              850: '#0f172a',
+              800: '#1e293b',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #020617;
+    }
+    body {
+      background-color: var(--bg);
+      color: #f8fafc;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Background Grid from Linh Labs site */
+    .bg-grid-white {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+    }
+
+    /* Glass Panels */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.2);
+    }
+
+    /* Text Gradient Animation */
+    .animate-gradient {
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="selection:bg-cyan-500/30 selection:text-white">
+
+  <!-- Background Orbs and Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute inset-0 bg-grid-white opacity-40"></div>
+    <div class="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[75vw] max-w-[850px] h-[450px] bg-blue-600/15 rounded-full blur-[140px] mix-blend-screen"></div>
+    <div class="absolute top-[40%] -left-32 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-[160px] mix-blend-screen"></div>
+    <div class="absolute top-[70%] -right-32 w-[650px] h-[650px] bg-purple-600/10 rounded-full blur-[170px] mix-blend-screen"></div>
+  </div>
+
+  <!-- Header / Navigation (Linh Labs Style) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/5 transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-4 group">
+        <img 
+          src="./linhlabs-logo.png" 
+          alt="Linh Labs" 
+          class="h-14 sm:h-16 md:h-20 w-auto object-contain transition-transform group-hover:scale-105"
+        />
+        <div class="hidden sm:flex flex-col border-l border-slate-800 pl-3.5">
+          <span class="text-xs font-display font-bold tracking-widest text-cyan-400 uppercase">TREASURY & PAYROLL</span>
+          <span class="text-[10px] font-mono text-slate-500 tracking-wider uppercase">CBI / SEPA Instant Engine</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold text-slate-300 uppercase tracking-widest">
+        <a href="#come-funziona" class="hover:text-cyan-400 transition-colors">Architettura</a>
+        <a href="#settori" class="hover:text-cyan-400 transition-colors">Casi d'Uso</a>
+        <a href="#calcolatore" class="hover:text-cyan-400 transition-colors">Calcola ROI</a>
+        <a href="#sicurezza" class="hover:text-cyan-400 transition-colors">Sicurezza</a>
+      </nav>
+
+      <!-- CTA Button (Linh Labs Signature Pill) -->
+      <div class="flex items-center gap-4">
+        <a 
+          href="#contatti" 
+          class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs uppercase tracking-widest shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          <span>Richiedi Demo</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-36">
+
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-6 pt-12 pb-20 text-center">
+      
+      <!-- Top Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase mb-8 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>Conforme Regolamento UE 2024/886 • Standard CBI ISO 20022</span>
+      </div>
+
+      <!-- Main Heading (Linh Labs Typography) -->
+      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.05] max-w-6xl mx-auto mb-8">
+        <span class="block text-slate-100">Elimina l’85% del tempo di</span>
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-500 animate-gradient pb-2">
+          Payroll & Bonifici Bancari
+        </span>
+        <span class="block text-slate-400 text-3xl sm:text-5xl lg:text-6xl font-light mt-2">
+          con l'automazione in 1 solo click.
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+        Basta copia-incolla manuale sul remote banking e ansia da errore IBAN. Connetti il tuo gestionale aziendale direttamente ai canali bancari interbancari con generazione automatica di tracciati XML <code class="text-cyan-400 font-mono text-sm bg-slate-900 px-2 py-0.5 rounded border border-slate-800">pain.001</code> validati a zero errori.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-20">
+        <a 
+          href="#calcolatore" 
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs uppercase tracking-widest shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          <i data-lucide="calculator" class="w-4 h-4"></i>
+          <span>Calcola quanto risparmia la tua azienda</span>
+        </a>
+        <a 
+          href="#come-funziona" 
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest text-slate-300 bg-slate-900/80 border border-slate-700/80 hover:bg-slate-800 hover:text-white hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
+          <span>Architettura Software</span>
+        </a>
+      </div>
+
+      <!-- Live KPI Badges -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
+        <div class="glass-card p-6 rounded-2xl border-white/5">
+          <div class="text-4xl font-display font-bold text-cyan-400">0%</div>
+          <div class="text-[11px] text-slate-400 mt-2 font-mono uppercase tracking-wider">Errori IBAN</div>
+          <div class="text-xs text-slate-500 mt-1">Validazione algoritmica Modulo 97</div>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border-white/5">
+          <div class="text-4xl font-display font-bold text-teal-400">1-Click</div>
+          <div class="text-[11px] text-slate-400 mt-2 font-mono uppercase tracking-wider">Batch Payout</div>
+          <div class="text-xs text-slate-500 mt-1">Generazione distinta istantanea</div>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border-white/5">
+          <div class="text-4xl font-display font-bold text-sky-400">5-10s</div>
+          <div class="text-[11px] text-slate-400 mt-2 font-mono uppercase tracking-wider">Accredito SEPA Inst</div>
+          <div class="text-xs text-slate-500 mt-1">Liquidazione immediata al banco</div>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border-white/5">
+          <div class="text-4xl font-display font-bold text-emerald-400">> 80h</div>
+          <div class="text-[11px] text-slate-400 mt-2 font-mono uppercase tracking-wider">Liberate al mese</div>
+          <div class="text-xs text-slate-500 mt-1">Per team amministrativo / payroll</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PRIMA vs DOPO -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase">Il Confronto Diretto</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-3">
+          Perché il metodo tradizionale frena la crescita
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- PRIMA (Metodo Tradizionale) -->
+        <div class="glass-card p-8 sm:p-10 rounded-3xl border-red-500/20 relative overflow-hidden bg-slate-950/60">
+          <div class="flex items-center justify-between pb-6 mb-6 border-b border-red-500/20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center">
+                <i data-lucide="x" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-lg text-white">Processo Attuale</h3>
+                <p class="text-xs text-red-400/90 font-mono uppercase">Copia-Incolla Manuale</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">ALTO RISCHIO</span>
+          </div>
+
+          <ul class="space-y-4 text-sm text-slate-300">
+            <li class="flex items-start gap-3">
+              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <span><strong>Risorse Payroll costose bloccate per giorni:</strong> figure qualificate passano ore a trascrivere IBAN, causali e cifre da file Excel a CBI/Home Banking.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <span><strong>Rischio costante di IBAN errati:</strong> un singolo errore di digitazione su bonifici di cassa o stipendi genera blocchi contabili e perdite finanziarie.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <span><strong>Attese fino a 4 ore per clienti/fornitori:</strong> l'operatore al banco deve aspettare che l'amministrazione sia libera per autorizzare il pagamento.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <span><strong>Rischio di bonifici duplicati:</strong> la mancanza di sincronizzazione bidirezionale espone al pericolo di pagare la stessa voce due volte.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- DOPO (Linh Labs Engine) -->
+        <div class="glass-card p-8 sm:p-10 rounded-3xl border-cyan-500/40 relative overflow-hidden bg-slate-900/80 shadow-xl shadow-cyan-950/40">
+          <div class="flex items-center justify-between pb-6 mb-6 border-b border-cyan-500/20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                <i data-lucide="check" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-lg text-white">Con Linh Treasury</h3>
+                <p class="text-xs text-cyan-400 font-mono uppercase">Flusso Automatico 1-Click</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono text-cyan-300 bg-cyan-500/20 px-3 py-1 rounded-full border border-cyan-500/30">ZERO ERRORI</span>
+          </div>
+
+          <ul class="space-y-4 text-sm text-slate-300">
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+              <span><strong>Integrazione nativa con il tuo gestionale:</strong> i dati vengono letti direttamente via API sicure, Webhook o viste SQL dedicate.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+              <span><strong>Validazione algoritmica istantanea:</strong> l'algoritmo Modulo 97 convalida il CIN e la struttura IBAN prima della creazione del tracciato.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+              <span><strong>Tracciati XML pain.001 pronti all'uso:</strong> esportazione in 1 click o trasmissione Host-to-Host (DCM) alla tua banca per firma OTP.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
+              <span><strong>Protezione antiduplicato nativa:</strong> nessun pagamento può essere trasmesso due volte grazie al fingerprinting univoco delle transazioni.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: COME FUNZIONA -->
+    <section id="come-funziona" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase">Architettura Software</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-3">
+          Come si integra nei tuoi sistemi in 3 Step
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-4 font-light">
+          Non devi cambiare gestionale o banca. Linh Treasury si posiziona come middleware sicuro e deterministico tra i tuoi database e il canale interbancario.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <div class="glass-card glass-card-hover p-8 rounded-3xl relative">
+          <div class="text-xs font-mono text-cyan-400 mb-3 tracking-widest">FASE 01</div>
+          <h4 class="text-xl font-display font-bold text-white mb-3">Data Ingestion</h4>
+          <p class="text-sm text-slate-400 leading-relaxed mb-6">
+            Il connettore acquisisce in tempo reale le disposizioni di pagamento dal tuo software di cassa, ERP o gestionale paghe (Zucchetti, TeamSystem, custom DB).
+          </p>
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 font-mono text-xs text-slate-400">
+            <span class="text-cyan-400">&gt;</span> REST API / Webhooks / TLS 1.3
+          </div>
+        </div>
+
+        <div class="glass-card glass-card-hover p-8 rounded-3xl relative">
+          <div class="text-xs font-mono text-teal-400 mb-3 tracking-widest">FASE 02</div>
+          <h4 class="text-xl font-display font-bold text-white mb-3">Validation & XML Engine</h4>
+          <p class="text-sm text-slate-400 leading-relaxed mb-6">
+            Il motore applica il controllo Modulo 97, verifica i vincoli antiriciclaggio e compila istantaneamente il pacchetto standard ISO 20022 SEPA Instant.
+          </p>
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 font-mono text-xs text-slate-400">
+            <span class="text-teal-400">&gt;</span> EPC pain.001.001.03
+          </div>
+        </div>
+
+        <div class="glass-card glass-card-hover p-8 rounded-3xl relative">
+          <div class="text-xs font-mono text-purple-400 mb-3 tracking-widest">FASE 03</div>
+          <h4 class="text-xl font-display font-bold text-white mb-3">1-Click Remote Banking</h4>
+          <p class="text-sm text-slate-400 leading-relaxed mb-6">
+            L'amministratore carica il flusso con 1 click o riceve la notifica per la firma via OTP/SCA sul canale telematico della banca (MPS DCM, CBI Multi-banca).
+          </p>
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 font-mono text-xs text-slate-400">
+            <span class="text-purple-400">&gt;</span> Direct Host-to-Host / CBI
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: CASI D'USO / TARGET -->
+    <section id="settori" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase">Settori ad Alto Dolore Operativo</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-3">
+          A chi fa risparmiare più tempo e denaro
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5">
+              <i data-lucide="coins" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-display font-bold text-white text-base">Compro Oro & Banchi Metalli</h4>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Pagamento istantaneo al banco per catene con decine di negozi. Il cliente riceve il bonifico istantaneo in 5 secondi prima di uscire.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-800/80 text-[11px] font-mono text-cyan-400">
+            Volume: 50-200 bonifici/giorno
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-5">
+              <i data-lucide="car" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-display font-bold text-white text-base">Concessionarie & Acquisto Auto</h4>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Liquidazione immediata al privato al momento della firma del passaggio di proprietà. Azzeramento frodi e attese.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-800/80 text-[11px] font-mono text-cyan-400">
+            Ticket: €2.000 - €30.000 / bonifico
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center mb-5">
+              <i data-lucide="users-round" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-display font-bold text-white text-base">Studi Paghe & Consulenti</h4>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Invio automatico di migliaia di stipendi a fine mese per decine di aziende clienti, integrato direttamente con i gestionali paghe.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-800/80 text-[11px] font-mono text-cyan-400">
+            Batch da 500+ dipendenti
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-5">
+              <i data-lucide="truck" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-display font-bold text-white text-base">Logistica & Ristorazione</h4>
+            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+              Gestione massiva di acconti settimanali, rimborsi chilometrici e pagamenti a cooperative e padroncini su rete nazionale.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-800/80 text-[11px] font-mono text-cyan-400">
+            Frequenza: Settimanale / Quindicinale
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: CALCOLATORE ROI INTERATTIVO -->
+    <section id="calcolatore" class="max-w-5xl mx-auto px-6 py-20 border-t border-slate-800/80">
+      <div class="glass-card p-8 sm:p-14 rounded-3xl border-cyan-500/30 relative overflow-hidden bg-slate-900/90 shadow-2xl shadow-cyan-950/30">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase">Simulatore Finanziario</span>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-2">
+            Calcola il Ritorno sull’Investimento (ROI)
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-3">
+            Sposta i selettori in base ai volumi della tua azienda per stimare il risparmio netto.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          
+          <!-- Sliders -->
+          <div class="space-y-8">
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <label class="text-sm font-medium text-slate-300">Bonifici gestiti al mese:</label>
+                <span id="transCountLabel" class="font-mono text-cyan-400 font-bold text-lg bg-slate-950 px-3 py-1 rounded-lg border border-slate-800">2.000</span>
+              </div>
+              <input id="transSlider" type="range" min="200" max="10000" step="100" value="2000" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400" />
+              <div class="flex justify-between text-[11px] text-slate-500 font-mono mt-1.5">
+                <span>200 bonifici</span>
+                <span>5.000</span>
+                <span>10.000+</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <label class="text-sm font-medium text-slate-300">Costo orario lordo amministrazione:</label>
+                <span id="hourlyCostLabel" class="font-mono text-cyan-400 font-bold text-lg bg-slate-950 px-3 py-1 rounded-lg border border-slate-800">€ 25 / h</span>
+              </div>
+              <input id="costSlider" type="range" min="18" max="45" step="1" value="25" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400" />
+              <div class="flex justify-between text-[11px] text-slate-500 font-mono mt-1.5">
+                <span>€18 / h</span>
+                <span>€30 / h</span>
+                <span>€45 / h</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs text-slate-400 leading-relaxed">
+              <i data-lucide="info" class="w-4 h-4 text-cyan-400 inline mr-1.5"></i>
+              Basato su un tempo medio di <strong>3,5 minuti a bonifico</strong> (lettura dati, digitazione, verifica Modulo 97 e autorizzazione su remote banking).
+            </div>
+          </div>
+
+          <!-- Result Display -->
+          <div class="glass-card p-8 rounded-3xl border-cyan-500/40 text-center space-y-6 bg-slate-950/90">
+            <div>
+              <div class="text-xs font-mono text-slate-400 uppercase tracking-widest">Risparmio Netto Annuo Stimato</div>
+              <div id="annualSavings" class="text-4xl sm:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-teal-300 mt-2">
+                € 35.000
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-800 text-left">
+              <div>
+                <div class="text-[10px] text-slate-500 font-mono uppercase tracking-wider">ORE LIBERATE / ANNO</div>
+                <div id="hoursSaved" class="text-2xl font-bold font-display text-white mt-1">1.400 h</div>
+              </div>
+              <div>
+                <div class="text-[10px] text-slate-500 font-mono uppercase tracking-wider">PAYBACK PERIOD</div>
+                <div id="paybackPeriod" class="text-2xl font-bold font-display text-emerald-400 mt-1">~ 2,3 Mesi</div>
+              </div>
+            </div>
+
+            <a 
+              href="#contatti" 
+              class="block w-full py-4 text-center text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              Richiedi l'attivazione per la tua azienda
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SICUREZZA DI GRADO BANCARIO -->
+    <section id="sicurezza" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800/80">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        
+        <div>
+          <span class="text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase">Sicurezza & Affidabilità</span>
+          <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-3 mb-6">
+            Nessuna allucinazione.<br>
+            Codice 100% deterministico.
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
+            Quando si muove denaro reale, non c'è spazio per probabilità o allucinazioni. Linh Treasury opera con script deterministici, logiche crittografiche e protocolli interbancari rigidi.
+          </p>
+          
+          <div class="space-y-4 text-sm">
+            <div class="flex items-center gap-3 text-slate-200">
+              <div class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 text-xs">✓</div>
+              <span><strong>Standard ISO 20022 (pain.001 / camt.053):</strong> compatibilità nativa CBI.</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-200">
+              <div class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 text-xs">✓</div>
+              <span><strong>Firma finale obbligatoria dell'operatore:</strong> piena aderenza SCA / 2FA.</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-200">
+              <div class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 text-xs">✓</div>
+              <span><strong>Audit trail immutabile:</strong> piena conformità antiriciclaggio (AML) e controlli fiscali.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 font-mono text-xs text-slate-300 space-y-3 bg-slate-950 shadow-2xl">
+          <div class="text-slate-500 flex items-center justify-between pb-3 border-b border-slate-800 text-[11px]">
+            <span>// LINH TREASURY ENGINE LOG</span>
+            <span class="text-emerald-400 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              LIVE ENGINE
+            </span>
+          </div>
+          <div class="text-slate-400">[11:42:01] Ingesting transaction ID #TRX-94821 ...</div>
+          <div class="text-cyan-400">[11:42:01] Modulo 97 Checksum: VALID (IT60X0542811101000000123456)</div>
+          <div class="text-teal-400">[11:42:01] Duplicate Hash Check: OK (0 previous matches)</div>
+          <div class="text-purple-400">[11:42:02] Generating ISO 20022 pain.001.001.03 XML packet...</div>
+          <div class="text-emerald-400">[11:42:02] Batch ready for 1-click execution. Time elapsed: 38ms</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PILOT CALLOUT (Linh Labs Guarantee) -->
+    <section class="max-w-5xl mx-auto px-6 py-12">
+      <div class="glass-card p-8 sm:p-12 rounded-3xl border-cyan-500/40 text-center relative overflow-hidden bg-gradient-to-b from-cyan-950/30 to-slate-950">
+        <span class="inline-block text-xs font-mono text-cyan-300 bg-cyan-500/20 px-4 py-1.5 rounded-full mb-4 border border-cyan-500/30">
+          FORMULA PILOTA PROTETTO
+        </span>
+        <h3 class="text-2xl sm:text-4xl font-display font-bold text-white mb-4">
+          Guida la macchina prima di comprarla
+        </h3>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+          Non chiediamo alle aziende di investire a scatola chiusa. Attiviamo il sistema in prova sul tuo punto vendita o reparto con il maggior volume per 14 giorni: saldi il progetto solo quando hai verificato con mano l'efficacia sul campo.
+        </p>
+        <a 
+          href="#contatti" 
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-slate-950 font-bold text-xs uppercase tracking-widest hover:bg-cyan-400 transition-colors duration-300 shadow-xl"
+        >
+          Richiedi l'Avvio del Pilota
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="contatti" class="max-w-4xl mx-auto px-6 py-20 border-t border-slate-800/80">
+      <div class="text-center mb-12">
+        <span class="text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase">Parla con gli Ingegneri Linh Labs</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-3">
+          Richiedi uno Studio di Fattibilità Gratuito
+        </h2>
+        <p class="text-slate-400 text-sm mt-3 font-light">
+          Analizziamo il tuo gestionale e la tua banca per confermare tempi di implementazione e ROI.
+        </p>
+      </div>
+
+      <form class="glass-card p-8 sm:p-12 rounded-3xl space-y-6 border border-slate-800 bg-slate-950/80" onsubmit="event.preventDefault(); alert('Grazie per la richiesta! Il team di ingegneri di Linh Labs ti contatterà entro 24 ore.');">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-2">NOME E COGNOME *</label>
+            <input type="text" required placeholder="es. Alessandro Rossi" class="w-full px-4 py-3.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-2">AZIENDA & RUOLO *</label>
+            <input type="text" required placeholder="es. Giallo Oro srl - CFO / Titolare" class="w-full px-4 py-3.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-2">EMAIL AZIENDALE *</label>
+            <input type="email" required placeholder="alessandro@azienda.it" class="w-full px-4 py-3.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-2">TELEFONO / WHATSAPP *</label>
+            <input type="tel" required placeholder="+39 333 1234567" class="w-full px-4 py-3.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-2">GESTIONALE IN USO</label>
+            <input type="text" placeholder="es. Zucchetti, TeamSystem, Custom..." class="w-full px-4 py-3.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-2">BANCA AZIENDALE PRINCIPALE</label>
+            <input type="text" placeholder="es. Monte dei Paschi, Intesa, UniCredit..." class="w-full px-4 py-3.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" />
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-4 text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+        >
+          <span>Invia Richiesta di Fattibilità & Pilota</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+        </button>
+
+        <p class="text-center text-[11px] text-slate-500 font-mono">
+          Rispondiamo entro 24h lavorative con un'analisi preliminare di fattibilità. Nessun vincolo commerciale.
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (Official Linh Labs Footer) -->
+  <footer class="border-t border-slate-900 py-12 relative z-10 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400 font-mono">
+      <div class="flex items-center gap-4">
+        <img src="./linhlabs-logo.png" alt="Linh Labs" class="h-12 sm:h-14 md:h-16 w-auto object-contain opacity-95" />
+        <span class="text-slate-600">&bull;</span>
+        <span class="text-slate-300 font-display font-semibold text-sm">Linh Treasury</span>
+      </div>
+      <div>
+        Via Giovanni Lavaggi 37, Catania (CT) &bull; <a href="mailto:info@linhlabs.com" class="hover:text-cyan-400">info@linhlabs.com</a> &bull; +39 335 5200646
+      </div>
+      <div class="text-slate-500">
+        &copy; 2026 Linh Labs. Conforme ISO 20022 & Regolamento UE 2024/886.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Icons & Interactive Calculator -->
+  <script>
+    lucide.createIcons();
+
+    const transSlider = document.getElementById('transSlider');
+    const costSlider = document.getElementById('costSlider');
+    const transCountLabel = document.getElementById('transCountLabel');
+    const hourlyCostLabel = document.getElementById('hourlyCostLabel');
+    const annualSavings = document.getElementById('annualSavings');
+    const hoursSaved = document.getElementById('hoursSaved');
+    const paybackPeriod = document.getElementById('paybackPeriod');
+
+    function updateCalculator() {
+      const transPerMonth = parseInt(transSlider.value);
+      const hourlyCost = parseInt(costSlider.value);
+
+      // Formatting labels
+      transCountLabel.textContent = transPerMonth.toLocaleString('it-IT');
+      hourlyCostLabel.textContent = `€ ${hourlyCost} / h`;
+
+      // Calculation logic
+      // ~3.5 min per manual transaction = 3.5 / 60 = 0.0583 hours
+      const hoursPerMonth = transPerMonth * (3.5 / 60);
+      const annualHours = Math.round(hoursPerMonth * 12);
+      const annualEuros = Math.round(annualHours * hourlyCost);
+
+      // Payback period in months based on ~€6.900 setup cost
+      const monthlySavings = annualEuros / 12;
+      const paybackMonths = monthlySavings > 0 ? (6900 / monthlySavings).toFixed(1) : '0';
+
+      // Update DOM
+      annualSavings.textContent = `€ ${annualEuros.toLocaleString('it-IT')}`;
+      hoursSaved.textContent = `${annualHours.toLocaleString('it-IT')} h`;
+      paybackPeriod.textContent = `~ ${paybackMonths.replace('.', ',')} Mesi`;
+    }
+
+    transSlider.addEventListener('input', updateCalculator);
+    costSlider.addEventListener('input', updateCalculator);
+    updateCalculator();
+  </script>
+</body>
+</html>
