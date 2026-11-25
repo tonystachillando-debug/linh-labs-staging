@@ -133,7 +133,7 @@ export const Mission: React.FC = () => {
               transition={{ delay: 0.5 }}
               className="text-slate-600 text-xs leading-relaxed border-l-2 border-white/10 pl-4"
             >
-              I dati sono medie di mercato e benchmark di settore tratti da studi di McKinsey Global Institute, Goldman Sachs e MIT Sloan. Non sono risultati garantiti: indicano dove si concentrano le inefficienze che un agente può prendere in carico.
+              I dati sono medie di mercato e benchmark di settore tratti da studi di McKinsey Global Institute, Goldman Sachs e MIT Sloan. Indicano dove si concentrano le inefficienze che un agente può prendere in carico; i risultati reali dipendono da ogni azienda.
             </motion.p>
           </div>
         </div>

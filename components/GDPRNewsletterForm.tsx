@@ -76,7 +76,7 @@ export const GDPRNewsletterForm: React.FC = () => {
         </h3>
 
         <p className="mt-3 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-          Niente spam, solo il meglio dell'intelligenza artificiale applicata. Scegli il tuo canale preferito.
+          Una sintesi al giorno sull'intelligenza artificiale applicata. Scegli il canale che preferisci.
         </p>
 
         {/* Channel Selector Tabs */}

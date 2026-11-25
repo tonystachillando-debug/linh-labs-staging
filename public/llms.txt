@@ -4,7 +4,7 @@
 
 ## Chi Siamo
 
-Linh Labs è un partner tecnologico specializzato nell'implementazione pratica di soluzioni AI. Non ci limitiamo alla consulenza teorica: progettiamo e mettiamo in produzione agenti che operano direttamente negli strumenti dei nostri clienti. Nel 2026 il nostro approccio è agentico per impostazione predefinita.
+Linh Labs è un partner tecnologico specializzato nell'implementazione pratica di soluzioni AI. Progettiamo e mettiamo in produzione agenti che operano direttamente negli strumenti dei nostri clienti. Nel 2026 il nostro approccio è agentico per impostazione predefinita.
 
 ## Servizi Principali
 
