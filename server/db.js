@@ -45,6 +45,34 @@ function saveDB(data) {
   }
 }
 
+// Known AI Brands for automated tagging
+const BRAND_PATTERNS = [
+  { name: 'Gemini', regex: /\b(gemini|google ai|deepmind|google deepmind|gemma)\b/i },
+  { name: 'OpenAI', regex: /\b(openai|chatgpt|gpt-4|gpt-5|gpt-4o|sora|o1|o3)\b/i },
+  { name: 'Claude', regex: /\b(claude|anthropic|sonnet|opus|haiku)\b/i },
+  { name: 'Meta / Llama', regex: /\b(meta|llama|fair|llama 3|llama 4)\b/i },
+  { name: 'DeepSeek', regex: /\b(deepseek|deepseek-v3|deepseek-r1|r1)\b/i },
+  { name: 'Mistral', regex: /\b(mistral|mixtral|le chat|codestral|pixtral)\b/i },
+  { name: 'NVIDIA', regex: /\b(nvidia|blackwell|hopper|cuda|h100|b200|dgx|jensen)\b/i },
+  { name: 'Microsoft', regex: /\b(microsoft|copilot|azure ai|phi-3|phi-4)\b/i },
+  { name: 'Apple', regex: /\b(apple|apple intelligence|ajax|apple ml|coreml)\b/i },
+  { name: 'Runway', regex: /\b(runway|gen-3|gen-4|media router)\b/i },
+  { name: 'Midjourney', regex: /\b(midjourney|v6|v7)\b/i },
+  { name: 'xAI / Grok', regex: /\b(xai|grok|colossus|musk)\b/i },
+  { name: 'Qwen', regex: /\b(qwen|alibaba cloud|tongyi)\b/i }
+];
+
+export function detectBrands(text) {
+  if (!text) return [];
+  const found = new Set();
+  for (const bp of BRAND_PATTERNS) {
+    if (bp.regex.test(text)) {
+      found.add(bp.name);
+    }
+  }
+  return Array.from(found);
+}
+
 // Compute hash of URL or Title for deduplication
 export function computeHash(text) {
   if (!text) return '';
@@ -85,6 +113,11 @@ export function saveArticles(articles) {
     const titleHash = computeHash(art.title);
 
     if (!isArticleDuplicate(art.url, art.title)) {
+      const combinedText = `${art.title || ''} ${art.summary_it || ''} ${(art.takeaways || []).join(' ')} ${art.source || ''}`;
+      const detectedBrands = art.brands && Array.isArray(art.brands) && art.brands.length > 0 
+        ? art.brands 
+        : detectBrands(combinedText);
+
       const newArticle = {
         id: crypto.randomUUID(),
         url_hash: urlHash,
@@ -93,9 +126,11 @@ export function saveArticles(articles) {
         url: art.url,
         source: art.source || 'AI News Feed',
         category: art.category || 'AI Innovation',
+        brands: detectedBrands,
         published_at: art.published_at || new Date().toISOString(),
         summary_it: art.summary_it || '',
         takeaways: art.takeaways || [],
+        ranking_scores: art.ranking_scores || { total_score: 85 },
         is_newsletter_sent: false,
         created_at: new Date().toISOString()
       };
@@ -108,13 +143,80 @@ export function saveArticles(articles) {
   return addedCount;
 }
 
-// Get latest published articles (for site & newsletter)
-export function getLatestArticles(limit = 10, includeDrafts = false) {
+// Get articles with advanced filtering and pagination
+export function getLatestArticles(options = {}) {
   const db = loadDB();
-  if (includeDrafts) {
-    return db.articles.slice(0, limit);
+  
+  // Support numeric limit parameter for backward compatibility
+  const limit = typeof options === 'number' ? options : (Number(options.limit) || 100);
+  const category = typeof options === 'object' ? options.category : null;
+  const brand = typeof options === 'object' ? options.brand : null;
+  const search = typeof options === 'object' ? (options.q || options.search) : null;
+  const includeDrafts = typeof options === 'object' ? options.includeDrafts : false;
+
+  let list = db.articles;
+
+  if (!includeDrafts) {
+    list = list.filter(a => a.status === 'published' || a.status === undefined);
   }
-  return db.articles.filter(a => a.status === 'published' || a.status === undefined).slice(0, limit);
+
+  // Ensure each article has brands detected even for older DB entries
+  list = list.map(a => {
+    if (!a.brands || a.brands.length === 0) {
+      const combined = `${a.title || ''} ${a.summary_it || ''} ${(a.takeaways || []).join(' ')} ${a.source || ''}`;
+      return { ...a, brands: detectBrands(combined) };
+    }
+    return a;
+  });
+
+  // Filter by category
+  if (category && category !== 'Tutte' && category !== 'all') {
+    list = list.filter(a => a.category && a.category.toLowerCase() === category.toLowerCase());
+  }
+
+  // Filter by brand
+  if (brand && brand !== 'Tutti' && brand !== 'all') {
+    const brandLower = brand.toLowerCase();
+    list = list.filter(a => {
+      if (Array.isArray(a.brands) && a.brands.some(b => b.toLowerCase().includes(brandLower) || brandLower.includes(b.toLowerCase()))) {
+        return true;
+      }
+      const combined = `${a.title || ''} ${a.summary_it || ''} ${a.source || ''}`.toLowerCase();
+      return combined.includes(brandLower);
+    });
+  }
+
+  // Filter by search query
+  if (search && search.trim()) {
+    const q = search.toLowerCase().trim();
+    list = list.filter(a => {
+      const titleMatch = (a.title || '').toLowerCase().includes(q);
+      const summaryMatch = (a.summary_it || '').toLowerCase().includes(q);
+      const sourceMatch = (a.source || '').toLowerCase().includes(q);
+      const brandMatch = Array.isArray(a.brands) && a.brands.some(b => b.toLowerCase().includes(q));
+      const takeawayMatch = Array.isArray(a.takeaways) && a.takeaways.some(t => t.toLowerCase().includes(q));
+      return titleMatch || summaryMatch || sourceMatch || brandMatch || takeawayMatch;
+    });
+  }
+
+  return list.slice(0, limit);
+}
+
+// Get all brand summary counts
+export function getBrandCounts() {
+  const db = loadDB();
+  const counts = {};
+
+  for (const art of db.articles) {
+    const combined = `${art.title || ''} ${art.summary_it || ''} ${(art.takeaways || []).join(' ')} ${art.source || ''}`;
+    const brands = (art.brands && art.brands.length > 0) ? art.brands : detectBrands(combined);
+    
+    for (const b of brands) {
+      counts[b] = (counts[b] || 0) + 1;
+    }
+  }
+
+  return counts;
 }
 
 // Update specific article content (e.g. proofread text)

@@ -24,3 +24,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Netlify local (dev server, blobs di test)
+.netlify

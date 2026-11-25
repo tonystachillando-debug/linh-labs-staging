@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "node server.js"
+    "server": "node server.js",
+    "dev:netlify": "netlify dev"
   },
   "dependencies": {
+    "@netlify/blobs": "^11.1.9",
     "@resvg/resvg-js": "^2.6.2",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",

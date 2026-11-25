@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
-import { getLatestArticles, addSubscriber, confirmSubscriber, unsubscribeSubscriber } from './server/db.js';
+import { getLatestArticles, getBrandCounts, addSubscriber, confirmSubscriber, unsubscribeSubscriber } from './server/db.js';
 import { runNewsScan } from './server/newsEngine.js';
 import { sendDailyNewsletter } from './server/newsletter.js';
 import { generateCarouselCopy, renderInstagramCarouselHTML } from './server/instagramCarousel.js';
@@ -149,14 +149,27 @@ app.post('/api/lead', async (req, res) => {
   }
 });
 
-// ─── 2. AI NEWS & DEDUPLICATION API ENDPOINTS ─────────────────────────────
-
-// Get latest AI articles for website feed
+// Get latest AI articles for website feed with filtering & pagination
 app.get('/api/news/latest', (req, res) => {
   try {
-    const limit = Number(req.query.limit) || 10;
-    const articles = getLatestArticles(limit);
-    res.json({ success: true, articles });
+    const limit = Number(req.query.limit) || 100;
+    const category = req.query.category || null;
+    const brand = req.query.brand || null;
+    const q = req.query.q || req.query.search || null;
+    const includeDrafts = req.query.includeDrafts === 'true';
+
+    const articles = getLatestArticles({ limit, category, brand, q, includeDrafts });
+    res.json({ success: true, count: articles.length, articles });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Get brand catalog & counts
+app.get('/api/news/brands', (req, res) => {
+  try {
+    const brands = getBrandCounts();
+    res.json({ success: true, brands });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

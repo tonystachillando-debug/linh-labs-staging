@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { captureReferral } from './services/referral';
 
 // Helper: updates <title>, meta description and canonical for each route
 function PageSEO({ title, description, canonical }: { title: string; description: string; canonical: string }) {
@@ -90,6 +91,10 @@ function HomePage() {
 }
 
 function App() {
+  React.useEffect(() => {
+    captureReferral();
+  }, []);
+
   return (
     <>
       <ScrollToHash />

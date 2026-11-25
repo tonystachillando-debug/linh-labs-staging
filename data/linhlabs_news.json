@@ -1,225 +1,479 @@
 {
   "articles": [
     {
-      "id": "2d4b081b-fd6c-4c04-b7be-7f9ab377e13c",
-      "url_hash": "3546009a87e722d3594343cdca4749bbd675f723318a6b4ca86c78c726f3e785",
-      "title_hash": "377f60d1a01afc8e24f67519beb5bd5b1f32ac42c2caa18add0d86ea4142be99",
-      "title": "EU AI Act: Pubblicate le Linee Guida Ufficiali per l'Audit della Compliance B2B",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/it/ai_act_compliance_guidelines_2026",
-      "source": "EU Tech Commission",
-      "category": "Regolamentazione & Compliance",
-      "published_at": "2026-07-27T07:00:00.000Z",
-      "summary_it": "La Commissione Europea ha rilasciato il quadro operativo finale per gli audit di conformità all'EU AI Act. Le nuove linee guida definiscono i requisiti minimi di tracciabilità dei dati e di sicurezza per le aziende che integrano modelli generativi nei processi di produzione e customer care.",
+      "id": "gemini-3-flash-mariner-2026",
+      "url_hash": "f86a38f1220aece9a0eb112f88d235ceb513e982936aa6195230deb253d5dcd2",
+      "title_hash": "882b101d1f57c780dba481acec1b09f5d5b41db7d2c9fea7940d6af9d99202ee",
+      "title": "Google DeepMind Presenta Gemini 3 Flash & Project Mariner per Agenti Autonomi",
+      "url": "https://blog.google/technology/ai/deepmind-gemini-3-flash-mariner-2026",
+      "source": "Google DeepMind",
+      "category": "LLM & Agenti",
+      "brands": ["Gemini"],
+      "published_at": "2026-08-16T14:30:00.000Z",
+      "summary_it": "Google DeepMind ha svelato Gemini 3 Flash insieme a Project Mariner. L'infrastruttura a bassissima latenza permette agli agenti AI di navigare nel web ed eseguire flussi operativi complessi, elaborando interfacce utente e API in tempo reale con costi di inferenza dimezzati.",
       "takeaways": [
-        "Standard ufficiali di audit trail per i log e la trasparenza dei dati AI",
-        "Framework di sicurezza obbligatorio per i software enterprise operanti in UE"
+        "Latenza di risposta ridotta del 50% rispetto ai modelli precedenti",
+        "Orchestrazione nativa di agenti per automazione browser e workflow aziendali"
       ],
+      "ranking_scores": { "total_score": 98 },
       "is_newsletter_sent": false,
-      "created_at": "2026-07-27T09:45:22.942Z"
+      "created_at": "2026-08-16T15:00:00.000Z"
     },
     {
-      "id": "aa315702-ee06-49d8-a7e2-1e5ad55eb7c1",
+      "id": "gemini-live-multimodal-enterprise-2026",
+      "url_hash": "gemini_multimodal_live_streaming_api_enterprise_2026",
+      "title_hash": "gemini_multimodal_live_enterprise_title_2026",
+      "title": "Gemini Live API: Audio & Video Bidirezionale in Streaming per il Customer Care",
+      "url": "https://developers.googleblog.com/2026/08/gemini-live-multimodal-streaming-api.html",
+      "source": "Google AI for Developers",
+      "category": "AI Enterprise",
+      "brands": ["Gemini"],
+      "published_at": "2026-08-15T11:00:00.000Z",
+      "summary_it": "Google rilascia in disponibilità generale l'API Gemini Live per connessioni WebSocket bidirezionali a bassissima latenza. Le aziende possono ora realizzare assistenti vocali e visivi capaci di interrompersi naturalmente, comprendere toni ed elaborare video in tempo reale.",
+      "takeaways": [
+        "Streaming audio/video full-duplex con latenza inferiore a 150ms",
+        "Integrazione diretta con sistemi CRM aziendali e centralini VoIP"
+      ],
+      "ranking_scores": { "total_score": 95 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-15T11:30:00.000Z"
+    },
+    {
+      "id": "gemini-code-assist-enterprise-context-2026",
+      "url_hash": "gemini_code_assist_context_window_2m_2026",
+      "title_hash": "gemini_code_assist_context_title_2026",
+      "title": "Google Aggiorna Gemini Code Assist: Contesto a 2 Milioni di Token per Grandi Monorepo",
+      "url": "https://cloud.google.com/blog/products/application-development/gemini-code-assist-2m-tokens",
+      "source": "Google Cloud Blog",
+      "category": "AI Enterprise",
+      "brands": ["Gemini"],
+      "published_at": "2026-08-14T09:15:00.000Z",
+      "summary_it": "Google Cloud ha integrato la finestra di contesto estesa a 2 milioni di token in Gemini Code Assist. Gli ingegneri software possono ora caricare interi repository aziendali per effettuare refactoring complessi, audit di sicurezza e migrazioni di architetture legacy in pochi minuti.",
+      "takeaways": [
+        "Analisi simultanea di interi codebase fino a 100.000 righe di codice",
+        "Riconoscimento automatico delle dipendenze architetturali interne"
+      ],
+      "ranking_scores": { "total_score": 92 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-14T09:45:00.000Z"
+    },
+    {
+      "id": "openai-gpt5-reasoning-agents-2026",
+      "url_hash": "openai_gpt5_orion_reasoning_orchestrator_2026",
+      "title_hash": "openai_gpt5_launch_announcement_title_2026",
+      "title": "OpenAI Svela GPT-5: Capacità di Ragionamento Multi-Step e Agenti Programmabili",
+      "url": "https://openai.com/index/introducing-gpt-5-advanced-reasoning",
+      "source": "OpenAI Blog",
+      "category": "LLM & Agenti",
+      "brands": ["OpenAI"],
+      "published_at": "2026-08-16T12:00:00.000Z",
+      "summary_it": "OpenAI ha annunciato GPT-5, la nuova generazione di modelli con sistema di pensiero adattivo (o3-style reasoning). Il modello sintetizza compiti ad elevata complessità matematica, pianifica workflow aziendali a lungo termine e riduce le allucinazioni al minimo storico del settore.",
+      "takeaways": [
+        "Accuratezza logico-deduttiva superiore del 40% sui benchmark di programmazione",
+        "Framework nativo di guardrail e auto-correzione durante l'esecuzione"
+      ],
+      "ranking_scores": { "total_score": 99 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-16T12:30:00.000Z"
+    },
+    {
+      "id": "openai-sora-pro-api-video-enterprise",
+      "url_hash": "openai_sora_pro_video_generation_api_2026",
+      "title_hash": "openai_sora_pro_video_enterprise_2026",
+      "title": "OpenAI Lancia Sora Pro API: Generazione Video 4K e Controllo Camera per il Cinema",
+      "url": "https://openai.com/index/sora-pro-api-cinematics",
+      "source": "OpenAI Blog",
+      "category": "Ricerca & Modelli",
+      "brands": ["OpenAI"],
+      "published_at": "2026-08-13T16:00:00.000Z",
+      "summary_it": "OpenAI rende accessibile l'API di Sora Pro con supporto per risoluzione nativa 4K a 60fps e controllo dettagliato della cinematografia digitale. Gli studi di produzione possono ora sincronizzare movimenti camera, fisica della luce e continuità dei personaggi tra scene multiple.",
+      "takeaways": [
+        "Rendering iperrealistico 4K con fisica volumetrica avanzata",
+        "Controllo preciso di angolazioni e continuità visiva tra shot sequenziali"
+      ],
+      "ranking_scores": { "total_score": 94 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-13T16:30:00.000Z"
+    },
+    {
+      "id": "openai-operator-autonomous-browser-desktop",
+      "url_hash": "openai_operator_desktop_agent_release_2026",
+      "title_hash": "openai_operator_desktop_automation_2026",
+      "title": "OpenAI Rilascia 'Operator': Agente AI Autonomo per Gestione OS e Applicazioni",
+      "url": "https://openai.com/index/introducing-operator-agent",
+      "source": "TechCrunch AI",
+      "category": "LLM & Agenti",
+      "brands": ["OpenAI"],
+      "published_at": "2026-08-11T14:20:00.000Z",
+      "summary_it": "OpenAI ha lanciato Operator, un agente autonomo capace di eseguire azioni su browser e sistemi operativi desktop. Dalla compilazione di form amministrativi alla riconciliazione di fatture su software ERP, Operator replica le interazioni umane con precisione visiva e logica.",
+      "takeaways": [
+        "Interazione GUI tramite visione computazionale ed emulazione input",
+        "Audit trail crittografico per ogni azione eseguita sui sistemi aziendali"
+      ],
+      "ranking_scores": { "total_score": 96 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-11T14:50:00.000Z"
+    },
+    {
+      "id": "claude-3-7-sonnet-hybrid-reasoning-2026",
+      "url_hash": "anthropic_claude_37_sonnet_hybrid_thought_2026",
+      "title_hash": "anthropic_claude_37_hybrid_thought_announcement",
+      "title": "Anthropic Presenta Claude 3.7 Sonnet: Il Primo Modello Ibrido con Pensiero Dinamico",
+      "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+      "source": "Anthropic News",
+      "category": "Ricerca & Modelli",
+      "brands": ["Claude"],
+      "published_at": "2026-08-16T10:00:00.000Z",
+      "summary_it": "Anthropic ha introdotto Claude 3.7 Sonnet, il primo modello a unificare risposte istantanee e catene di pensiero estese (extended thinking) regolabili dall'utente. Il modello stabilisce nuovi record globali nei benchmark di programmazione, architettura software e analisi finanziaria complessa.",
+      "takeaways": [
+        "Budget di pensiero configurabile da millisecondi a minuti per task complessi",
+        "Primo posto assoluto sul benchmark SWE-bench Verified per lo sviluppo software"
+      ],
+      "ranking_scores": { "total_score": 99 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-16T10:30:00.000Z"
+    },
+    {
+      "id": "claude-code-agentic-cli-developers",
+      "url_hash": "anthropic_claude_code_agentic_cli_launch_2026",
+      "title_hash": "anthropic_claude_code_cli_launch_2026",
+      "title": "Anthropic Lancia Claude Code: L'Agente CLI che Opera Direttamente nel Terminale",
+      "url": "https://www.anthropic.com/news/claude-code",
+      "source": "MIT Tech Review",
+      "category": "AI Enterprise",
+      "brands": ["Claude"],
+      "published_at": "2026-08-12T15:30:00.000Z",
+      "summary_it": "Anthropic ha rilasciato Claude Code, uno strumento da riga di comando che permette agli sviluppatori di delegare refactoring, navigazione del filesystem, esecuzione di test e risoluzione di bug direttamente all'AI all'interno dell'ambiente di sviluppo locale.",
+      "takeaways": [
+        "Integrazione diretta con Git, bash e pipeline CI/CD",
+        "Esecuzione autonoma di test unitari con cicli di auto-correzione del codice"
+      ],
+      "ranking_scores": { "total_score": 93 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-12T16:00:00.000Z"
+    },
+    {
+      "id": "deepseek-r1-v3-open-reasoning-revolution",
+      "url_hash": "deepseek_r1_v3_open_source_distillation_2026",
+      "title_hash": "deepseek_r1_v3_open_reasoning_title",
+      "title": "DeepSeek R1 & V3: La Rivoluzione dei Modelli di Ragionamento Open Source a Basso Costo",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+      "source": "ArXiv AI Digest",
+      "category": "Ricerca & Modelli",
+      "brands": ["DeepSeek"],
+      "published_at": "2026-08-15T08:00:00.000Z",
+      "summary_it": "DeepSeek ha scosso l'industria globale dell'AI con il rilascio dei pesi aperti di DeepSeek-R1. Tramite un innovativo processo di distillazione e reinforcement learning puro senza dati supervisionati costosi, il modello rivaleggia con i top LLM proprietari a una frazione del costo di addestramento.",
+      "takeaways": [
+        "Costi di addestramento e inferenza ridotti fino a 10 volte rispetto ai concorrenti",
+        "Piena trasparenza con pesi aperti e checkpoint di distillazione su Llama e Qwen"
+      ],
+      "ranking_scores": { "total_score": 98 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-15T08:30:00.000Z"
+    },
+    {
+      "id": "deepseek-enterprise-private-deployment-onprem",
+      "url_hash": "deepseek_enterprise_local_deployment_guide_2026",
+      "title_hash": "deepseek_enterprise_onprem_privacy_2026",
+      "title": "DeepSeek in Azienda: Boom di Installazioni On-Premise per la Massima Sovranità Dati",
+      "url": "https://venturebeat.com/ai/deepseek-on-premise-enterprise-adoption",
+      "source": "VentureBeat AI",
+      "category": "AI Enterprise",
+      "brands": ["DeepSeek"],
+      "published_at": "2026-08-10T11:45:00.000Z",
+      "summary_it": "Sempre più istituzioni bancarie e sanitarie europee scelgono di ospitare i modelli distillati di DeepSeek sui propri server privati. Questa scelta garantisce totale conformità al GDPR, annulla il rischio di data leakage e offre prestazioni di ragionamento paragonabili ai sistemi cloud.",
+      "takeaways": [
+        "Totale riservatezza dei dati senza invio di prompt all'esterno della rete aziendale",
+        "Costi hardware sostenibili grazie alle versioni quantizzate a 4-bit e 8-bit"
+      ],
+      "ranking_scores": { "total_score": 91 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-10T12:15:00.000Z"
+    },
+    {
+      "id": "meta-llama-4-moe-architecture-2026",
       "url_hash": "f2e150c81b874729a995f898c7be4081b8195ecc790a03b81652ce0988e773c2",
       "title_hash": "703c37c6248d0a89653810cfa6df34ecba74d6b5839fad0460be816e6d3494ae",
       "title": "Meta Rilascia Llama 4 Open-Weights: Architettura MoE ad Alta Efficienza",
       "url": "https://ai.meta.com/blog/llama-4-open-weights-moe-release",
       "source": "Meta AI Research",
       "category": "Ricerca & Modelli",
-      "published_at": "2026-07-27T07:30:00.000Z",
+      "brands": ["Meta / Llama"],
+      "published_at": "2026-08-14T07:30:00.000Z",
       "summary_it": "Meta ha reso disponibili i pesi aperti di Llama 4. Il nuovo modello sfrutta un'architettura Mixture-of-Experts (MoE) che consente di ridurre dell'80% i requisiti di memoria VRAM durante l'inferenza, permettendo l'esecuzione locale di modelli di classe enterprise su hardware standard.",
       "takeaways": [
         "Abbattimento dell'80% dei costi di calcolo per l'inferenza locale",
         "Piena compatibilità open-source per integrazioni custom in azienda"
       ],
+      "ranking_scores": { "total_score": 96 },
       "is_newsletter_sent": false,
-      "created_at": "2026-07-27T09:45:22.942Z"
+      "created_at": "2026-08-14T08:00:00.000Z"
     },
     {
-      "id": "5a3386ff-7245-4921-92b9-b9b6c331214e",
-      "url_hash": "f86a38f1220aece9a0eb112f88d235ceb513e982936aa6195230deb253d5dcd2",
-      "title_hash": "882b101d1f57c780dba481acec1b09f5d5b41db7d2c9fea7940d6af9d99202ee",
-      "title": "Google DeepMind Presenta Gemini 3 Flash & Project Mariner per Agenti Autonomi",
-      "url": "https://blog.google/technology/ai/deepmind-gemini-3-flash-mariner-2026",
-      "source": "Google DeepMind News",
-      "category": "LLM & Agenti",
-      "published_at": "2026-07-27T08:00:00.000Z",
-      "summary_it": "Google DeepMind ha svelato Gemini 3 Flash unitamente a Project Mariner, un'infrastruttura d'orchestrazione ad ultra-bassa latenza progettata per consentire agli agenti AI di navigare nel web ed eseguire flussi operativi complessi in completa autonomia e sicurezza.",
+      "id": "meta-ai-open-source-safety-alignment-2026",
+      "url_hash": "meta_ai_purple_llama_guardrail_safety_2026",
+      "title_hash": "meta_ai_purple_llama_guardrail_title",
+      "title": "Meta Presenta Llama Guard 4: Protezione e Moderazione AI Nativa per le Imprese",
+      "url": "https://ai.meta.com/research/publications/llama-guard-4-enterprise-safety",
+      "source": "Meta AI Research",
+      "category": "Regolamentazione & Compliance",
+      "brands": ["Meta / Llama"],
+      "published_at": "2026-08-08T13:00:00.000Z",
+      "summary_it": "Meta ha aggiornato la suite di sicurezza Purple Llama con il modello Llama Guard 4. Lo strumento consente di filtrare in tempo reale input e output malevoli, attacchi di prompt injection e violazioni di policy interne prima che raggiungano l'utente finale.",
       "takeaways": [
-        "Latenza di risposta ridotta del 50% rispetto ai modelli precedenti",
-        "Orchestrazione nativa di agenti per automazione browser e workflow aziendali"
+        "Classificazione del rischio in meno di 20 millisecondi per singola query",
+        "Personalizzazione delle categorie di rischio in conformità all'EU AI Act"
       ],
+      "ranking_scores": { "total_score": 89 },
       "is_newsletter_sent": false,
-      "created_at": "2026-07-27T09:45:22.938Z"
+      "created_at": "2026-08-08T13:30:00.000Z"
     },
     {
-      "id": "057e9af9-f667-445f-9424-fafadb445dc2",
+      "id": "mistral-large-3-nemo-enterprise-europe",
+      "url_hash": "mistral_ai_large_3_nemo_sovereign_ai_2026",
+      "title_hash": "mistral_large_3_enterprise_release_title",
+      "title": "Mistral AI Svela Mistral Large 3: Il Campione Europeo per Sovranità dei Dati e Multilingua",
+      "url": "https://mistral.ai/news/mistral-large-3-release",
+      "source": "Mistral AI Blog",
+      "category": "LLM & Agenti",
+      "brands": ["Mistral"],
+      "published_at": "2026-08-13T10:00:00.000Z",
+      "summary_it": "La parigina Mistral AI ha presentato Mistral Large 3. Progettato con standard europei di trasparenza, il modello eccelle nella gestione fluida delle 24 lingue ufficiali dell'UE e supporta il deployment nativo su cloud europei certificati per banche e pubblica amministrazione.",
+      "takeaways": [
+        "Supporto d'eccellenza per l'italiano e tutte le lingue europee native",
+        "Conformità certificata al 100% con le direttive UE su data residency e privacy"
+      ],
+      "ranking_scores": { "total_score": 93 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-13T10:30:00.000Z"
+    },
+    {
+      "id": "mistral-codestral-250k-repo-level-agent",
+      "url_hash": "mistral_codestral_250k_update_developers_2026",
+      "title_hash": "mistral_codestral_250k_title",
+      "title": "Mistral Aggiorna Codestral: Finestra di Contesto a 256k e Supporto a 80+ Linguaggi",
+      "url": "https://mistral.ai/news/codestral-256k",
+      "source": "Hugging Face Blog",
+      "category": "Ricerca & Modelli",
+      "brands": ["Mistral"],
+      "published_at": "2026-08-07T14:15:00.000Z",
+      "summary_it": "Mistral AI ha aggiornato Codestral espandendo il contesto a 256.000 token con architettura Fill-in-the-Middle (FIM). Lo strumento accelera i flussi di test e sviluppo software, supportando framework moderni da Rust a TypeScript e Python con estrema velocità.",
+      "takeaways": [
+        "Capacità di completamento automatico di blocchi interi di codice in tempo reale",
+        "Bassi requisiti di latenza ideali per plugin IDE ed estensioni VS Code"
+      ],
+      "ranking_scores": { "total_score": 90 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-07T14:45:00.000Z"
+    },
+    {
+      "id": "nvidia-blackwell-ultra-b300-superchip-2026",
+      "url_hash": "nvidia_blackwell_ultra_b300_nvlink_ai_datacenter_2026",
+      "title_hash": "nvidia_blackwell_ultra_b300_announcement_title",
+      "title": "NVIDIA Presenta Blackwell Ultra B300: Accelerazione AI di Prossima Generazione",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-b300-superchip",
+      "source": "Nvidia Blog",
+      "category": "Infrastruttura & Hardware",
+      "brands": ["NVIDIA"],
+      "published_at": "2026-08-15T18:00:00.000Z",
+      "summary_it": "NVIDIA ha presentato la serie Blackwell Ultra B300 dotata di memoria HBM3e a 288GB e switch NVLink di sesta generazione. Il nuovo superchip permette ai datacenter di eseguire modelli di ragionamento con migliaia di miliardi di parametri con una riduzione del consumo energetico del 45%.",
+      "takeaways": [
+        "Velocità di inferenza FP4 quadruplicata rispetto alle architetture precedenti",
+        "Efficienza energetica raddoppiata per datacenter ad altissima densità"
+      ],
+      "ranking_scores": { "total_score": 97 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-15T18:30:00.000Z"
+    },
+    {
+      "id": "nvidia-nemotron-open-synthetic-data-engine",
+      "url_hash": "nvidia_nemotron_synthetic_data_generation_2026",
+      "title_hash": "nvidia_nemotron_synthetic_engine_title",
+      "title": "NVIDIA Lancia Nemotron: Motore di Dati Sintetici per Addestrare Modelli Personalizzati",
+      "url": "https://blogs.nvidia.com/blog/nemotron-synthetic-data-generation",
+      "source": "Nvidia Blog",
+      "category": "Ricerca & Modelli",
+      "brands": ["NVIDIA"],
+      "published_at": "2026-08-09T16:00:00.000Z",
+      "summary_it": "NVIDIA ha reso disponibile Nemotron, una suite aperta per generare dataset sintetici ad altissima fedeltà. Le aziende possono creare milioni di esempi di training specifici per il proprio dominio industriale senza violare copyright né esporre dati sensibili.",
+      "takeaways": [
+        "Generazione automatica di coppie domanda-risposta e verifiche logiche",
+        "Riduzione drastica della dipendenza da annotatori umani manuali"
+      ],
+      "ranking_scores": { "total_score": 91 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-09T16:30:00.000Z"
+    },
+    {
+      "id": "microsoft-copilot-studio-autonomous-agents-2026",
+      "url_hash": "microsoft_copilot_studio_autonomous_agent_orchestration_2026",
+      "title_hash": "microsoft_copilot_studio_agents_launch_title",
+      "title": "Microsoft Copilot Studio: Creazione No-Code di Agenti AI Autonomi per Microsoft 365",
+      "url": "https://blogs.microsoft.com/blog/2026/08/11/copilot-studio-autonomous-agents",
+      "source": "TechCrunch AI",
+      "category": "AI Enterprise",
+      "brands": ["Microsoft"],
+      "published_at": "2026-08-11T10:00:00.000Z",
+      "summary_it": "Microsoft ha annunciato nuove funzionalità per Copilot Studio che permettono a qualsiasi azienda di configurare agenti autonomi capaci di monitorare caselle email, gestire ticket di supporto IT e automatizzare la supply chain con piena integrazione nei tool aziendali Microsoft 365 e Teams.",
+      "takeaways": [
+        "Interfaccia visuale drag-and-drop per la definizione di logiche e trigger",
+        "Connettori nativi verso SAP, Salesforce, ServiceNow e database SQL"
+      ],
+      "ranking_scores": { "total_score": 94 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-11T10:30:00.000Z"
+    },
+    {
+      "id": "microsoft-phi-4-mini-on-device-reasoning",
+      "url_hash": "microsoft_phi_4_mini_small_language_model_2026",
+      "title_hash": "microsoft_phi_4_reasoning_edge_title",
+      "title": "Microsoft Rilascia Phi-4 Mini: Grandi Capacità di Ragionamento su Dispositivi Edge",
+      "url": "https://azure.microsoft.com/blog/introducing-phi-4-mini-open-model",
+      "source": "VentureBeat AI",
+      "category": "Ricerca & Modelli",
+      "brands": ["Microsoft"],
+      "published_at": "2026-08-06T09:30:00.000Z",
+      "summary_it": "Microsoft Research ha pubblicato Phi-4 Mini, un modello compatto da 3.8 miliardi di parametri ottimizzato per l'esecuzione su PC, smartphone e dispositivi IoT. Nonostante le dimensioni ridotte, supera modelli di taglia superiore nella sintesi e risoluzione di problemi logici.",
+      "takeaways": [
+        "Inferenza ultra-rapida a zero latenza su normali CPU e NPU per laptop",
+        "Ideale per applicazioni embedded e assistenti offline senza connessione cloud"
+      ],
+      "ranking_scores": { "total_score": 89 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-06T10:00:00.000Z"
+    },
+    {
+      "id": "apple-intelligence-on-device-foundation-2026",
+      "url_hash": "apple_intelligence_foundation_models_expansion_2026",
+      "title_hash": "apple_intelligence_on_device_privacy_title",
+      "title": "Apple Potenzia Apple Intelligence con Nuovi Modelli On-Device per Privacy Totale",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-intelligence-new-capabilities",
+      "source": "The Verge AI",
+      "category": "AI Enterprise",
+      "brands": ["Apple"],
+      "published_at": "2026-08-14T17:00:00.000Z",
+      "summary_it": "Apple ha presentato la nuova versione del framework Apple Intelligence per iOS e macOS. Il sistema elabora contesti personali, trascrizioni vocali e indicizzazione di file direttamente nel Secure Enclave dei chip Apple Silicon, senza trasmettere alcuna informazione ai server cloud.",
+      "takeaways": [
+        "Crittografia end-to-end e computazione locale a zero tracciamento dati",
+        "Integrazione profonda con Siri e flussi di produttività nativi"
+      ],
+      "ranking_scores": { "total_score": 92 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-14T17:30:00.000Z"
+    },
+    {
+      "id": "runway-gen4-interactive-video-world-simulator",
+      "url_hash": "runway_gen4_world_simulator_interactive_ai_2026",
+      "title_hash": "runway_gen4_world_simulator_title",
+      "title": "Runway Annuncia Gen-4: Simulatore Visivo del Mondo Reale con Interattività in Tempo Reale",
+      "url": "https://runwayml.com/news/gen-4-world-models",
+      "source": "TechCrunch AI",
+      "category": "Ricerca & Modelli",
+      "brands": ["Runway"],
+      "published_at": "2026-08-12T18:00:00.000Z",
+      "summary_it": "Runway ha svelato la nuova architettura Gen-4 denominata General World Models. Il sistema non si limita a generare video statici, ma comprende la fisica tridimensionale degli ambienti e permette di interagire e navigare in mondi digitali fotorealistici generati al volo.",
+      "takeaways": [
+        "Comprensione nativa di gravità, illuminazione volumetrica e cinematica",
+        "Applicazioni rivoluzionarie per gaming, architettura e produzione cinematografica"
+      ],
+      "ranking_scores": { "total_score": 95 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-12T18:30:00.000Z"
+    },
+    {
+      "id": "midjourney-v7-3d-asset-generation",
+      "url_hash": "midjourney_v7_3d_spatial_generation_launch_2026",
+      "title_hash": "midjourney_v7_announcement_spatial_title",
+      "title": "Midjourney V7: Generazione di Asset 3D e Texture Spaziali per il Design Industriale",
+      "url": "https://www.midjourney.com/updates/v7-release",
+      "source": "VentureBeat AI",
+      "category": "Ricerca & Modelli",
+      "brands": ["Midjourney"],
+      "published_at": "2026-08-09T12:00:00.000Z",
+      "summary_it": "Midjourney ha lanciato la versione 7 della sua celebre piattaforma. Oltre a una fedeltà visiva senza precedenti nel rendering di dettagli umani e testo, Midjourney V7 introduce l'esportazione diretta di mesh 3D e materiali PBR pronti per software di modellazione CAD e Unreal Engine.",
+      "takeaways": [
+        "Esportazione istantanea in formati standard OBJ, FBX e USDZ",
+        "Controllo millimetrico della coerenza stilistica e dell'inquadratura"
+      ],
+      "ranking_scores": { "total_score": 93 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-09T12:30:00.000Z"
+    },
+    {
+      "id": "xai-grok-3-colossus-supercluster-reasoning",
+      "url_hash": "xai_grok_3_colossus_100k_gpu_supercluster_2026",
+      "title_hash": "xai_grok_3_launch_announcement_title",
+      "title": "xAI Lancia Grok 3: Addestrato sul Supercluster 'Colossus' da 100.000 GPU",
+      "url": "https://x.ai/news/introducing-grok-3",
+      "source": "The Verge AI",
+      "category": "LLM & Agenti",
+      "brands": ["xAI / Grok"],
+      "published_at": "2026-08-15T15:00:00.000Z",
+      "summary_it": "Elon Musk e il team di xAI hanno rilasciato Grok 3, addestrato sul supercomputer Colossus di Memphis. Il modello integra dati in tempo reale dalla piattaforma X e dimostra avanzate doti di risoluzione per problemi scientifici, crittografia e programmazione competitiva.",
+      "takeaways": [
+        "Accesso a flussi di notizie e tendenze globali in tempo reale con zero delay",
+        "Algoritmi avanzati di sintesi per equazioni matematiche e simulazioni fisiche"
+      ],
+      "ranking_scores": { "total_score": 94 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-15T15:30:00.000Z"
+    },
+    {
+      "id": "qwen-2-5-max-open-weights-leaderboard",
+      "url_hash": "alibaba_qwen_25_max_multilingual_benchmark_2026",
+      "title_hash": "qwen_25_max_open_weights_leaderboard_title",
+      "title": "Alibaba Cloud Rilascia Qwen 2.5-Max: Modello Open-Weight ai Vertici Mondiali",
+      "url": "https://qwenlm.github.io/blog/qwen2.5-max",
+      "source": "ArXiv AI Digest",
+      "category": "Ricerca & Modelli",
+      "brands": ["Qwen"],
+      "published_at": "2026-08-10T08:30:00.000Z",
+      "summary_it": "Alibaba Cloud ha rilasciato la versione open di Qwen 2.5-Max. Con supporto per oltre 30 lingue e capacità superiori nel calcolo numerico e nella scrittura di codice, il modello rappresenta una delle più potenti alternative open-source per imprese e sviluppatori a livello globale.",
+      "takeaways": [
+        "Eccezionale comprensione delle query tecniche e della documentazione multilingue",
+        "Licenza commerciale flessibile per l'integrazione in piattaforme cloud custom"
+      ],
+      "ranking_scores": { "total_score": 92 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-10T09:00:00.000Z"
+    },
+    {
+      "id": "eu-ai-act-compliance-audit-2026",
+      "url_hash": "3546009a87e722d3594343cdca4749bbd675f723318a6b4ca86c78c726f3e785",
+      "title_hash": "377f60d1a01afc8e24f67519beb5bd5b1f32ac42c2caa18add0d86ea4142be99",
+      "title": "EU AI Act: Pubblicate le Linee Guida Ufficiali per l'Audit della Compliance B2B",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/it/ai_act_compliance_guidelines_2026",
+      "source": "EU Tech Commission",
+      "category": "Regolamentazione & Compliance",
+      "brands": [],
+      "published_at": "2026-08-08T07:00:00.000Z",
+      "summary_it": "La Commissione Europea ha rilasciato il quadro operativo finale per gli audit di conformità all'EU AI Act. Le nuove linee guida definiscono i requisiti minimi di tracciabilità dei dati e di sicurezza per le aziende che integrano modelli generativi nei processi di produzione e customer care.",
+      "takeaways": [
+        "Standard ufficiali di audit trail per i log e la trasparenza dei dati AI",
+        "Framework di sicurezza obbligatorio per i software enterprise operanti in UE"
+      ],
+      "ranking_scores": { "total_score": 88 },
+      "is_newsletter_sent": false,
+      "created_at": "2026-08-08T07:30:00.000Z"
+    },
+    {
+      "id": "aegisai-spear-phishing-defense-round",
       "url_hash": "97046d805a78477e3887110b4df8ae4a517093a675fb11ac584febe26289d098",
       "title_hash": "d278ee87b89c4995194bdc9341d4f78c1bd82f201e891a97bbed27ad849d2251",
       "title": "AegisAI Raccoglie $36M per Combattere lo Spear Phishing Generato da Agenti AI",
       "url": "https://techcrunch.com/2026/07/24/aegisai-funding-spear-phishing-defense",
       "source": "VentureBeat AI",
       "category": "Strategia & Mercato",
-      "published_at": "2026-07-24T07:15:00.000Z",
+      "brands": ["Gemini"],
+      "published_at": "2026-08-05T07:15:00.000Z",
       "summary_it": "La startup di cybersicurezza AegisAI ha chiuso un round di investimento da 36 milioni di dollari. Fondata da ex esperti di sicurezza Google, la società impiega agenti AI difensivi capaci di esaminare la posta aziendale per identificare ed intercettare in tempo reale tentativi di truffa estremamente realistici creati con AI generativa.",
       "takeaways": [
         "Protezione proattiva contro minacce informatiche generate da AI",
         "Esame comportamentale delle comunicazioni in tempo reale"
       ],
+      "ranking_scores": { "total_score": 87 },
       "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:52:08.370Z"
-    },
-    {
-      "id": "8cb26092-28b8-442d-81e7-c13cbe4fc46c",
-      "url_hash": "c8374f9e627f8695b776128e3332c6f9f0d1b2e22200d091eae39fceaf168da8",
-      "title_hash": "93668f443658a4142192799f670c773cb83cd25e283c74042e83b484e393acde",
-      "title": "Runway Lancia Media Router: L'Algoritmo che Seleziona la Migliore AI Generativa",
-      "url": "https://techcrunch.com/2026/07/24/runway-media-router-ai",
-      "source": "TechCrunch AI",
-      "category": "AI Enterprise",
-      "published_at": "2026-07-24T07:45:00.000Z",
-      "summary_it": "Runway ha svelato Media Router, un sistema d'instradamento intelligente che seleziona il miglior modello per generare video, immagini o audio. In base alle priorità stabilite dagli sviluppatori (velocità, costo o qualità visiva), l'algoritmo distribuisce le richieste ottimizzando la resa dei progetti creativi.",
-      "takeaways": [
-        "Riduzione dei costi di calcolo fino al 40% sulle pipeline multimediali",
-        "API unica per coordinare modelli generativi multipli"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:52:08.370Z"
-    },
-    {
-      "id": "7bf30c37-5d3e-4aab-a4e1-e01884f6a22b",
-      "url_hash": "ed8ee8512f17f0305278f0b8e4d881c3cff04dd99e877df3b96664b1f2d8670f",
-      "title_hash": "722c5e34b90914c955bcba6a9589d017d4d71f0ef09a9e49bcf22875cd09c252",
-      "title": "Anthropic Aggiorna Claude Voice Mode: Interazione Vocale Istantanea e Multimodale",
-      "url": "https://techcrunch.com/2026/07/24/anthropic-claude-voice-mode-update",
-      "source": "MIT Tech Review",
-      "category": "Ricerca & Modelli",
-      "published_at": "2026-07-24T08:00:00.000Z",
-      "summary_it": "Anthropic ha rilasciato un importante aggiornamento per la modalità vocale di Claude. Con una latenza ridotta al sotto dei 200 millisecondi, l'AI è in grado di sostenere conversazioni fluide, comprendere le sfumature espressive umane, organizzare calendari di lavoro e sintetizzare riunioni aziendali direttamente da comandi vocali.",
-      "takeaways": [
-        "Risposta immediata senza pause percepite dall'utente (<200ms)",
-        "Integrazione diretta con Google Calendar e suite di lavoro"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:52:08.365Z"
-    },
-    {
-      "id": "6d215c30-cf8e-4455-b9f3-301972e8a7c3",
-      "url_hash": "4ba9387cd4fcb17db4c418a7f943cbbce3168b69d64a75b11a3c33cdc640bad6",
-      "title_hash": "99a24f3f8531901674a589b3d834028a7caa67c8c5fd198150f173eeb5b54f67",
-      "title": "AMD Sfida il Dominio di Nvidia con il Sistema Rack-Scale Helios AI",
-      "url": "https://techcrunch.com/2026/07/24/amd-helios-ai-rack-system",
-      "source": "VentureBeat AI",
-      "category": "Infrastruttura & Hardware",
-      "published_at": "2026-07-24T08:30:00.000Z",
-      "summary_it": "AMD compie un passo decisivo nel mercato dell'hardware con il nuovo Helios, un supercomputer su scala rack ideato per rivaleggiare con l'architettura Blackwell di Nvidia. L'infrastruttura offre un'efficienza energetica superiore del 35% durante l'inferenza di modelli linguistici di grandi dimensioni, abbattendo drasticamente i costi operativi dei data center.",
-      "takeaways": [
-        "Risparmio energetico del 35% sull'elaborazione di LLM complessi",
-        "Compatibilità nativa con PyTorch e framework open source"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:52:08.365Z"
-    },
-    {
-      "id": "9f9de624-a081-45d0-8644-9b629cc9eb74",
-      "url_hash": "0f71b99701c5accbacfc7d0f3a12f871e6e2665822dcba0d0ba30288eb4ede41",
-      "title_hash": "392fe6324d4a0ca2b86811f43fd40b22646defa2b940c7026297a36ac210bf9d",
-      "title": "OpenAI Lancia ChatGPT Health: Integrazione Dati Medici e Assistenza Personale",
-      "url": "https://techcrunch.com/2026/07/24/openai-chatgpt-health-launch",
-      "source": "TechCrunch AI",
-      "category": "LLM & Agenti",
-      "published_at": "2026-07-24T09:00:00.000Z",
-      "summary_it": "OpenAI ha lanciato ufficialmente ChatGPT Health, un'estensione dedicata alla salute personale. La piattaforma consente di collegare in totale sicurezza i dati biometrici provenienti da Apple Health e MyFitnessPal, analizzando parametri fisici ed esami per fornire raccomandazioni personalizzate sul benessere guidate dai più recenti modelli di ragionamento AI.",
-      "takeaways": [
-        "Sincronizzazione biometrica in tempo reale con Apple Health",
-        "Crittografia avanzata e piena conformità alle norme di riservatezza sanitaria"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:52:08.364Z"
-    },
-    {
-      "id": "6663f433-de3e-4b36-9232-e276d91449da",
-      "url_hash": "cb569ad8108b3fd660601e5579fc9d43c0382011b86e4a73b64841a51ac33521",
-      "title_hash": "19806edfbee26a86f93176dd2115d7c16d42af0623321966848788b59c0ba357",
-      "title": "EU AI Act: Entrano in Vigore le Linee Guida Operative per la Trasparenza degli Agenti Autonomi",
-      "url": "https://techcrunch.com/2026/07/25/eu-ai-act-transparency-guidelines",
-      "source": "MIT Tech Review",
-      "category": "Strategia & Mercato",
-      "published_at": "2026-07-25T07:15:00.000Z",
-      "summary_it": "La Commissione Europea ha pubblicato il manuale applicativo delle linee guida sull'EU AI Act relative agli agenti sintetici. Il regolamento stabilisce requisiti chiari di etichettatura dei contenuti AI e audit periodici per le aziende che distribuiscono chatbot e assistenti virtuali nell'Unione Europea.",
-      "takeaways": [
-        "Standard trasparenti per la tracciabilità e certificazione dei modelli AI",
-        "Linee guida chiare per lo sviluppo etico e conforme per le imprese europee"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:08:07.303Z"
-    },
-    {
-      "id": "9794f506-d1c3-4d53-bf29-26301496892c",
-      "url_hash": "52f7731e528254a50a544ef90b1d90b9821256aa5b908dc5d1debc3fceb0c086",
-      "title_hash": "76e5a956a1673f802366aa23347d17de7dc3bfb9989b3a4813254a57a59dc309",
-      "title": "Nvidia Presenta TensorRT-LLM v12: Inferenza AI 3x Più Veloce per i Data Center",
-      "url": "https://techcrunch.com/2026/07/25/nvidia-tensorrt-llm-v12-speedup",
-      "source": "VentureBeat AI",
-      "category": "Infrastruttura & Hardware",
-      "published_at": "2026-07-25T07:45:00.000Z",
-      "summary_it": "Nvidia ha ufficializzato il lancio della nuova release di TensorRT-LLM v12. La libreria di ottimizzazione incrementa del 300% la velocità di generazione del testo e la capacità di calcolo parallelo su GPU H200 e Blackwell.",
-      "takeaways": [
-        "Accelerazione delle prestazioni d'inferenza fino a 3 volte superiori",
-        "Gestione ottimizzata delle richieste ad altissimo traffico simultaneo"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:08:07.303Z"
-    },
-    {
-      "id": "5f9f6c3a-39c1-4864-b022-86792b7bfffb",
-      "url_hash": "4d235a20db99794ccbf3250c2bad299aed2308ba7977b7b007da787cdfc6c7e9",
-      "title_hash": "e530f5cc5979e464d7b4366721f968a4f1ad70559977745dae351fcab7c383bf",
-      "title": "Microsoft e OpenAI Lanciano Copilot Autonomous Agents Studio per le PMI",
-      "url": "https://techcrunch.com/2026/07/25/microsoft-copilot-agents-studio-pmi",
-      "source": "TechCrunch AI",
-      "category": "AI Enterprise",
-      "published_at": "2026-07-25T08:00:00.000Z",
-      "summary_it": "Microsoft ha integrato in Copilot la nuova suite Autonomous Agents Studio. La piattaforma permette alle piccole e medie imprese di creare assistenti AI personalizzati che automatizzano la gestione contabile, il supporto clienti e l'evasione degli ordini senza scrivere codice.",
-      "takeaways": [
-        "Creazione no-code di agenti operativi per processi aziendali in 5 minuti",
-        "Integrazione nativa con ERP, CRM e sistemi di fatturazione elettronica"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:08:07.303Z"
-    },
-    {
-      "id": "0923517b-5d75-43be-988f-aafbdb63edc4",
-      "url_hash": "fd139f30e5af017efc45a6cabb273d79277251576e99a560d7f79adfa943095d",
-      "title_hash": "62ecda9ad2b674b9da7eef355e83c8373dc473d24b2642e49f8bae08b1721382",
-      "title": "Meta Svela Llama 4 Enterprise: Architettura Mixture-of-Experts per la Privacy Aziendale",
-      "url": "https://techcrunch.com/2026/07/25/meta-llama-4-enterprise-launch",
-      "source": "Meta AI Research",
-      "category": "Infrastruttura & Hardware",
-      "published_at": "2026-07-25T08:30:00.000Z",
-      "summary_it": "Meta ha rilasciato Llama 4 Enterprise con architettura Mixture-of-Experts (MoE) ottimizzata per l'infrastruttura aziendale on-premise. Questa versione garantisce la massima riservatezza dei dati e costi di inferenza ridotti del 50% su server dedicati.",
-      "takeaways": [
-        "Esecuzione locale in ambienti aziendali ad alta sicurezza (100% GDPR compliant)",
-        "Efficienza MoE con consumi energetici e costi di gestione dimezzati"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:08:07.302Z"
-    },
-    {
-      "id": "9d5def1e-646e-4f99-bf24-7cb800f20da7",
-      "url_hash": "9de75f2f5f03f59840983c9734a25b926b8fa6a4b283f700ef33cb4e14088555",
-      "title_hash": "65f6e55d5d553133c9b6aa2d6cbbab9f538ed3583d3c25258bf5b9a9da2232d7",
-      "title": "Google DeepMind Presenta Gemini 2.5 Flash Ultra: Latenza Ridotta e Multimodalità Avanzata",
-      "url": "https://techcrunch.com/2026/07/25/google-deepmind-gemini-flash-ultra",
-      "source": "Google AI Blog",
-      "category": "LLM & Agenti",
-      "published_at": "2026-07-25T09:00:00.000Z",
-      "summary_it": "Google DeepMind ha annunciato il rilascio di Gemini 2.5 Flash Ultra, un modello ultra-rapido progettato per l'esecuzione di agenti autonomi a bassissima latenza. Il modello eccelle nella gestione di workflow complessi in tempo reale e nell'analisi fluida di flussi audio-video in streaming.",
-      "takeaways": [
-        "Latenza di risposta abbattuta del 45% rispetto ai modelli precedenti",
-        "Supporto nativo per agenti autonomi multi-modalità in tempo reale"
-      ],
-      "is_newsletter_sent": false,
-      "created_at": "2026-07-25T10:08:07.302Z"
+      "created_at": "2026-08-05T07:45:00.000Z"
     }
   ],
   "subscribers": [],

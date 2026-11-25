@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronDown, Check, Send, RotateCcw, Search } from 'lucide-react';
 import { useI18n } from '../i18n';
+import { getReferral } from '../services/referral';
 
 type Phase = 'start' | 'quiz' | 'result';
 
@@ -143,6 +144,8 @@ export const LeadQuiz: React.FC = () => {
       profile: getResult().title,
       serviceNote,
       answers,
+      ref: getReferral(),
+      source: 'lead-quiz',
     };
 
     try {
