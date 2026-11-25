@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ExternalLink, Gamepad2, Swords, Bot, Link2, Globe,
   Sparkles, Shirt, Eye, Palette, MessageSquareText,
-  FileSearch, Upload, Quote, Table, Image, FileSpreadsheet, Zap, ArrowRight
+  FileSearch, Upload, Quote, Table, Image, FileSpreadsheet, Zap, ArrowRight,
+  FlaskConical, Inbox, Calculator, CalendarClock, Users, WifiOff, HeartHandshake, ShieldCheck
 } from 'lucide-react';
 import { useI18n } from '../i18n';
 
@@ -26,6 +27,10 @@ interface ProjectSlide {
   tags: string[];
   statusLabel?: string;
   number: string;
+  /** Nasconde il progetto dal portfolio senza cancellarlo */
+  hidden?: boolean;
+  /** Nota legale/di attribuzione sotto le feature */
+  noteKey?: string;
 }
 
 export const PortfolioSlider: React.FC = () => {
@@ -33,7 +38,55 @@ export const PortfolioSlider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [prevSlide, setPrevSlide] = useState<number | null>(null);
 
-  const projects: ProjectSlide[] = [
+  const allProjects: ProjectSlide[] = [
+    {
+      id: 'galena',
+      image: '/images/galena-hero.jpg',
+      url: '',
+      badgeKey: 'galena.badge',
+      titleHighlightKey: 'galena.titleHighlight',
+      subtitleKey: 'galena.subtitle',
+      ctaKey: 'galena.cta',
+      hideCta: true,
+      accentColor: '#E3A857',
+      accentFrom: 'from-amber-300',
+      accentTo: 'to-amber-500',
+      glowClass: 'bg-amber-500',
+      badgeIcon: <FlaskConical className="w-3.5 h-3.5" />,
+      features: [
+        { icon: <Inbox />, labelKey: 'galena.feature1.label', descKey: 'galena.feature1.desc' },
+        { icon: <FlaskConical />, labelKey: 'galena.feature2.label', descKey: 'galena.feature2.desc' },
+        { icon: <Calculator />, labelKey: 'galena.feature3.label', descKey: 'galena.feature3.desc' },
+        { icon: <CalendarClock />, labelKey: 'galena.feature4.label', descKey: 'galena.feature4.desc' },
+      ],
+      tags: ['Pharmacy', 'AI Agents', 'Human-in-the-loop', 'Galenica'],
+      statusLabel: 'Pilot',
+      number: '',
+    },
+    {
+      id: 'faro',
+      image: '/images/faro-dashboard.jpg',
+      url: 'https://faro-aba.netlify.app/demo',
+      badgeKey: 'faro.badge',
+      titleHighlightKey: 'faro.titleHighlight',
+      subtitleKey: 'faro.subtitle',
+      ctaKey: 'faro.cta',
+      accentColor: '#2DD4BF',
+      accentFrom: 'from-teal-300',
+      accentTo: 'to-teal-500',
+      glowClass: 'bg-teal-500',
+      badgeIcon: <HeartHandshake className="w-3.5 h-3.5" />,
+      features: [
+        { icon: <Users />, labelKey: 'faro.feature1.label', descKey: 'faro.feature1.desc' },
+        { icon: <WifiOff />, labelKey: 'faro.feature2.label', descKey: 'faro.feature2.desc' },
+        { icon: <HeartHandshake />, labelKey: 'faro.feature3.label', descKey: 'faro.feature3.desc' },
+        { icon: <ShieldCheck />, labelKey: 'faro.feature4.label', descKey: 'faro.feature4.desc' },
+      ],
+      tags: ['HealthTech', 'ABA', 'PWA', 'AI Guardrails'],
+      statusLabel: 'Pilot',
+      number: '',
+      noteKey: 'faro.note',
+    },
     {
       id: 'ragalo',
       image: '/ragolo.png',
@@ -42,7 +95,7 @@ export const PortfolioSlider: React.FC = () => {
       titleHighlightKey: 'ragalo.titleHighlight',
       subtitleKey: 'ragalo.subtitle',
       ctaKey: 'ragalo.cta',
-      accentColor: '#34d399',
+      accentColor: '#99F6E4',
       accentFrom: 'from-emerald-400',
       accentTo: 'to-cyan-500',
       glowClass: 'bg-emerald-500',
@@ -55,7 +108,7 @@ export const PortfolioSlider: React.FC = () => {
       ],
       tags: ['RAG', 'AI Chat', 'Document Intelligence', 'LLM-Powered'],
       statusLabel: 'Live',
-      number: '01',
+      number: '',
     },
     {
       id: 'sfatify',
@@ -65,7 +118,7 @@ export const PortfolioSlider: React.FC = () => {
       titleHighlightKey: 'sfatify.titleHighlight',
       subtitleKey: 'sfatify.subtitle',
       ctaKey: 'sfatify.cta',
-      accentColor: '#f59e0b',
+      accentColor: '#FFB547',
       accentFrom: 'from-amber-400',
       accentTo: 'to-orange-500',
       glowClass: 'bg-amber-500',
@@ -78,7 +131,7 @@ export const PortfolioSlider: React.FC = () => {
       ],
       tags: ['AI Assistant', 'Google Sheets', 'Image-to-Data', 'Automation'],
       statusLabel: 'Live',
-      number: '02',
+      number: '',
     },
     {
       id: 'pumbo',
@@ -88,7 +141,7 @@ export const PortfolioSlider: React.FC = () => {
       titleHighlightKey: 'pumbo.titleHighlight',
       subtitleKey: 'pumbo.subtitle',
       ctaKey: 'pumbo.cta',
-      accentColor: '#a78bfa',
+      accentColor: '#E2E8F0',
       accentFrom: 'from-violet-400',
       accentTo: 'to-purple-600',
       glowClass: 'bg-violet-500',
@@ -101,7 +154,7 @@ export const PortfolioSlider: React.FC = () => {
       ],
       tags: ['AI Stylist', 'Fashion Tech', 'Virtual Try-On', 'Style Agent'],
       statusLabel: 'Live',
-      number: '03',
+      number: '',
     },
     {
       id: 'age-of-agents',
@@ -125,10 +178,16 @@ export const PortfolioSlider: React.FC = () => {
       ],
       tags: ['MegaETH', 'AI Agents', 'Real-Time Strategy', 'On-Chain'],
       statusLabel: 'Live',
-      number: '04',
+      number: '',
       hideCta: true,
+      // Nascosto per ora: rimettere a false per ripubblicarlo
+      hidden: true,
     },
   ];
+
+  const projects = allProjects
+    .filter(p => !p.hidden)
+    .map((p, i) => ({ ...p, number: String(i + 1).padStart(2, '0') }));
 
   const goTo = useCallback((index: number) => {
     setPrevSlide(currentSlide);
@@ -182,12 +241,9 @@ export const PortfolioSlider: React.FC = () => {
               viewport={{ once: true }}
               className="mb-10"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-400 text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                {t('portfolio.badge')}
-              </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[0.95] tracking-tighter">
                 {t('portfolio.title')}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-cyan-400 to-violet-500">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-200 via-teal-400 to-amber-300">
                   {t('portfolio.titleHighlight')}
                 </span>
               </h2>
@@ -261,29 +317,6 @@ export const PortfolioSlider: React.FC = () => {
                       />
                     </div>
 
-                    {/* Tags (visible only when active) */}
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-wrap gap-2 mt-3 pl-2 lg:pl-10"
-                      >
-                        {p.tags.slice(0, 3).map(tag => (
-                          <span
-                            key={tag}
-                            className="text-xs px-2.5 py-1 rounded-full font-medium whitespace-nowrap"
-                            style={{
-                              background: `${p.accentColor}18`,
-                              color: p.accentColor,
-                              border: `1px solid ${p.accentColor}30`,
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </motion.div>
-                    )}
                   </button>
                 );
               })}
@@ -334,22 +367,10 @@ export const PortfolioSlider: React.FC = () => {
                     />
                     {/* Gradient overlay bottom */}
                     <div className="absolute inset-0" style={{
-                      background: 'linear-gradient(to top, rgb(2,6,23) 0%, rgba(2,6,23,0.92) 40%, rgba(2,6,23,0.5) 60%, transparent 100%)'
+                      background: 'linear-gradient(to top, rgb(10,14,16) 0%, rgba(10,14,16,0.92) 40%, rgba(10,14,16,0.5) 60%, transparent 100%)'
                     }} />
                   </div>
 
-                  {/* Status badge */}
-                  {project.statusLabel && (
-                    <div
-                      className="absolute top-5 right-5 flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-md"
-                      style={{ background: `${project.accentColor}18`, border: `1px solid ${project.accentColor}35` }}
-                    >
-                      <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: project.accentColor }} />
-                      <span className="text-xs font-bold uppercase tracking-wider" style={{ color: project.accentColor }}>
-                        {project.statusLabel}
-                      </span>
-                    </div>
-                  )}
 
                   {/* Overlaid project title at bottom */}
                   <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col items-start gap-4">
@@ -411,6 +432,9 @@ export const PortfolioSlider: React.FC = () => {
                     </motion.div>
                   ))}
                 </div>
+                {project.noteKey && (
+                  <p className="mt-4 text-xs text-slate-500">{t(project.noteKey)}</p>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>

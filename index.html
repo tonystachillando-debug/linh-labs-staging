@@ -6,18 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary SEO -->
-  <title>Linh Labs | Consulenza AI per il Business — Catania</title>
-  <meta name="description" content="Linh Labs trasforma l'intelligenza artificiale in vantaggio competitivo reale. Chatbot avanzati, sistemi RAG, automazioni n8n e consulenza AI per aziende a Catania e in tutta Italia." />
-  <meta name="keywords" content="consulenza AI, intelligenza artificiale, automazione aziendale, chatbot AI, sistemi RAG, n8n, AI consulting, Catania, automazioni, machine learning" />
+  <title>Linh Labs | Agenti AI per il Business — Catania</title>
+  <meta name="description" content="Linh Labs progetta e mette in produzione agenti AI autonomi per le aziende: sistemi multi-agente, knowledge base RAG, agenti conversazionali e governance AI Act. Catania e tutta Italia." />
+  <meta name="keywords" content="agenti AI, AI agentica, sistemi multi-agente, consulenza AI, agenti autonomi, sistemi RAG, AI Act, Catania, intelligenza artificiale, agentic AI" />
   <meta name="author" content="Linh Labs" />
+  <meta name="theme-color" content="#0A0E10" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://linhlabs.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://linhlabs.com/" />
-  <meta property="og:title" content="Linh Labs | Consulenza AI per il Business — Catania" />
-  <meta property="og:description" content="Trasformiamo l'intelligenza artificiale in vantaggio competitivo reale. Chatbot, RAG, automazioni n8n e AI consulting per aziende italiane." />
+  <meta property="og:title" content="Linh Labs | Agenti AI per il Business — Catania" />
+  <meta property="og:description" content="Progettiamo agenti AI autonomi che lavorano dentro i processi delle aziende italiane, con una persona che valida i passaggi che contano." />
   <meta property="og:image" content="https://linhlabs.com/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -27,8 +28,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Linh Labs | Consulenza AI per il Business" />
-  <meta name="twitter:description" content="Trasformiamo l'AI in vantaggio competitivo reale. Chatbot, RAG, automazioni e AI consulting." />
+  <meta name="twitter:title" content="Linh Labs | Agenti AI per il Business" />
+  <meta name="twitter:description" content="Agenti AI autonomi, sistemi multi-agente e RAG per le aziende italiane." />
   <meta name="twitter:image" content="https://linhlabs.com/images/og-image.png" />
 
   <!-- LLM / AI Crawlers hint -->
@@ -47,18 +48,69 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Palette Linh Labs: teal = colore principale, bianco = secondo colore, grafite fredda per i fondi.
+    // Le scale Tailwind usate nei componenti vengono rimappate qui, cosi' tutto il sito resta coerente col logo.
+    (function () {
+      var ink = { 50: '#FFFFFF', 100: '#EEF2F4', 200: '#D7DEE2', 300: '#B3BEC4', 400: '#8B989F', 500: '#66737A', 600: '#47535A', 700: '#2C363B', 800: '#1A2125', 900: '#11171A', 950: '#0A0E10' };
+      // Linh Labs Teal ufficiale: #0D9488 (600); #2DD4BF per luci e accenti su fondo scuro
+      var teal = { 50: '#F0FDFA', 100: '#CCFBF1', 200: '#99F6E4', 300: '#5EEAD4', 400: '#2DD4BF', 500: '#14B8A6', 600: '#0D9488', 700: '#0F766E', 800: '#115E59', 900: '#134E4A', 950: '#042F2E' };
+      var deep = teal;
+      // Terzo colore: ambra (scelta 25 nov 2026), = la persona come nel sistema social. Usarla poco: un punto per schermata.
+      var ambra = { 50: '#FFF8EB', 100: '#FFEDC9', 200: '#FFDB94', 300: '#FFC86A', 400: '#FFB547', 500: '#F59E2A', 600: '#D97E17', 700: '#B45F12', 800: '#8F4A14', 900: '#763E14', 950: '#432008' };
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              slate: ink, gray: ink, zinc: ink, neutral: ink,
+              teal: teal, cyan: teal, emerald: teal, green: teal, sky: teal,
+              blue: deep, indigo: deep,
+              violet: teal, purple: teal, lime: teal,
+              amber: ambra, orange: teal, yellow: teal, pink: teal, rose: teal, fuchsia: teal,
+              ink: ink, brand: teal, accent: ambra
+            }
+          }
+        }
+      };
+    })();
+  </script>
   <style>
     :root {
-      --background: #020617;
-      --foreground: #f8fafc;
+      --background: #0A0E10;
+      --foreground: #FFFFFF;
+      --teal: #0D9488;
+      --teal-light: #2DD4BF;
+      --ambra: #FFB547;
+      --ink: #0A0E10;
+      --white: #FFFFFF;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background);
+      background-image:
+        radial-gradient(1200px 700px at 85% -10%, rgba(45, 212, 191, 0.09), transparent 60%),
+        radial-gradient(900px 600px at -10% 30%, rgba(13, 148, 136, 0.10), transparent 60%);
+      background-attachment: fixed;
       color: var(--foreground);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grana leggera per dare profondita' ai fondi scuri */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    ::selection {
+      background: rgba(45, 212, 191, 0.35);
+      color: #FFFFFF;
     }
 
     h1,
@@ -71,48 +123,66 @@
       font-family: 'Space Grotesk', sans-serif;
     }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0E10; }
+    ::-webkit-scrollbar-thumb { background: #1A2125; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0D9488; }
 
-    ::-webkit-scrollbar-track {
-      background: #020617;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 3px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
-    }
-
-    /* Glassmorphism Utilities */
     .glass-panel {
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(17, 23, 26, 0.6);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(45, 212, 191, 0.08);
     }
 
-    /* Grid Background */
     .bg-grid-white {
       mask-image: linear-gradient(to bottom, transparent, 10%, white, 90%, transparent);
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(45 212 191 / 0.10)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
     }
 
-    /* Text Gradient Animation */
+    .text-brand-gradient {
+      background-image: linear-gradient(100deg, #FFFFFF 0%, #99F6E4 30%, #2DD4BF 65%, #14B8A6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
     .animate-gradient {
       background-size: 200% auto;
-      animation: shine 4s linear infinite;
+      animation: shine 6s linear infinite;
     }
 
     @keyframes shine {
-      to {
-        background-position: 200% center;
-      }
+      to { background-position: 200% center; }
+    }
+
+    /* Bordo animato per le card "vive" */
+    .ring-live {
+      position: relative;
+      isolation: isolate;
+    }
+    .ring-live::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: conic-gradient(from var(--angle, 0deg), rgba(45,212,191,0) 0deg, rgba(45,212,191,0.9) 60deg, rgba(255,255,255,0.7) 120deg, rgba(45,212,191,0) 200deg);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: spin-angle 6s linear infinite;
+      z-index: -1;
+    }
+    @property --angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes spin-angle { to { --angle: 360deg; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-gradient, .ring-live::before { animation: none; }
     }
   </style>
   <!-- JSON-LD Structured Data (read by Google, Bing & LLM crawlers) -->
@@ -122,7 +192,7 @@
     "@type": "ProfessionalService",
     "name": "Linh Labs",
     "alternateName": "LinhLabs",
-    "description": "Linh Labs è una società di consulenza AI con sede a Catania che aiuta le aziende a trasformare i processi aziendali in vantaggi competitivi attraverso intelligenza artificiale e automazione.",
+    "description": "Linh Labs è una società di consulenza AI con sede a Catania che aiuta le aziende a affidare i processi ripetitivi ad agenti AI autonomi, con supervisione umana sui passaggi critici.",
     "url": "https://linhlabs.com",
     "logo": "https://linhlabs.com/images/linhlabs-logo.svg",
     "image": "https://linhlabs.com/images/og-image.png",
@@ -142,16 +212,17 @@
     },
     "areaServed": ["IT", "EU"],
     "priceRange": "€€€",
-    "serviceType": "AI Consulting",
+    "serviceType": "Agentic AI Consulting",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Servizi AI",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Chatbot Avanzati"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sistemi RAG"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Automazioni n8n"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Generativa"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Modelli Personalizzati"}}
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Agenti AI su misura"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sistemi multi-agente"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Knowledge & RAG"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Agenti conversazionali"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Operazioni agentiche"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Governance & AI Act"}}
       ]
     },
     "sameAs": [

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView, useSpring } from 'framer-motion';
-import { Timer, TrendingDown, Zap } from 'lucide-react';
+import { Timer, TrendingUp, TrendingDown, Zap } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 // Helper component for counting up numbers
@@ -44,7 +44,7 @@ export const Mission: React.FC = () => {
       rangeDisplay: "14–35%",
       label: t('mission.metric2'),
       desc: t('mission.metric2desc'),
-      icon: <TrendingDown className="w-6 h-6 text-blue-400" />,
+      icon: <TrendingUp className="w-6 h-6 text-blue-400" />,
       color: "blue",
       isRange: true,
     },
@@ -53,7 +53,7 @@ export const Mission: React.FC = () => {
       value: 25, suffix: "%",
       label: t('mission.metric3'),
       desc: t('mission.metric3desc'),
-      icon: <Zap className="w-6 h-6 text-purple-400" />,
+      icon: <TrendingDown className="w-6 h-6 text-purple-400" />,
       color: "purple",
       isRange: false,
     }
@@ -72,13 +72,9 @@ export const Mission: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-[1px] w-12 bg-cyan-500"></div>
-                <h2 className="text-cyan-400 font-bold tracking-[0.2em] uppercase text-sm">{t('mission.label')}</h2>
-              </div>
 
               <h3 className="font-display text-4xl md:text-6xl font-bold mb-8 leading-[1.1] text-white">
-                {t('mission.title')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">{t('mission.titleHighlight')}</span>
+                {t('mission.title')}<span className="text-brand-gradient">{t('mission.titleHighlight')}</span>
               </h3>
 
               <div className="text-slate-300 text-lg space-y-6 font-light leading-relaxed">
@@ -137,7 +133,7 @@ export const Mission: React.FC = () => {
               transition={{ delay: 0.5 }}
               className="text-slate-600 text-xs leading-relaxed border-l-2 border-white/10 pl-4"
             >
-              I dati riportati rappresentano medie di mercato e benchmark di settore derivanti da studi condotti da McKinsey Global Institute, Goldman Sachs e MIT Sloan. L'integrazione di sistemi AI mira a intercettare queste inefficienze per trasformarle in vantaggi competitivi misurabili.
+              I dati sono medie di mercato e benchmark di settore tratti da studi di McKinsey Global Institute, Goldman Sachs e MIT Sloan. Non sono risultati garantiti: indicano dove si concentrano le inefficienze che un agente può prendere in carico.
             </motion.p>
           </div>
         </div>

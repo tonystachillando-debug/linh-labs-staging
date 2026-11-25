@@ -48,7 +48,7 @@ import { Footer } from './components/Footer';
 import { StickyChat } from './components/StickyChat';
 import { CataloguePage } from './components/CataloguePage';
 import { LeadQuiz } from './components/LeadQuiz';
-import { AINewsFeed } from './components/AINewsFeed';
+// import { AINewsFeed } from './components/AINewsFeed'; // nascosto finché non è pronto
 import { AdminRadarDashboard } from './components/AdminRadarDashboard';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TreasuryPage } from './components/TreasuryPage';
@@ -67,8 +67,8 @@ function HomePage() {
   return (
     <div className="bg-slate-950 min-h-screen text-slate-50 selection:bg-cyan-500/30 overflow-x-hidden">
       <PageSEO
-        title="Linh Labs | Consulenza AI per il Business — Catania"
-        description="Linh Labs trasforma l'intelligenza artificiale in vantaggio competitivo reale. Chatbot avanzati, sistemi RAG, automazioni n8n e consulenza AI per aziende a Catania e in tutta Italia."
+        title="Linh Labs | Agenti AI per il Business — Catania"
+        description="Linh Labs progetta e mette in produzione agenti AI autonomi per le aziende: sistemi multi-agente, knowledge base RAG, agenti conversazionali e governance AI Act. Catania e tutta Italia."
         canonical="https://linhlabs.com/"
       />
       <Navbar />
@@ -76,7 +76,7 @@ function HomePage() {
         <Hero />
         <Mission />
         <Services />
-        <AINewsFeed />
+        {/* AI News Radar nascosto finché non è pronto: rimettere <AINewsFeed /> qui */}
         <AutomationCatalogue />
         <PortfolioSlider />
         <Team />
@@ -114,8 +114,8 @@ function App() {
         <Route path="/catalogo" element={
           <>
             <PageSEO
-              title="Catalogo Automazioni AI | 18+ Workflow Pronti — Linh Labs"
-              description="Esplora 18+ automazioni AI pronte all'uso: chatbot, pipeline RAG, automazioni marketing, document ops e molto altro. Personalizza e implementa nel tuo business."
+              title="Catalogo Agenti AI | Playbook Agentici Pronti — Linh Labs"
+              description="Esplora i playbook agentici di Linh Labs: agenti per vendite, marketing, documenti e assistenza, adattati ai tuoi strumenti e ai tuoi dati."
               canonical="https://linhlabs.com/catalogo"
             />
             <CataloguePage />

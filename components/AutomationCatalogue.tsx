@@ -23,10 +23,6 @@ export const AutomationCatalogue: React.FC = () => {
 
       <div className="container mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase mb-6">
-            <Zap className="w-3.5 h-3.5" />
-            {t('catalogue.badge')}
-          </span>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-4">
@@ -54,7 +50,6 @@ export const AutomationCatalogue: React.FC = () => {
                     <div className={`w-12 h-12 rounded-xl bg-slate-800 border border-white/5 flex items-center justify-center ${cat.iconColor} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
                       {React.cloneElement(cat.icon as React.ReactElement<any>, { className: "w-6 h-6" })}
                     </div>
-                    <span className="text-slate-600 text-xs font-mono">{cat.count} {t('catalogue.workflows')}</span>
                   </div>
                   <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">{cat.name}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{cat.tagline}</p>

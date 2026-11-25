@@ -71,7 +71,7 @@ export const StickyChat: React.FC<StickyChatProps> = ({ onMessageSent }) => {
         {/* Input Field */}
         <form
           onSubmit={handleSubmit}
-          className="glass-panel p-2 rounded-full flex items-center shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/10 transition-all focus-within:border-cyan-500/50 focus-within:shadow-[0_0_40px_rgba(6,182,212,0.15)]"
+          className="glass-panel p-2 rounded-full flex items-center shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/10 transition-all focus-within:border-cyan-500/50 focus-within:shadow-[0_0_40px_rgba(45,212,191,0.15)]"
         >
           <input
             type="text"

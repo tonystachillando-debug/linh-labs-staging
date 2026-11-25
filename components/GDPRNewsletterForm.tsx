@@ -67,16 +67,16 @@ export const GDPRNewsletterForm: React.FC = () => {
         {/* Brand Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold uppercase tracking-widest mb-6">
           <ShieldCheck className="w-4 h-4 text-cyan-400" />
-          Iscrizione 100% GDPR Compliant
+          Iscrizione conforme al GDPR
         </div>
 
         {/* Heading in Space Grotesk font */}
         <h3 className="font-display text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug">
-          Ricevi il Digest AI Quotidiano di Linh Labs
+          Ricevi ogni giorno il digest AI di Linh Labs
         </h3>
 
         <p className="mt-3 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-          Niente spam, solo il meglio dell'Intelligenza Artificiale applicata. Scegli il tuo canale preferito.
+          Niente spam, solo il meglio dell'intelligenza artificiale applicata. Scegli il tuo canale preferito.
         </p>
 
         {/* Channel Selector Tabs */}
@@ -91,7 +91,7 @@ export const GDPRNewsletterForm: React.FC = () => {
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Mail className="w-4 h-4" /> Email Newsletter
+              <Mail className="w-4 h-4" /> Newsletter via email
             </button>
 
             <button
@@ -103,7 +103,7 @@ export const GDPRNewsletterForm: React.FC = () => {
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              <MessageSquare className="w-4 h-4" /> Automazione WhatsApp
+              <MessageSquare className="w-4 h-4" /> WhatsApp
             </button>
           </div>
         </div>
@@ -128,7 +128,7 @@ export const GDPRNewsletterForm: React.FC = () => {
                 disabled={loading}
                 className="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-extrabold text-xs uppercase tracking-widest rounded-2xl transition duration-300 shadow-xl flex items-center justify-center gap-2.5 disabled:opacity-50 whitespace-nowrap"
               >
-                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Iscriviti Ora <ArrowRight className="w-4 h-4" /></>}
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Iscriviti ora <ArrowRight className="w-4 h-4" /></>}
               </button>
             </div>
           ) : (
@@ -164,7 +164,7 @@ export const GDPRNewsletterForm: React.FC = () => {
               className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-950 text-purple-600 focus:ring-purple-500 focus:ring-offset-slate-900 cursor-pointer"
             />
             <label htmlFor="gdpr-consent" className="text-xs text-slate-400 leading-relaxed cursor-pointer font-medium">
-              Acconsento al trattamento dei dati personali ai sensi del regolamento GDPR (UE 2016/679). Posso disiscrivermi in qualsiasi momento con 1 singolo click.
+              Acconsento al trattamento dei dati personali ai sensi del regolamento GDPR (UE 2016/679). Posso disiscrivermi in qualsiasi momento con un clic.
             </label>
           </div>
         </form>
@@ -182,9 +182,9 @@ export const GDPRNewsletterForm: React.FC = () => {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 font-medium">
           <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-purple-400" /> Dati Crittografati</span>
           <span>•</span>
-          <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Zero Spam</span>
+          <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Zero spam</span>
           <span>•</span>
-          <span>1-Click Unsubscribe</span>
+          <span>Disiscrizione con un clic</span>
         </div>
 
       </div>
