@@ -1,13 +1,16 @@
-import { isArticleDuplicate, saveArticles } from './db.js';
+import { isArticleDuplicate, saveArticles, detectBrands } from './db.js';
 import { rankAndSortArticles } from './newsRanking.js';
 
 const FEEDS = [
+  { name: 'Google DeepMind & AI', url: 'https://blog.google/technology/ai/rss/' },
   { name: 'OpenAI Blog', url: 'https://openai.com/news/rss.xml' },
   { name: 'ArXiv AI Digest', url: 'http://export.arxiv.org/rss/cs.AI' },
   { name: 'Hugging Face Blog', url: 'https://huggingface.co/blog/feed.xml' },
   { name: 'MIT Tech Review', url: 'https://www.technologyreview.com/feed/' },
   { name: 'VentureBeat AI', url: 'https://venturebeat.com/category/ai/feed/' },
-  { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/' }
+  { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/' },
+  { name: 'The Verge AI', url: 'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml' },
+  { name: 'Nvidia Blog', url: 'https://blogs.nvidia.com/feed/' }
 ];
 
 function parseRSS(xmlText, sourceName) {
@@ -41,7 +44,7 @@ function parseRSS(xmlText, sourceName) {
   return items;
 }
 
-// Call AI Provider with STRICT 5-6 LINES MAX REWRITING PROMPT
+// Call AI Provider with STRICT 5-6 LINES MAX REWRITING PROMPT & BRAND EXTRACTION
 async function summarizeWithAI(rawNewsList) {
   const provider = process.env.AI_PROVIDER || 'openrouter';
   const apiKey = process.env.OPENROUTER_API_KEY;
@@ -54,6 +57,7 @@ REGOLE RIGIDE:
 1. LUNGHEZZA: Massimo 5-6 righe di testo in totale per ogni notizia (circa 50-70 parole).
 2. RIELABORAZIONE: Non fare MAI copia-incolla delle frasi originali. Riscrivi da zero in italiano fluido, chiaro ed essenziale.
 3. CONTENUTO: Cattura il senso dell'intera notizia (cosa è successo, perché è importante e qual è l'impatto).
+4. BRAND: Identifica chiaramente tutti i brand o modelli coinvolti (es. 'Gemini', 'OpenAI', 'Claude', 'Meta / Llama', 'DeepSeek', 'Mistral', 'NVIDIA', 'Microsoft', 'Apple', 'Runway', 'Midjourney', 'xAI / Grok').
 
 Restituisci un JSON in formato ARRAY:
 [
@@ -64,7 +68,8 @@ Restituisci un JSON in formato ARRAY:
       "Punto chiave 1",
       "Punto chiave 2"
     ],
-    "category": "Una tra: 'LLM & Agenti', 'AI Enterprise', 'Infrastruttura & Hardware', 'Ricerca & Modelli', 'Strategia & Mercato'",
+    "category": "Una tra: 'LLM & Agenti', 'AI Enterprise', 'Infrastruttura & Hardware', 'Ricerca & Modelli', 'Strategia & Mercato', 'Regolamentazione & Compliance'",
+    "brands": ["Brand1", "Brand2"],
     "source_url": "URL originale"
   }
 ]
@@ -169,11 +174,17 @@ export async function runNewsScan() {
 
   const finalArticles = aiSummaries.map((s, idx) => {
     const raw = selectedCandidates[idx] || {};
+    const textToAnalyze = `${s.title || raw.title} ${s.summary_it || raw.raw_description} ${(s.takeaways || []).join(' ')} ${raw.source || ''}`;
+    const brands = (Array.isArray(s.brands) && s.brands.length > 0) 
+      ? s.brands 
+      : detectBrands(textToAnalyze);
+
     return {
       title: s.title || raw.title,
       url: s.source_url || raw.url,
       source: raw.source || 'Linh Labs AI Radar',
       category: s.category || 'AI Innovation',
+      brands,
       published_at: raw.published_at || new Date().toISOString(),
       summary_it: s.summary_it || raw.raw_description,
       takeaways: s.takeaways || [],
