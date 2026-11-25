@@ -8,21 +8,21 @@ export const Team = () => {
       name: 'Antonio Visceglia',
       role: 'Co-founder',
       image: '/images/antonio.png',
-      accentColor: '#34d399', // emerald
+      accentColor: '#2DD4BF', // emerald
     },
     {
       id: 'daniele',
       name: 'Daniele Gentilucci',
       role: 'Co-founder',
       image: '/images/daniele.png',
-      accentColor: '#a78bfa', // violet
+      accentColor: '#FFB547', // violet
     },
     {
       id: 'giuliano',
       name: 'Giuliano Maria Lodi',
       role: 'Co-founder',
       image: '/images/giuliano.png',
-      accentColor: '#38bdf8', // sky
+      accentColor: '#E2E8F0', // sky
     },
   ];
 
@@ -39,9 +39,6 @@ export const Team = () => {
           viewport={{ once: true }}
           className="text-center mb-16 lg:mb-24"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-400 text-xs font-bold tracking-[0.2em] uppercase mb-6">
-            Team
-          </span>
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-white tracking-tight">
             I fondatori di <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-cyan-400 to-sky-400">Linh Labs</span>
           </h2>

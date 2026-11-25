@@ -37,80 +37,80 @@ const categoryMeta: Record<string, { gradient: string; badgeColor: string; textC
 const automations: Automation[] = [
   // AI
   {
-    id: 1, name: 'AI Chatbot con Memoria', description: 'Chatbot intelligente con memoria conversazionale che ricorda il contesto tra le sessioni utente.',
+    id: 1, name: 'Agente conversazionale con memoria', description: 'Un agente che ricorda il contesto delle conversazioni precedenti e riprende da dove ci si era fermati.',
     category: 'AI', icon: <Bot />, integrations: ['OpenAI', 'Slack', 'Telegram'], timeSaved: '12h/settimana', integrationCount: 3, popularity: 98, badge: 'Più Popolare',
   },
   {
-    id: 2, name: 'Document Q&A con RAG', description: 'Sistema di domande e risposte su documenti aziendali con Retrieval-Augmented Generation.',
+    id: 2, name: 'Agente documentale (RAG)', description: 'Risponde alle domande sui documenti aziendali e cita sempre la fonte.',
     category: 'AI', icon: <Search />, integrations: ['Pinecone', 'OpenAI', 'Google Drive'], timeSaved: '8h/settimana', integrationCount: 3, popularity: 95,
   },
   {
-    id: 3, name: 'AI Email Classifier', description: 'Classificazione automatica delle email in arrivo con priorità, categorie e risposte suggerite.',
+    id: 3, name: 'Agente smistamento email', description: 'Legge le email in arrivo, assegna priorità e categoria e prepara una bozza di risposta.',
     category: 'AI', icon: <Sparkles />, integrations: ['Gmail', 'OpenAI', 'Notion'], timeSaved: '6h/settimana', integrationCount: 3, popularity: 90,
   },
   // Marketing
   {
-    id: 4, name: 'Social Media Auto-Poster', description: 'Pianificazione e pubblicazione automatica su più piattaforme social con contenuti ottimizzati.',
+    id: 4, name: 'Agente social', description: 'Pianifica e pubblica su più piattaforme, adattando i contenuti a ciascuna.',
     category: 'Marketing', icon: <Share2 />, integrations: ['Buffer', 'Instagram', 'LinkedIn'], timeSaved: '10h/settimana', integrationCount: 4, popularity: 94, badge: 'Trending',
   },
   {
-    id: 5, name: 'SEO Content Pipeline', description: 'Pipeline automatizzata per la creazione di contenuti SEO-optimized con keyword research integrata.',
+    id: 5, name: 'Agente contenuti SEO', description: 'Ricerca le parole chiave e prepara contenuti ottimizzati per i motori di ricerca, pronti da revisionare.',
     category: 'Marketing', icon: <PenTool />, integrations: ['OpenAI', 'WordPress', 'Ahrefs'], timeSaved: '15h/settimana', integrationCount: 3, popularity: 88,
   },
   {
-    id: 6, name: 'Email Campaign Automator', description: 'Automazione completa delle campagne email: segmentazione, A/B testing e follow-up intelligenti.',
+    id: 6, name: 'Agente campagne email', description: 'Segmenta i contatti, prova varianti diverse e gestisce i follow-up.',
     category: 'Marketing', icon: <Mail />, integrations: ['Mailchimp', 'HubSpot', 'Segment'], timeSaved: '8h/settimana', integrationCount: 3, popularity: 91,
   },
   // Sales
   {
-    id: 7, name: 'Lead Scoring Automator', description: 'Scoring automatico dei lead basato su comportamento, engagement e dati demografici.',
+    id: 7, name: 'Agente qualifica contatti', description: 'Valuta ogni contatto in base a comportamento, interesse e profilo, e segnala quelli pronti.',
     category: 'Sales', icon: <Target />, integrations: ['HubSpot', 'Clearbit', 'Slack'], timeSaved: '7h/settimana', integrationCount: 3, popularity: 92, badge: 'Top Rated',
   },
   {
-    id: 8, name: 'CRM Sync Pipeline', description: 'Sincronizzazione bidirezionale tra CRM, email e tool di comunicazione in tempo reale.',
+    id: 8, name: 'Agente CRM', description: 'Tiene allineati in tempo reale CRM, email e strumenti di comunicazione.',
     category: 'Sales', icon: <Users />, integrations: ['Salesforce', 'Gmail', 'Slack'], timeSaved: '5h/settimana', integrationCount: 3, popularity: 87,
   },
   {
-    id: 9, name: 'Proposal Generator', description: 'Generazione automatica di proposte commerciali personalizzate partendo dai dati del CRM.',
+    id: 9, name: 'Agente proposte commerciali', description: 'Prepara proposte commerciali su misura a partire dai dati del CRM.',
     category: 'Sales', icon: <BarChart3 />, integrations: ['OpenAI', 'HubSpot', 'Google Docs'], timeSaved: '6h/settimana', integrationCount: 3, popularity: 85,
   },
   // Document Ops
   {
-    id: 10, name: 'Invoice Processor', description: 'Elaborazione automatica delle fatture: estrazione dati, validazione e caricamento nel gestionale.',
+    id: 10, name: 'Agente fatture', description: 'Estrae i dati dalle fatture, li controlla e li carica nel gestionale.',
     category: 'Document Ops', icon: <FileCheck />, integrations: ['Google Drive', 'OpenAI', 'QuickBooks'], timeSaved: '9h/settimana', integrationCount: 3, popularity: 89, badge: 'Essenziale',
   },
   {
-    id: 11, name: 'Contract Analyzer', description: 'Analisi intelligente dei contratti con estrazione clausole chiave e alert su scadenze.',
+    id: 11, name: 'Agente contratti', description: 'Analizza i contratti, estrae le clausole chiave e avvisa prima delle scadenze.',
     category: 'Document Ops', icon: <FileSearch />, integrations: ['OpenAI', 'Dropbox', 'Notion'], timeSaved: '7h/settimana', integrationCount: 3, popularity: 84,
   },
   {
-    id: 12, name: 'PDF Report Generator', description: 'Creazione automatica di report PDF professionali a partire da dati strutturati e template.',
+    id: 12, name: 'Agente report', description: 'Genera report PDF curati a partire dai dati e dai modelli aziendali.',
     category: 'Document Ops', icon: <FileText />, integrations: ['Google Sheets', 'Puppeteer', 'S3'], timeSaved: '5h/settimana', integrationCount: 3, popularity: 82,
   },
   // Support
   {
-    id: 13, name: 'Ticket Auto-Router', description: 'Routing intelligente dei ticket di supporto basato su contenuto, priorità e competenze del team.',
+    id: 13, name: 'Agente assistenza clienti', description: 'Smista le richieste di assistenza in base a contenuto, priorità e competenze del team.',
     category: 'Support', icon: <Filter />, integrations: ['Zendesk', 'Slack', 'OpenAI'], timeSaved: '8h/settimana', integrationCount: 3, popularity: 90, badge: 'Smart',
   },
   {
-    id: 14, name: 'FAQ Bot', description: 'Bot automatico per le FAQ che risponde alle domande frequenti attingendo dalla knowledge base aziendale.',
+    id: 14, name: 'Agente FAQ', description: 'Risponde alle domande frequenti attingendo alla base di conoscenza aziendale e passa a una persona i casi nuovi.',
     category: 'Support', icon: <MessageSquare />, integrations: ['Intercom', 'OpenAI', 'Notion'], timeSaved: '12h/settimana', integrationCount: 3, popularity: 93,
   },
   {
-    id: 15, name: 'Customer Sentiment Tracker', description: 'Monitoraggio in tempo reale del sentiment dei clienti su ticket, review e social media.',
+    id: 15, name: 'Agente ascolto clienti', description: 'Segue in tempo reale cosa dicono i clienti in ticket, recensioni e social.',
     category: 'Support', icon: <ThumbsUp />, integrations: ['OpenAI', 'Zendesk', 'Google Sheets'], timeSaved: '4h/settimana', integrationCount: 3, popularity: 80,
   },
   // Other
   {
-    id: 16, name: 'Data Backup Scheduler', description: 'Backup automatizzato e schedulato di database, file e configurazioni su cloud storage.',
+    id: 16, name: 'Agente backup', description: 'Esegue a orari stabiliti il backup di database, file e configurazioni sul cloud.',
     category: 'Other', icon: <Database />, integrations: ['PostgreSQL', 'AWS S3', 'Slack'], timeSaved: '3h/settimana', integrationCount: 3, popularity: 86,
   },
   {
-    id: 17, name: 'API Health Monitor', description: 'Monitoraggio continuo dello stato delle API con alert istantanei in caso di downtime o errori.',
+    id: 17, name: 'Agente monitoraggio API', description: 'Controlla di continuo le API e avvisa subito in caso di interruzioni o errori.',
     category: 'Other', icon: <Activity />, integrations: ['HTTP', 'PagerDuty', 'Slack'], timeSaved: '5h/settimana', integrationCount: 3, popularity: 88, badge: 'DevOps',
   },
   {
-    id: 18, name: 'Webhook Relay Hub', description: 'Hub centralizzato per la gestione e il routing dei webhook tra servizi diversi con logging.',
+    id: 18, name: 'Agente integrazioni', description: 'Smista gli eventi tra servizi diversi e tiene traccia di ogni passaggio.',
     category: 'Other', icon: <Webhook />, integrations: ['HTTP', 'Redis', 'Elasticsearch'], timeSaved: '4h/settimana', integrationCount: 3, popularity: 78,
   },
 ];
@@ -157,9 +157,6 @@ export const CataloguePage: React.FC = () => {
               </Link>
 
               <div className="flex items-center gap-3 mb-4">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.15em] uppercase">
-                  <Zap className="w-3 h-3" /> {t('catPage.badge')}
-                </span>
               </div>
 
               <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -297,7 +294,7 @@ export const CataloguePage: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="mt-20 relative overflow-hidden rounded-3xl"
-              style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(2,6,23,1) 50%, rgba(139,92,246,0.08) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}
+              style={{ background: 'linear-gradient(135deg, rgba(45,212,191,0.08) 0%, rgba(10,14,16,1) 50%, rgba(255,181,71,0.08) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}
             >
               {/* Glows */}
               <div className="absolute top-0 left-1/4 w-[400px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -305,10 +302,6 @@ export const CataloguePage: React.FC = () => {
               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
 
               <div className="relative z-10 px-10 py-16 text-center">
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase mb-8">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                  Valutazione Gratuita
-                </span>
                 <h3 className="font-display text-4xl md:text-5xl font-bold text-white mb-5 tracking-tight">
                   {t('catPage.ctaTitle')}
                 </h3>

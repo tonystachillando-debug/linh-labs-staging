@@ -208,9 +208,6 @@ export const LeadQuiz: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-bold tracking-[0.2em] uppercase mb-8">
-                {t('lead.badge')}
-              </span>
 
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 {t('lead.title')}
@@ -376,9 +373,6 @@ export const LeadQuiz: React.FC = () => {
                     <div className="absolute -right-12 -top-12 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
                     <div className="relative z-10">
-                      <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-bold tracking-[0.15em] uppercase mb-6">
-                        {t('lead.result.badge')}
-                      </span>
 
                       <div className="mb-4">
                         <h3 className="font-display text-2xl md:text-3xl font-bold text-white">

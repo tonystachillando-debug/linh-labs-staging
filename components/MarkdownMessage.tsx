@@ -61,7 +61,7 @@ function renderInline(text: string): React.ReactNode[] {
   const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g);
   return parts.map((part, i) => {
     if (/^\*\*[^*]+\*\*$/.test(part)) {
-      return <strong key={i} style={{ color: '#e2e8f0', fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
+      return <strong key={i} style={{ color: '#EEF2F4', fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
     }
     if (/^\*[^*]+\*$/.test(part)) {
       return <em key={i}>{part.slice(1, -1)}</em>;
@@ -71,8 +71,8 @@ function renderInline(text: string): React.ReactNode[] {
         <code
           key={i}
           style={{
-            background: 'rgba(6,182,212,0.15)',
-            color: '#67e8f9',
+            background: 'rgba(45,212,191,0.15)',
+            color: '#5EEAD4',
             padding: '1px 5px',
             borderRadius: 4,
             fontSize: '0.9em',

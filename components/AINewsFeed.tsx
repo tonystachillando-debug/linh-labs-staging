@@ -307,7 +307,7 @@ export const AINewsFeed: React.FC = () => {
   const isFilterActive = selectedCategory !== 'Tutte' || selectedBrand !== 'Tutti' || searchQuery.trim().length > 0;
 
   return (
-    <section id="ai-news" className="relative py-28 bg-[#020617] text-slate-100 overflow-hidden font-sans border-t border-slate-900">
+    <section id="ai-news" className="relative py-28 bg-[#0A0E10] text-slate-100 overflow-hidden font-sans border-t border-slate-900">
       {/* Background Decorative Glows */}
       <div className="absolute inset-0 bg-grid-white opacity-20 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[160px] pointer-events-none" />
@@ -327,12 +327,12 @@ export const AINewsFeed: React.FC = () => {
             <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
               Novità AI & Modelli <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-teal-300">
-                Sintetizzate in Tempo Reale
+                sintetizzate in tempo reale
               </span>
             </h2>
 
             <p className="mt-4 text-slate-400 max-w-2xl text-base sm:text-lg leading-relaxed">
-              Il centro d'intelligence di Linh Labs. Monitoriamo continuamente i rilasci ufficiali dei principali player mondiali (Google, OpenAI, Anthropic, Meta, DeepSeek, Nvidia e altri) per fornirti analisi sintetiche e senza duplicati.
+              Il radar di Linh Labs. Seguiamo ogni giorno gli annunci ufficiali dei principali attori del settore (Google, OpenAI, Anthropic, Meta, DeepSeek, NVIDIA e altri) e li riassumiamo in sintesi brevi, senza doppioni.
             </p>
           </div>
 
@@ -343,7 +343,7 @@ export const AINewsFeed: React.FC = () => {
               className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-white text-xs font-bold uppercase tracking-wider transition duration-300 shadow-xl hover:border-purple-500/50 disabled:opacity-50"
             >
               <RefreshCw className={`w-4 h-4 text-cyan-400 ${scanning ? 'animate-spin' : ''}`} />
-              {scanning ? 'Scansione in corso...' : 'Aggiorna Notizie AI'}
+              {scanning ? 'Scansione in corso...' : 'Aggiorna le notizie AI'}
             </button>
           </div>
         </div>
@@ -390,7 +390,7 @@ export const AINewsFeed: React.FC = () => {
                 className="bg-slate-950 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl px-3 py-2.5 focus:outline-none focus:border-cyan-500 cursor-pointer"
               >
                 <option value="date">📅 Più recenti</option>
-                <option value="score">⭐ Rilevanza / Score AI</option>
+                <option value="score">⭐ Rilevanza</option>
               </select>
             </div>
           </div>
@@ -400,7 +400,7 @@ export const AINewsFeed: React.FC = () => {
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
                 <Tag className="w-3.5 h-3.5 text-cyan-400" />
-                Filtra per Brand & Modello:
+                Filtra per brand e modello:
               </span>
               {selectedBrand !== 'Tutti' && (
                 <button
@@ -443,7 +443,7 @@ export const AINewsFeed: React.FC = () => {
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
                 <Filter className="w-3.5 h-3.5 text-purple-400" />
-                Filtra per Categoria:
+                Filtra per categoria:
               </span>
               {selectedCategory !== 'Tutte' && (
                 <button
@@ -512,7 +512,7 @@ export const AINewsFeed: React.FC = () => {
                     onClick={resetAllFilters}
                     className="text-xs text-red-400 hover:text-red-300 underline font-semibold ml-2"
                   >
-                    Resetta tutti i filtri
+                    Azzera i filtri
                   </button>
                 </div>
               )}
@@ -543,7 +543,7 @@ export const AINewsFeed: React.FC = () => {
               onClick={resetAllFilters}
               className="px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold text-xs uppercase tracking-widest transition shadow-lg"
             >
-              Reimposta tutti i filtri
+              Azzera i filtri
             </button>
           </div>
         ) : (
@@ -609,7 +609,7 @@ export const AINewsFeed: React.FC = () => {
                       {art.takeaways && art.takeaways.length > 0 && (
                         <div className="bg-slate-950/70 rounded-2xl p-4 border border-slate-800/80 mb-6">
                           <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-400 block mb-2.5">
-                            Punti Chiave:
+                            Punti chiave:
                           </span>
                           <ul className="space-y-2 text-xs text-slate-300">
                             {art.takeaways.map((t, idx) => (
@@ -632,7 +632,7 @@ export const AINewsFeed: React.FC = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-purple-400 group-hover:text-cyan-300 font-bold hover:underline"
                       >
-                        Leggi Fonte <ExternalLink className="w-3.5 h-3.5" />
+                        Leggi la fonte <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     </div>
                   </div>

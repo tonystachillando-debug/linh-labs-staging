@@ -17,44 +17,39 @@ export const AutomationCatalogue: React.FC = () => {
   ];
 
   return (
-    <section id="catalogue" className="py-32 relative overflow-hidden">
+    <section id="catalogue" className="py-20 lg:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 -z-10" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase mb-6">
-            <Zap className="w-3.5 h-3.5" />
-            {t('catalogue.badge')}
-          </span>
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-4">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
             {t('catalogue.title')}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-500">
               {t('catalogue.titleHighlight')}
             </span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light leading-relaxed mb-10">
             {t('catalogue.subtitle')}
           </p>
         </motion.div>
 
 
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {categories.map((cat, index) => (
             <Link key={cat.id} to={`/catalogo?category=${encodeURIComponent(cat.filterKey)}`}>
               <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} className="group relative h-full">
                 <div className={`absolute inset-0 bg-gradient-to-r ${cat.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                <div className="relative h-full bg-slate-900/80 backdrop-blur-xl border border-white/5 p-7 rounded-2xl hover:border-white/15 transition-all duration-300 cursor-pointer overflow-hidden">
+                <div className="relative h-full bg-slate-900/80 backdrop-blur-xl border border-white/5 p-6 rounded-2xl hover:border-white/15 transition-all duration-300 cursor-pointer overflow-hidden">
                   <div className={`absolute -right-8 -top-8 w-28 h-28 ${cat.glow} rounded-full blur-3xl group-hover:opacity-100 opacity-0 transition-opacity`} />
-                  <div className="flex items-start justify-between mb-5">
-                    <div className={`w-12 h-12 rounded-xl bg-slate-800 border border-white/5 flex items-center justify-center ${cat.iconColor} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
-                      {React.cloneElement(cat.icon as React.ReactElement<any>, { className: "w-6 h-6" })}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`w-10 h-10 rounded-xl bg-slate-800 border border-white/5 flex items-center justify-center ${cat.iconColor} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                      {React.cloneElement(cat.icon as React.ReactElement<any>, { className: "w-5 h-5" })}
                     </div>
-                    <span className="text-slate-600 text-xs font-mono">{cat.count} {t('catalogue.workflows')}</span>
                   </div>
                   <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">{cat.name}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{cat.tagline}</p>

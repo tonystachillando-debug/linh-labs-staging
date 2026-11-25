@@ -14,7 +14,7 @@ export const Navbar: React.FC = () => {
     { name: t('nav.home'), href: '/#home' },
     { name: t('nav.about'), href: '/#mission' },
     { name: t('nav.services'), href: '/#services' },
-    { name: 'AI Radar', href: '/#ai-news' },
+    // { name: 'AI Radar', href: '/#ai-news' }, // nascosto finché il radar non è pronto
     { name: t('nav.catalogue'), href: '/catalogo' },
   ];
 
@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="origin-left hover:opacity-90 transition-opacity">
-          <Logo imgClassName="h-16 md:h-20 w-auto object-contain" />
+          <Logo imgClassName="h-6 md:h-8 w-auto object-contain" />
         </Link>
 
         {/* Desktop Menu */}

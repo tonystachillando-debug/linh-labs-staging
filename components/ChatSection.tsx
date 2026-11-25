@@ -56,7 +56,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-20 lg:py-24 relative overflow-hidden">
 
       {/* Rich background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-950/40 via-slate-950 to-slate-950 pointer-events-none" />
@@ -65,10 +65,10 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
 
       {/* Decorative grid lines */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{ backgroundImage: 'linear-gradient(rgba(6,182,212,1) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        style={{ backgroundImage: 'linear-gradient(rgba(45,212,191,1) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,191,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row-reverse gap-16 lg:items-start">
+        <div className="flex flex-col lg:flex-row-reverse gap-12 lg:items-center">
 
           {/* ── Left: Text ── */}
           <motion.div
@@ -78,7 +78,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-5/12"
           >
-            <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 text-white tracking-tight leading-[1.05]">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight leading-[1.05]">
               {t('chat.title')}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">
                 {t('chat.titleHighlight')}
@@ -92,7 +92,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
               {[
                 { icon: <Zap className="w-4 h-4" />, title: t('chat.aiPowered'), desc: t('chat.aiDesc'), color: 'cyan' },
                 { icon: <Shield className="w-4 h-4" />, title: 'Risposta immediata', desc: 'Sempre disponibile, 24/7', color: 'blue' },
-                { icon: <Sparkles className="w-4 h-4" />, title: 'Personalizzato', desc: 'Conosce i tuoi servizi in dettaglio', color: 'purple' },
+                { icon: <Sparkles className="w-4 h-4" />, title: 'Personalizzato', desc: 'Conosce i nostri servizi nel dettaglio', color: 'purple' },
               ].map((f, i) => (
                 <motion.div
                   key={i}
@@ -128,10 +128,10 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
           >
             {/* Outer glow ring */}
             <div className="relative p-[1px] rounded-3xl"
-              style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.4) 0%, rgba(59,130,246,0.2) 50%, rgba(6,182,212,0.05) 100%)' }}>
+              style={{ background: 'linear-gradient(135deg, rgba(45,212,191,0.4) 0%, rgba(13,148,136,0.2) 50%, rgba(45,212,191,0.05) 100%)' }}>
 
-              <div className="rounded-3xl overflow-hidden flex flex-col h-[600px] relative"
-                style={{ background: 'linear-gradient(160deg, rgba(15,23,42,0.98) 0%, rgba(2,6,23,0.99) 100%)' }}>
+              <div className="rounded-3xl overflow-hidden flex flex-col h-[520px] relative"
+                style={{ background: 'linear-gradient(160deg, rgba(17,23,26,0.98) 0%, rgba(10,14,16,0.99) 100%)' }}>
 
                 {/* Noise texture overlay */}
                 <div className="absolute inset-0 opacity-[0.015] pointer-events-none"
@@ -147,7 +147,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                     <div className="relative">
                       <div className="absolute inset-0 rounded-full bg-cyan-500/30 animate-ping scale-110" />
                       <div className="relative w-11 h-11 rounded-full flex items-center justify-center"
-                        style={{ background: 'linear-gradient(135deg, #06b6d4, #3b82f6)' }}>
+                        style={{ background: 'linear-gradient(135deg, #2DD4BF, #14B8A6)' }}>
                         <BotIcon className="w-5 h-5 text-white" />
                       </div>
                       <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-slate-950 shadow-lg shadow-emerald-500/50" />
@@ -167,7 +167,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                 </div>
 
                 {/* ── Messages ── */}
-                <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-6 space-y-5 scrollbar-thin" style={{ scrollbarColor: 'rgba(6,182,212,0.2) transparent' }}>
+                <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-6 space-y-5 scrollbar-thin" style={{ scrollbarColor: 'rgba(45,212,191,0.2) transparent' }}>
                   <AnimatePresence initial={false}>
                     {messages.map((msg) => (
                       <motion.div
@@ -180,7 +180,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                         {/* Bot avatar inline */}
                         {msg.sender === 'bot' && (
                           <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mr-3 mt-1"
-                            style={{ background: 'linear-gradient(135deg, #06b6d4, #3b82f6)' }}>
+                            style={{ background: 'linear-gradient(135deg, #2DD4BF, #14B8A6)' }}>
                             <BotIcon className="w-3.5 h-3.5 text-white" />
                           </div>
                         )}
@@ -193,7 +193,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                                 : 'text-slate-200 rounded-2xl rounded-bl-sm border border-white/[0.07]'
                             }`}
                             style={msg.sender === 'user'
-                              ? { background: 'linear-gradient(135deg, #0891b2, #2563eb)', boxShadow: '0 8px 32px rgba(6,182,212,0.25)' }
+                              ? { background: 'linear-gradient(135deg, #0D9488, #0D9488)', boxShadow: '0 8px 32px rgba(45,212,191,0.25)' }
                               : { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(10px)' }
                             }
                           >
@@ -211,7 +211,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                   {isLoading && (
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-3">
                       <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
-                        style={{ background: 'linear-gradient(135deg, #06b6d4, #3b82f6)' }}>
+                        style={{ background: 'linear-gradient(135deg, #2DD4BF, #14B8A6)' }}>
                         <BotIcon className="w-3.5 h-3.5 text-white" />
                       </div>
                       <div className="px-5 py-4 rounded-2xl rounded-bl-sm border border-white/[0.07] flex items-center gap-1.5"
@@ -244,7 +244,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                           background: 'rgba(255,255,255,0.04)',
                           border: '1px solid rgba(255,255,255,0.08)',
                         }}
-                        onFocus={e => { e.currentTarget.style.border = '1px solid rgba(6,182,212,0.4)'; e.currentTarget.style.background = 'rgba(6,182,212,0.05)'; }}
+                        onFocus={e => { e.currentTarget.style.border = '1px solid rgba(45,212,191,0.4)'; e.currentTarget.style.background = 'rgba(45,212,191,0.05)'; }}
                         onBlur={e => { e.currentTarget.style.border = '1px solid rgba(255,255,255,0.08)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
                       />
                     </div>
@@ -254,7 +254,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
-                      style={{ background: 'linear-gradient(135deg, #06b6d4, #2563eb)', boxShadow: '0 4px 20px rgba(6,182,212,0.35)' }}
+                      style={{ background: 'linear-gradient(135deg, #2DD4BF, #0D9488)', boxShadow: '0 4px 20px rgba(45,212,191,0.35)' }}
                     >
                       <ArrowRight className="w-5 h-5 text-white" />
                     </motion.button>
@@ -266,7 +266,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
 
             {/* Bottom reflection */}
             <div className="mt-4 mx-8 h-6 rounded-b-3xl opacity-20 blur-sm"
-              style={{ background: 'linear-gradient(180deg, rgba(6,182,212,0.3) 0%, transparent 100%)' }} />
+              style={{ background: 'linear-gradient(180deg, rgba(45,212,191,0.3) 0%, transparent 100%)' }} />
           </motion.div>
 
         </div>
