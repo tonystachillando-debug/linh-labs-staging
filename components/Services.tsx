@@ -16,18 +16,18 @@ export const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-32 relative overflow-hidden bg-slate-950">
+    <section id="services" className="py-20 lg:py-24 relative overflow-hidden bg-slate-950">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 -z-10" />
       
       <div className="container mx-auto px-6">
         
         {/* Value Proposition Text */}
-        <div className="max-w-5xl mx-auto text-center mb-24">
+        <div className="max-w-4xl mx-auto text-center mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-5xl lg:text-6xl leading-tight text-slate-300 font-light"
+            className="font-display text-3xl md:text-4xl lg:text-[2.75rem] leading-tight text-slate-300 font-light"
           >
             {t('services.title1')}<span className="font-bold text-white inline-block relative">
               {t('services.titleHighlight1')}
@@ -43,7 +43,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Service Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {servicesList.map((service, index) => (
             <motion.div
               key={service.id}
@@ -55,18 +55,18 @@ export const Services: React.FC = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-amber-400 rounded-2xl blur opacity-0 group-hover:opacity-25 transition-opacity duration-500" />
               
-              <div className="relative h-full bg-slate-900/80 backdrop-blur-xl border border-white/5 p-8 rounded-2xl hover:border-teal-400/30 transition-colors duration-300 overflow-hidden">
+              <div className="relative h-full bg-slate-900/80 backdrop-blur-xl border border-white/5 p-6 rounded-2xl hover:border-teal-400/30 transition-colors duration-300 overflow-hidden">
                 <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-teal-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="absolute top-7 right-8 font-mono text-xs text-slate-600 group-hover:text-teal-400 transition-colors">{String(index + 1).padStart(2, '0')}</span>
+                <span className="absolute top-6 right-6 font-mono text-xs text-slate-600 group-hover:text-teal-400 transition-colors">{String(index + 1).padStart(2, '0')}</span>
                 
                 {/* Hover Glow */}
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-colors" />
 
-                <div className="w-12 h-12 rounded-xl bg-teal-400/10 border border-teal-400/20 flex items-center justify-center text-teal-300 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                  {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-6 h-6" })}
+                <div className="w-10 h-10 rounded-xl bg-teal-400/10 border border-teal-400/20 flex items-center justify-center text-teal-300 mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-5 h-5" })}
                 </div>
                 
-                <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan-200 transition-colors">
+                <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">
                   {service.title}
                 </h3>
                 

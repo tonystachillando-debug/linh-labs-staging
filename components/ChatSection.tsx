@@ -56,7 +56,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-20 lg:py-24 relative overflow-hidden">
 
       {/* Rich background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-950/40 via-slate-950 to-slate-950 pointer-events-none" />
@@ -68,7 +68,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
         style={{ backgroundImage: 'linear-gradient(rgba(45,212,191,1) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,191,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row-reverse gap-16 lg:items-start">
+        <div className="flex flex-col lg:flex-row-reverse gap-12 lg:items-center">
 
           {/* ── Left: Text ── */}
           <motion.div
@@ -78,7 +78,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-5/12"
           >
-            <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 text-white tracking-tight leading-[1.05]">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight leading-[1.05]">
               {t('chat.title')}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">
                 {t('chat.titleHighlight')}
@@ -130,7 +130,7 @@ export const ChatSection: React.FC<ChatSectionProps> = ({ newMessages }) => {
             <div className="relative p-[1px] rounded-3xl"
               style={{ background: 'linear-gradient(135deg, rgba(45,212,191,0.4) 0%, rgba(13,148,136,0.2) 50%, rgba(45,212,191,0.05) 100%)' }}>
 
-              <div className="rounded-3xl overflow-hidden flex flex-col h-[600px] relative"
+              <div className="rounded-3xl overflow-hidden flex flex-col h-[520px] relative"
                 style={{ background: 'linear-gradient(160deg, rgba(17,23,26,0.98) 0%, rgba(10,14,16,0.99) 100%)' }}>
 
                 {/* Noise texture overlay */}
